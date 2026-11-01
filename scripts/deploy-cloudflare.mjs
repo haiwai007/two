@@ -6,6 +6,7 @@ import { pathToFileURL } from "node:url";
 const wrangler = (...args) => [process.execPath, ["node_modules/wrangler/bin/wrangler.js", ...args]];
 export const deploymentSteps = [
   ["Provisioning logic checks", process.execPath, ["tests/provision.test.mjs"]],
+  ["First-owner safety checks", process.execPath, ["tests/first-owner.test.mjs"]],
   ["Turnstile server checks", process.execPath, ["--experimental-strip-types", "tests/turnstile.test.ts"]],
   ["Production smoke logic checks", process.execPath, ["tests/production-smoke.test.mjs"]],
   ["Game rule checks", "npm", ["test"]],
@@ -14,6 +15,7 @@ export const deploymentSteps = [
   ["Production preflight", process.execPath, ["scripts/preflight.mjs", "wrangler.jsonc"]],
   ["Apply D1 migrations", ...wrangler("d1", "migrations", "apply", "aurum-db", "--remote")],
   ["Initialize empty catalog or upgrade existing catalog", process.execPath, ["scripts/seed-if-empty.mjs", "--remote", "wrangler.jsonc"]],
+  ["Initialize explicitly requested first owner", process.execPath, ["scripts/bootstrap-first-owner.mjs", "--remote"]],
   ["Import original media", process.execPath, ["scripts/import-assets.mjs", "--remote"]],
   ["Apply optimized media metadata", ...wrangler("d1", "execute", "aurum-db", "--remote", "--file", "scripts/optimized-assets.sql")],
   ["Import delivery media", process.execPath, ["scripts/import-assets.mjs", "--remote", "--optimized"]],

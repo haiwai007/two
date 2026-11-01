@@ -1,0 +1,14 @@
+✔ explicit target becomes the only owner and receives an audit entry (10.176631ms)
+✔ retries are idempotent and repair a missing audit without duplicating roles (3.393242ms)
+✔ an existing different owner is preserved and blocks bootstrap (2.887188ms)
+✔ blocked, missing and existing non-owner targets cannot be promoted (6.941452ms)
+✔ expired or disabled instructions do not query or modify the database (1.073545ms)
+✔ an owner appearing between reads and insert is not overwritten (2.82458ms)
+ℹ tests 6
+ℹ suites 0
+ℹ pass 6
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 39.934491
