@@ -1,0 +1,43 @@
+{
+  "notice": "Initial material references; runtime overrides come from D1. Symbol glyphs are original program artwork, not claimed as AI-generated symbol images.",
+  "gameId": "dream-garden",
+  "cover": "webp-cover-dream-garden-3864fe3da7",
+  "banner": "webp-banner-dream-garden-26d9fe28ff",
+  "symbols": [
+    {
+      "index": 0,
+      "label": "玫",
+      "source": "procedural canvas glyph"
+    },
+    {
+      "index": 1,
+      "label": "兰",
+      "source": "procedural canvas glyph"
+    },
+    {
+      "index": 2,
+      "label": "莲",
+      "source": "procedural canvas glyph"
+    },
+    {
+      "index": 3,
+      "label": "菊",
+      "source": "procedural canvas glyph"
+    },
+    {
+      "index": 4,
+      "label": "茉",
+      "source": "procedural canvas glyph"
+    },
+    {
+      "index": 5,
+      "label": "葵",
+      "source": "procedural canvas glyph"
+    },
+    {
+      "index": 6,
+      "label": "水",
+      "source": "procedural canvas glyph"
+    }
+  ]
+}

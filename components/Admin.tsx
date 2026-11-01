@@ -198,6 +198,23 @@ export default function Admin({
       <div className="eyebrow">AURUM CONTROL CENTER</div>
       <div className="section-heading">
         <h1>{config.title}</h1>
+        {module === "statistics" && user.role === "owner" && (
+          <button
+            className="outline"
+            onClick={async () => {
+              try {
+                const result = await api("admin/maintenance", "POST", {});
+                notify(
+                  `已清理${result.sessions}个过期会话、${result.rateLimits}条过期限流记录`,
+                );
+              } catch (error) {
+                notify((error as Error).message);
+              }
+            }}
+          >
+            清理过期会话
+          </button>
+        )}
         {Object.keys(config.fields).length > 0 && (
           <button
             className="gold"
@@ -225,6 +242,11 @@ export default function Admin({
           </Link>
         ))}
       </div>
+      {module === "integrations" && (
+        <p className="notice">
+          此处管理自有程序的版本文档和素材关联。执行规则随源码发布；运行测试只开放当前已编译的0.2.0版本。
+        </p>
+      )}
       {error && (
         <p className="form-error" role="alert">
           {error}
@@ -507,11 +529,12 @@ export default function Admin({
                               {module === "games" && (
                                 <Link href={"/game/" + row.id}>预览</Link>
                               )}
-                              {module === "integrations" && (
-                                <Link href={"/play/" + row.game_id}>
-                                  运行测试
-                                </Link>
-                              )}
+                              {module === "integrations" &&
+                                row.version === "0.2.0" && (
+                                  <Link href={"/play/" + row.game_id}>
+                                    运行测试
+                                  </Link>
+                                )}
                               <button
                                 className="danger"
                                 onClick={() => void remove(row)}

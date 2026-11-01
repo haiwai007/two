@@ -1,0 +1,48 @@
+{
+  "notice": "Initial material references; runtime overrides come from D1. Symbol glyphs are original program artwork, not claimed as AI-generated symbol images.",
+  "gameId": "future-world",
+  "cover": "webp-cover-future-world-30fb32f574",
+  "banner": "webp-banner-future-world-02b5608647",
+  "symbols": [
+    {
+      "index": 0,
+      "label": "芯",
+      "source": "procedural canvas glyph"
+    },
+    {
+      "index": 1,
+      "label": "轨",
+      "source": "procedural canvas glyph"
+    },
+    {
+      "index": 2,
+      "label": "城",
+      "source": "procedural canvas glyph"
+    },
+    {
+      "index": 3,
+      "label": "光",
+      "source": "procedural canvas glyph"
+    },
+    {
+      "index": 4,
+      "label": "舰",
+      "source": "procedural canvas glyph"
+    },
+    {
+      "index": 5,
+      "label": "码",
+      "source": "procedural canvas glyph"
+    },
+    {
+      "index": 6,
+      "label": "能",
+      "source": "procedural canvas glyph"
+    },
+    {
+      "index": 7,
+      "label": "脉",
+      "source": "procedural canvas glyph"
+    }
+  ]
+}

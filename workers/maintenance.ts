@@ -1,0 +1,2 @@
+import {cleanExpired} from '../server/maintenance';
+export default {async scheduled(_event:ScheduledEvent,env:{DB:D1Database},context:ExecutionContext){context.waitUntil(cleanExpired(env.DB).then(async result=>{await env.DB.prepare('INSERT INTO audit_logs(id,actor_id,action,target,detail) VALUES(?,NULL,?,?,?)').bind(crypto.randomUUID(),'maintenance.expiry','scheduled',JSON.stringify(result)).run();}));}};

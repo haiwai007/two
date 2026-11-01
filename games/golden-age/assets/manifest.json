@@ -1,0 +1,38 @@
+{
+  "notice": "Initial material references; runtime overrides come from D1. Symbol glyphs are original program artwork, not claimed as AI-generated symbol images.",
+  "gameId": "golden-age",
+  "cover": "webp-cover-golden-age-1cff7c385f",
+  "banner": "webp-banner-golden-age-ed75adb397",
+  "symbols": [
+    {
+      "index": 0,
+      "label": "铜",
+      "source": "procedural canvas glyph"
+    },
+    {
+      "index": 1,
+      "label": "银",
+      "source": "procedural canvas glyph"
+    },
+    {
+      "index": 2,
+      "label": "金",
+      "source": "procedural canvas glyph"
+    },
+    {
+      "index": 3,
+      "label": "玉",
+      "source": "procedural canvas glyph"
+    },
+    {
+      "index": 4,
+      "label": "冠",
+      "source": "procedural canvas glyph"
+    },
+    {
+      "index": 5,
+      "label": "皇",
+      "source": "procedural canvas glyph"
+    }
+  ]
+}

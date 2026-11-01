@@ -1,0 +1,48 @@
+{
+  "notice": "Initial material references; runtime overrides come from D1. Symbol glyphs are original program artwork, not claimed as AI-generated symbol images.",
+  "gameId": "golden-god",
+  "cover": "webp-cover-golden-god-809c6b0dee",
+  "banner": "webp-banner-golden-god-8a29d18980",
+  "symbols": [
+    {
+      "index": 0,
+      "label": "金",
+      "source": "procedural canvas glyph"
+    },
+    {
+      "index": 1,
+      "label": "玉",
+      "source": "procedural canvas glyph"
+    },
+    {
+      "index": 2,
+      "label": "福",
+      "source": "procedural canvas glyph"
+    },
+    {
+      "index": 3,
+      "label": "禄",
+      "source": "procedural canvas glyph"
+    },
+    {
+      "index": 4,
+      "label": "寿",
+      "source": "procedural canvas glyph"
+    },
+    {
+      "index": 5,
+      "label": "宝",
+      "source": "procedural canvas glyph"
+    },
+    {
+      "index": 6,
+      "label": "財",
+      "source": "procedural canvas glyph"
+    },
+    {
+      "index": 7,
+      "label": "神",
+      "source": "procedural canvas glyph"
+    }
+  ]
+}

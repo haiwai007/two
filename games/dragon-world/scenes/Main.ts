@@ -1,25 +1,20 @@
 import { GameScene } from "../../../game-engine/Scene";
-export class DragonScene extends GameScene {
+export class Main extends GameScene {
   constructor() {
     super("dragon-world");
   }
   create() {
     super.create();
-    for (let i = 0; i < 4; i++) {
-      const cloud = this.add.ellipse(
-        120 + i * 220,
-        118,
-        110,
-        10,
-        0x67c1bf,
-        0.12,
-      );
+    for (let n = 0; n < 4; n++) {
+      const orb = this.add.circle(75 + n * 20, 105, 3, 3250081, 0.5);
       this.tweens.add({
-        targets: cloud,
-        x: cloud.x + 50,
+        targets: orb,
+        y: 85,
+        alpha: 0.1,
         yoyo: true,
         repeat: -1,
-        duration: 3000 + i * 600,
+        delay: n * 150,
+        duration: 960,
       });
     }
   }

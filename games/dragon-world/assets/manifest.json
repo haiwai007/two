@@ -1,0 +1,58 @@
+{
+  "notice": "Initial material references; runtime overrides come from D1. Symbol glyphs are original program artwork, not claimed as AI-generated symbol images.",
+  "gameId": "dragon-world",
+  "cover": "webp-cover-dragon-world-607e61e9c6",
+  "banner": "webp-banner-dragon-world-2bb7c5d05a",
+  "symbols": [
+    {
+      "index": 0,
+      "label": "青",
+      "source": "procedural canvas glyph"
+    },
+    {
+      "index": 1,
+      "label": "赤",
+      "source": "procedural canvas glyph"
+    },
+    {
+      "index": 2,
+      "label": "白",
+      "source": "procedural canvas glyph"
+    },
+    {
+      "index": 3,
+      "label": "玄",
+      "source": "procedural canvas glyph"
+    },
+    {
+      "index": 4,
+      "label": "玉",
+      "source": "procedural canvas glyph"
+    },
+    {
+      "index": 5,
+      "label": "珠",
+      "source": "procedural canvas glyph"
+    },
+    {
+      "index": 6,
+      "label": "金",
+      "source": "procedural canvas glyph"
+    },
+    {
+      "index": 7,
+      "label": "龍",
+      "source": "procedural canvas glyph"
+    },
+    {
+      "index": 8,
+      "label": "星",
+      "source": "procedural canvas glyph"
+    },
+    {
+      "index": 9,
+      "label": "印",
+      "source": "procedural canvas glyph"
+    }
+  ]
+}

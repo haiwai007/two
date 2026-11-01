@@ -2147,3 +2147,74 @@ td code {
   object-fit: contain;
   margin-right: 7px;
 }
+
+.game-options {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  padding: 18px 15px 0;
+}
+.game-options .outline {
+  font-size: 11px;
+  min-height: 44px;
+}
+.game-options + .disclaimer {
+  margin: 10px 15px;
+}
+.player .disclaimer {
+  line-height: 1.7;
+}
+@media (max-width: 639px) {
+  .game-options {
+    gap: 8px;
+  }
+  .game-options .outline {
+    padding: 10px 12px;
+    font-size: 10px;
+    flex: 1;
+    white-space: nowrap;
+  }
+}
+
+@media (max-width: 639px) {
+  .header-actions .balance {
+    max-width: 80px;
+    overflow: hidden;
+    white-space: nowrap;
+  }
+  .points-summary {
+    max-width: calc(100% - 68px);
+  }
+  .points-summary strong {
+    overflow-wrap: anywhere;
+  }
+}
+
+@media (max-width: 639px) {
+  .category-tabs button,
+  .category-link,
+  .subnav a,
+  .admin-nav a {
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+  }
+  .header-actions .gold.small {
+    min-height: 44px;
+  }
+  .header-actions a[aria-label="后台管理"] {
+    display: none;
+  }
+  .header-actions .user-link {
+    min-width: 44px;
+    min-height: 44px;
+    justify-content: center;
+  }
+  .header-actions .icon-button,
+  .mobile-menu {
+    width: 44px;
+    min-width: 44px;
+    height: 44px;
+  }
+}

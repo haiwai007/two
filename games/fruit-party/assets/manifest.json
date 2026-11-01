@@ -1,0 +1,48 @@
+{
+  "notice": "Initial material references; runtime overrides come from D1. Symbol glyphs are original program artwork, not claimed as AI-generated symbol images.",
+  "gameId": "fruit-party",
+  "cover": "webp-cover-fruit-party-18539a1961",
+  "banner": "webp-banner-fruit-party-5b585a241f",
+  "symbols": [
+    {
+      "index": 0,
+      "label": "橙",
+      "source": "procedural canvas glyph"
+    },
+    {
+      "index": 1,
+      "label": "柠",
+      "source": "procedural canvas glyph"
+    },
+    {
+      "index": 2,
+      "label": "桃",
+      "source": "procedural canvas glyph"
+    },
+    {
+      "index": 3,
+      "label": "葡",
+      "source": "procedural canvas glyph"
+    },
+    {
+      "index": 4,
+      "label": "瓜",
+      "source": "procedural canvas glyph"
+    },
+    {
+      "index": 5,
+      "label": "樱",
+      "source": "procedural canvas glyph"
+    },
+    {
+      "index": 6,
+      "label": "梨",
+      "source": "procedural canvas glyph"
+    },
+    {
+      "index": 7,
+      "label": "莓",
+      "source": "procedural canvas glyph"
+    }
+  ]
+}

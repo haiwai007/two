@@ -1,5 +1,5 @@
 export default {
-  melody: [147, 196, 220, 294, 220, 196],
+  melody: [155.56, 195.99, 233.08, 311.12, 233.08, 184.99],
   wave: "triangle",
-  interval: 1450,
+  interval: 970,
 } as const;

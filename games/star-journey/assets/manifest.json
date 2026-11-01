@@ -1,0 +1,43 @@
+{
+  "notice": "Initial material references; runtime overrides come from D1. Symbol glyphs are original program artwork, not claimed as AI-generated symbol images.",
+  "gameId": "star-journey",
+  "cover": "webp-cover-star-journey-68c4652b77",
+  "banner": "webp-banner-star-journey-0268abdc91",
+  "symbols": [
+    {
+      "index": 0,
+      "label": "船",
+      "source": "procedural canvas glyph"
+    },
+    {
+      "index": 1,
+      "label": "月",
+      "source": "procedural canvas glyph"
+    },
+    {
+      "index": 2,
+      "label": "日",
+      "source": "procedural canvas glyph"
+    },
+    {
+      "index": 3,
+      "label": "云",
+      "source": "procedural canvas glyph"
+    },
+    {
+      "index": 4,
+      "label": "轨",
+      "source": "procedural canvas glyph"
+    },
+    {
+      "index": 5,
+      "label": "光",
+      "source": "procedural canvas glyph"
+    },
+    {
+      "index": 6,
+      "label": "星",
+      "source": "procedural canvas glyph"
+    }
+  ]
+}

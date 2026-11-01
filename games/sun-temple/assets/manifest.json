@@ -1,0 +1,43 @@
+{
+  "notice": "Initial material references; runtime overrides come from D1. Symbol glyphs are original program artwork, not claimed as AI-generated symbol images.",
+  "gameId": "sun-temple",
+  "cover": "webp-cover-sun-temple-132e1c910a",
+  "banner": "webp-banner-sun-temple-6e46cdc714",
+  "symbols": [
+    {
+      "index": 0,
+      "label": "霞",
+      "source": "procedural canvas glyph"
+    },
+    {
+      "index": 1,
+      "label": "云",
+      "source": "procedural canvas glyph"
+    },
+    {
+      "index": 2,
+      "label": "焰",
+      "source": "procedural canvas glyph"
+    },
+    {
+      "index": 3,
+      "label": "光",
+      "source": "procedural canvas glyph"
+    },
+    {
+      "index": 4,
+      "label": "日",
+      "source": "procedural canvas glyph"
+    },
+    {
+      "index": 5,
+      "label": "金",
+      "source": "procedural canvas glyph"
+    },
+    {
+      "index": 6,
+      "label": "阳",
+      "source": "procedural canvas glyph"
+    }
+  ]
+}

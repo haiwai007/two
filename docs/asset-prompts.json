@@ -4,209 +4,269 @@
     "slug": "golden-god",
     "cover": "Original cinematic 3D fantasy game cover inspired by the theme 黄金财神, unique central hero, luxurious materials, dramatic lighting, no words or logos, 800x600",
     "banner": "Original wide cinematic fantasy scene for 黄金财神, independent composition, no text or trademarks, 1920x1080",
-    "status": "pending"
+    "status": "generated",
+    "coverFile": "public/assets/golden-god-cover.png",
+    "bannerFile": "public/assets/golden-god-banner.png"
   },
   {
     "game": "龙腾四海",
     "slug": "dragon-world",
     "cover": "Original cinematic 3D fantasy game cover inspired by the theme 龙腾四海, unique central hero, luxurious materials, dramatic lighting, no words or logos, 800x600",
     "banner": "Original wide cinematic fantasy scene for 龙腾四海, independent composition, no text or trademarks, 1920x1080",
-    "status": "pending"
+    "status": "generated",
+    "coverFile": "public/assets/dragon-world-cover.png",
+    "bannerFile": "public/assets/dragon-world-banner.png"
   },
   {
     "game": "凤凰传奇",
     "slug": "phoenix-legend",
     "cover": "Original cinematic 3D fantasy game cover inspired by the theme 凤凰传奇, unique central hero, luxurious materials, dramatic lighting, no words or logos, 800x600",
     "banner": "Original wide cinematic fantasy scene for 凤凰传奇, independent composition, no text or trademarks, 1920x1080",
-    "status": "pending"
+    "status": "generated",
+    "coverFile": "public/assets/phoenix-legend-cover.png",
+    "bannerFile": "public/assets/phoenix-legend-banner.png"
   },
   {
     "game": "神龙宝藏",
     "slug": "divine-dragon",
     "cover": "Original cinematic 3D fantasy game cover inspired by the theme 神龙宝藏, unique central hero, luxurious materials, dramatic lighting, no words or logos, 800x600",
     "banner": "Original wide cinematic fantasy scene for 神龙宝藏, independent composition, no text or trademarks, 1920x1080",
-    "status": "pending"
+    "status": "generated",
+    "coverFile": "public/assets/divine-dragon-cover.png",
+    "bannerFile": "public/assets/divine-dragon-banner.png"
   },
   {
     "game": "埃及法老",
     "slug": "egypt-pharaoh",
     "cover": "Original cinematic 3D fantasy game cover inspired by the theme 埃及法老, unique central hero, luxurious materials, dramatic lighting, no words or logos, 800x600",
     "banner": "Original wide cinematic fantasy scene for 埃及法老, independent composition, no text or trademarks, 1920x1080",
-    "status": "pending"
+    "status": "generated",
+    "coverFile": "public/assets/egypt-pharaoh-cover.png",
+    "bannerFile": "public/assets/egypt-pharaoh-banner.png"
   },
   {
     "game": "西游奇缘",
     "slug": "journey-west",
     "cover": "Original cinematic 3D fantasy game cover inspired by the theme 西游奇缘, unique central hero, luxurious materials, dramatic lighting, no words or logos, 800x600",
     "banner": "Original wide cinematic fantasy scene for 西游奇缘, independent composition, no text or trademarks, 1920x1080",
-    "status": "pending"
+    "status": "generated",
+    "coverFile": "public/assets/journey-west-cover.png",
+    "bannerFile": "public/assets/journey-west-banner.png"
   },
   {
     "game": "三国霸业",
     "slug": "three-kingdoms",
     "cover": "Original cinematic 3D fantasy game cover inspired by the theme 三国霸业, unique central hero, luxurious materials, dramatic lighting, no words or logos, 800x600",
     "banner": "Original wide cinematic fantasy scene for 三国霸业, independent composition, no text or trademarks, 1920x1080",
-    "status": "pending"
+    "status": "generated",
+    "coverFile": "public/assets/three-kingdoms-cover.png",
+    "bannerFile": "public/assets/three-kingdoms-banner.png"
   },
   {
     "game": "海盗秘宝",
     "slug": "pirate-treasure",
     "cover": "Original cinematic 3D fantasy game cover inspired by the theme 海盗秘宝, unique central hero, luxurious materials, dramatic lighting, no words or logos, 800x600",
     "banner": "Original wide cinematic fantasy scene for 海盗秘宝, independent composition, no text or trademarks, 1920x1080",
-    "status": "pending"
+    "status": "generated",
+    "coverFile": "public/assets/pirate-treasure-cover.png",
+    "bannerFile": "public/assets/pirate-treasure-banner.png"
   },
   {
     "game": "奇幻森林",
     "slug": "fantasy-forest",
     "cover": "Original cinematic 3D fantasy game cover inspired by the theme 奇幻森林, unique central hero, luxurious materials, dramatic lighting, no words or logos, 800x600",
     "banner": "Original wide cinematic fantasy scene for 奇幻森林, independent composition, no text or trademarks, 1920x1080",
-    "status": "pending"
+    "status": "generated",
+    "coverFile": "public/assets/fantasy-forest-cover.png",
+    "bannerFile": "public/assets/fantasy-forest-banner.png"
   },
   {
     "game": "魔法学院",
     "slug": "magic-academy",
     "cover": "Original cinematic 3D fantasy game cover inspired by the theme 魔法学院, unique central hero, luxurious materials, dramatic lighting, no words or logos, 800x600",
     "banner": "Original wide cinematic fantasy scene for 魔法学院, independent composition, no text or trademarks, 1920x1080",
-    "status": "pending"
+    "status": "generated",
+    "coverFile": "public/assets/magic-academy-cover.png",
+    "bannerFile": "public/assets/magic-academy-banner.png"
   },
   {
     "game": "宝石王国",
     "slug": "gem-kingdom",
     "cover": "Original cinematic 3D fantasy game cover inspired by the theme 宝石王国, unique central hero, luxurious materials, dramatic lighting, no words or logos, 800x600",
     "banner": "Original wide cinematic fantasy scene for 宝石王国, independent composition, no text or trademarks, 1920x1080",
-    "status": "pending"
+    "status": "generated",
+    "coverFile": "public/assets/gem-kingdom-cover.png",
+    "bannerFile": "public/assets/gem-kingdom-banner.png"
   },
   {
     "game": "水果派对",
     "slug": "fruit-party",
     "cover": "Original cinematic 3D fantasy game cover inspired by the theme 水果派对, unique central hero, luxurious materials, dramatic lighting, no words or logos, 800x600",
     "banner": "Original wide cinematic fantasy scene for 水果派对, independent composition, no text or trademarks, 1920x1080",
-    "status": "pending"
+    "status": "generated",
+    "coverFile": "public/assets/fruit-party-cover.png",
+    "bannerFile": "public/assets/fruit-party-banner.png"
   },
   {
     "game": "糖果世界",
     "slug": "candy-world",
     "cover": "Original cinematic 3D fantasy game cover inspired by the theme 糖果世界, unique central hero, luxurious materials, dramatic lighting, no words or logos, 800x600",
     "banner": "Original wide cinematic fantasy scene for 糖果世界, independent composition, no text or trademarks, 1920x1080",
-    "status": "pending"
+    "status": "generated",
+    "coverFile": "public/assets/candy-world-cover.png",
+    "bannerFile": "public/assets/candy-world-banner.png"
   },
   {
     "game": "幸运之星",
     "slug": "lucky-star",
     "cover": "Original cinematic 3D fantasy game cover inspired by the theme 幸运之星, unique central hero, luxurious materials, dramatic lighting, no words or logos, 800x600",
     "banner": "Original wide cinematic fantasy scene for 幸运之星, independent composition, no text or trademarks, 1920x1080",
-    "status": "pending"
+    "status": "generated",
+    "coverFile": "public/assets/lucky-star-cover.png",
+    "bannerFile": "public/assets/lucky-star-banner.png"
   },
   {
     "game": "黄金矿工",
     "slug": "gold-miner",
     "cover": "Original cinematic 3D fantasy game cover inspired by the theme 黄金矿工, unique central hero, luxurious materials, dramatic lighting, no words or logos, 800x600",
     "banner": "Original wide cinematic fantasy scene for 黄金矿工, independent composition, no text or trademarks, 1920x1080",
-    "status": "pending"
+    "status": "generated",
+    "coverFile": "public/assets/gold-miner-cover.png",
+    "bannerFile": "public/assets/gold-miner-banner.png"
   },
   {
     "game": "东方神话",
     "slug": "eastern-myth",
     "cover": "Original cinematic 3D fantasy game cover inspired by the theme 东方神话, unique central hero, luxurious materials, dramatic lighting, no words or logos, 800x600",
     "banner": "Original wide cinematic fantasy scene for 东方神话, independent composition, no text or trademarks, 1920x1080",
-    "status": "pending"
+    "status": "generated",
+    "coverFile": "public/assets/eastern-myth-cover.png",
+    "bannerFile": "public/assets/eastern-myth-banner.png"
   },
   {
     "game": "西方神话",
     "slug": "western-myth",
     "cover": "Original cinematic 3D fantasy game cover inspired by the theme 西方神话, unique central hero, luxurious materials, dramatic lighting, no words or logos, 800x600",
     "banner": "Original wide cinematic fantasy scene for 西方神话, independent composition, no text or trademarks, 1920x1080",
-    "status": "pending"
+    "status": "generated",
+    "coverFile": "public/assets/western-myth-cover.png",
+    "bannerFile": "public/assets/western-myth-banner.png"
   },
   {
     "game": "未来世界",
     "slug": "future-world",
     "cover": "Original cinematic 3D fantasy game cover inspired by the theme 未来世界, unique central hero, luxurious materials, dramatic lighting, no words or logos, 800x600",
     "banner": "Original wide cinematic fantasy scene for 未来世界, independent composition, no text or trademarks, 1920x1080",
-    "status": "pending"
+    "status": "generated",
+    "coverFile": "public/assets/future-world-cover.png",
+    "bannerFile": "public/assets/future-world-banner.png"
   },
   {
     "game": "动物王国",
     "slug": "animal-kingdom",
     "cover": "Original cinematic 3D fantasy game cover inspired by the theme 动物王国, unique central hero, luxurious materials, dramatic lighting, no words or logos, 800x600",
     "banner": "Original wide cinematic fantasy scene for 动物王国, independent composition, no text or trademarks, 1920x1080",
-    "status": "pending"
+    "status": "generated",
+    "coverFile": "public/assets/animal-kingdom-cover.png",
+    "bannerFile": "public/assets/animal-kingdom-banner.png"
   },
   {
     "game": "节日狂欢",
     "slug": "festival",
     "cover": "Original cinematic 3D fantasy game cover inspired by the theme 节日狂欢, unique central hero, luxurious materials, dramatic lighting, no words or logos, 800x600",
     "banner": "Original wide cinematic fantasy scene for 节日狂欢, independent composition, no text or trademarks, 1920x1080",
-    "status": "pending"
+    "status": "generated",
+    "coverFile": "public/assets/festival-cover.png",
+    "bannerFile": "public/assets/festival-banner.png"
   },
   {
     "game": "神秘宝库",
     "slug": "mysterious-vault",
     "cover": "Original cinematic 3D fantasy game cover inspired by the theme 神秘宝库, unique central hero, luxurious materials, dramatic lighting, no words or logos, 800x600",
     "banner": "Original wide cinematic fantasy scene for 神秘宝库, independent composition, no text or trademarks, 1920x1080",
-    "status": "pending"
+    "status": "generated",
+    "coverFile": "public/assets/mysterious-vault-cover.png",
+    "bannerFile": "public/assets/mysterious-vault-banner.png"
   },
   {
     "game": "龙之传说",
     "slug": "dragon-legend",
     "cover": "Original cinematic 3D fantasy game cover inspired by the theme 龙之传说, unique central hero, luxurious materials, dramatic lighting, no words or logos, 800x600",
     "banner": "Original wide cinematic fantasy scene for 龙之传说, independent composition, no text or trademarks, 1920x1080",
-    "status": "pending"
+    "status": "generated",
+    "coverFile": "public/assets/dragon-legend-cover.png",
+    "bannerFile": "public/assets/dragon-legend-banner.png"
   },
   {
     "game": "黄金时代",
     "slug": "golden-age",
     "cover": "Original cinematic 3D fantasy game cover inspired by the theme 黄金时代, unique central hero, luxurious materials, dramatic lighting, no words or logos, 800x600",
     "banner": "Original wide cinematic fantasy scene for 黄金时代, independent composition, no text or trademarks, 1920x1080",
-    "status": "pending"
+    "status": "generated",
+    "coverFile": "public/assets/golden-age-cover.png",
+    "bannerFile": "public/assets/golden-age-banner.png"
   },
   {
     "game": "太阳神殿",
     "slug": "sun-temple",
     "cover": "Original cinematic 3D fantasy game cover inspired by the theme 太阳神殿, unique central hero, luxurious materials, dramatic lighting, no words or logos, 800x600",
     "banner": "Original wide cinematic fantasy scene for 太阳神殿, independent composition, no text or trademarks, 1920x1080",
-    "status": "pending"
+    "status": "generated",
+    "coverFile": "public/assets/sun-temple-cover.png",
+    "bannerFile": "public/assets/sun-temple-banner.png"
   },
   {
     "game": "魔法宝石",
     "slug": "magic-gems",
     "cover": "Original cinematic 3D fantasy game cover inspired by the theme 魔法宝石, unique central hero, luxurious materials, dramatic lighting, no words or logos, 800x600",
     "banner": "Original wide cinematic fantasy scene for 魔法宝石, independent composition, no text or trademarks, 1920x1080",
-    "status": "pending"
+    "status": "generated",
+    "coverFile": "public/assets/magic-gems-cover.png",
+    "bannerFile": "public/assets/magic-gems-banner.png"
   },
   {
     "game": "星辰之旅",
     "slug": "star-journey",
     "cover": "Original cinematic 3D fantasy game cover inspired by the theme 星辰之旅, unique central hero, luxurious materials, dramatic lighting, no words or logos, 800x600",
     "banner": "Original wide cinematic fantasy scene for 星辰之旅, independent composition, no text or trademarks, 1920x1080",
-    "status": "pending"
+    "status": "generated",
+    "coverFile": "public/assets/star-journey-cover.png",
+    "bannerFile": "public/assets/star-journey-banner.png"
   },
   {
     "game": "深海秘境",
     "slug": "deep-sea",
     "cover": "Original cinematic 3D fantasy game cover inspired by the theme 深海秘境, unique central hero, luxurious materials, dramatic lighting, no words or logos, 800x600",
     "banner": "Original wide cinematic fantasy scene for 深海秘境, independent composition, no text or trademarks, 1920x1080",
-    "status": "pending"
+    "status": "generated",
+    "coverFile": "public/assets/deep-sea-cover.png",
+    "bannerFile": "public/assets/deep-sea-banner.png"
   },
   {
     "game": "王牌传奇",
     "slug": "ace-legend",
     "cover": "Original cinematic 3D fantasy game cover inspired by the theme 王牌传奇, unique central hero, luxurious materials, dramatic lighting, no words or logos, 800x600",
     "banner": "Original wide cinematic fantasy scene for 王牌传奇, independent composition, no text or trademarks, 1920x1080",
-    "status": "pending"
+    "status": "generated",
+    "coverFile": "public/assets/ace-legend-cover.png",
+    "bannerFile": "public/assets/ace-legend-banner.png"
   },
   {
     "game": "梦幻花园",
     "slug": "dream-garden",
     "cover": "Original cinematic 3D fantasy game cover inspired by the theme 梦幻花园, unique central hero, luxurious materials, dramatic lighting, no words or logos, 800x600",
     "banner": "Original wide cinematic fantasy scene for 梦幻花园, independent composition, no text or trademarks, 1920x1080",
-    "status": "pending"
+    "status": "generated",
+    "coverFile": "public/assets/dream-garden-cover.png",
+    "bannerFile": "public/assets/dream-garden-banner.png"
   },
   {
     "game": "财富之门",
     "slug": "fortune-gate",
     "cover": "Original cinematic 3D fantasy game cover inspired by the theme 财富之门, unique central hero, luxurious materials, dramatic lighting, no words or logos, 800x600",
     "banner": "Original wide cinematic fantasy scene for 财富之门, independent composition, no text or trademarks, 1920x1080",
-    "status": "pending"
+    "status": "generated",
+    "coverFile": "public/assets/fortune-gate-cover.png",
+    "bannerFile": "public/assets/fortune-gate-banner.png"
   }
 ]

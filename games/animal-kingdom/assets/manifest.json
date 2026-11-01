@@ -1,0 +1,38 @@
+{
+  "notice": "Initial material references; runtime overrides come from D1. Symbol glyphs are original program artwork, not claimed as AI-generated symbol images.",
+  "gameId": "animal-kingdom",
+  "cover": "webp-cover-animal-kingdom-93e5ed217d",
+  "banner": "webp-banner-animal-kingdom-da30e62efb",
+  "symbols": [
+    {
+      "index": 0,
+      "label": "狮",
+      "source": "procedural canvas glyph"
+    },
+    {
+      "index": 1,
+      "label": "虎",
+      "source": "procedural canvas glyph"
+    },
+    {
+      "index": 2,
+      "label": "象",
+      "source": "procedural canvas glyph"
+    },
+    {
+      "index": 3,
+      "label": "鹰",
+      "source": "procedural canvas glyph"
+    },
+    {
+      "index": 4,
+      "label": "鹿",
+      "source": "procedural canvas glyph"
+    },
+    {
+      "index": 5,
+      "label": "狼",
+      "source": "procedural canvas glyph"
+    }
+  ]
+}

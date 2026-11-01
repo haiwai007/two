@@ -1,7 +1,7 @@
 # 黄金财神
 
-状态：published。独立程序：golden-god。
+原创演示 0.2.0；规则与授权原版无等同关系。
 
-原创 3×3 五线连珠：三枚相同或财神 Wild，按图标倍率计奖。
+原创演示规则：3×3五条完整连线；财神7为Wild；图标倍率2/3/4/5/7/10/15/20，逐线累加。
 
-非授权原版复刻；原版参数全部待确认。
+独立程序：rules/index.ts；场景：scenes/Main.ts；配置：config.ts；Web Audio旋律：audio/config.ts。

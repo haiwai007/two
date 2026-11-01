@@ -2,10 +2,17 @@ export type RandomInt = (max: number) => number;
 export type Round = {
   grid: number[][];
   reward: number;
+  gameVersion?: string;
   wins: number[][];
   feature: string;
   cascades?: number[][][];
   multiplier: number;
+  steps?: {
+    grid: number[][];
+    wins: number[][];
+    reward: number;
+    label: string;
+  }[];
 };
 export function secureInt(max: number): number {
   if (!Number.isInteger(max) || max < 1 || max > 0xffffffff)

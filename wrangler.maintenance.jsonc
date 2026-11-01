@@ -1,0 +1,14 @@
+{
+  "name": "aurum-maintenance",
+  "main": "workers/maintenance.ts",
+  "compatibility_date": "2026-10-30",
+  "triggers": { "crons": ["0 19 * * *"] },
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "aurum-db",
+      "database_id": "REPLACE_WITH_CREATED_D1_ID",
+    },
+  ],
+  "observability": { "enabled": true },
+}

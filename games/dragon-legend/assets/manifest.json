@@ -1,0 +1,48 @@
+{
+  "notice": "Initial material references; runtime overrides come from D1. Symbol glyphs are original program artwork, not claimed as AI-generated symbol images.",
+  "gameId": "dragon-legend",
+  "cover": "webp-cover-dragon-legend-8d5d5baefe",
+  "banner": "webp-banner-dragon-legend-a0d5031691",
+  "symbols": [
+    {
+      "index": 0,
+      "label": "珠",
+      "source": "procedural canvas glyph"
+    },
+    {
+      "index": 1,
+      "label": "角",
+      "source": "procedural canvas glyph"
+    },
+    {
+      "index": 2,
+      "label": "云",
+      "source": "procedural canvas glyph"
+    },
+    {
+      "index": 3,
+      "label": "火",
+      "source": "procedural canvas glyph"
+    },
+    {
+      "index": 4,
+      "label": "金",
+      "source": "procedural canvas glyph"
+    },
+    {
+      "index": 5,
+      "label": "玉",
+      "source": "procedural canvas glyph"
+    },
+    {
+      "index": 6,
+      "label": "鳞",
+      "source": "procedural canvas glyph"
+    },
+    {
+      "index": 7,
+      "label": "龙",
+      "source": "procedural canvas glyph"
+    }
+  ]
+}

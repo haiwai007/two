@@ -1,0 +1,53 @@
+{
+  "notice": "Initial material references; runtime overrides come from D1. Symbol glyphs are original program artwork, not claimed as AI-generated symbol images.",
+  "gameId": "gold-miner",
+  "cover": "webp-cover-gold-miner-3f76301137",
+  "banner": "webp-banner-gold-miner-23ce12671e",
+  "symbols": [
+    {
+      "index": 0,
+      "label": "矿",
+      "source": "procedural canvas glyph"
+    },
+    {
+      "index": 1,
+      "label": "金",
+      "source": "procedural canvas glyph"
+    },
+    {
+      "index": 2,
+      "label": "钻",
+      "source": "procedural canvas glyph"
+    },
+    {
+      "index": 3,
+      "label": "石",
+      "source": "procedural canvas glyph"
+    },
+    {
+      "index": 4,
+      "label": "土",
+      "source": "procedural canvas glyph"
+    },
+    {
+      "index": 5,
+      "label": "灯",
+      "source": "procedural canvas glyph"
+    },
+    {
+      "index": 6,
+      "label": "镐",
+      "source": "procedural canvas glyph"
+    },
+    {
+      "index": 7,
+      "label": "车",
+      "source": "procedural canvas glyph"
+    },
+    {
+      "index": 8,
+      "label": "尘",
+      "source": "procedural canvas glyph"
+    }
+  ]
+}

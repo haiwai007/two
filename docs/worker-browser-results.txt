@@ -1,0 +1,102 @@
+
+> aurum-original-games@0.2.0 test:browser
+> playwright test --max-failures=1
+
+[WebServer] (node:24816) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] ▲ [WARNING] Proxy environment variables detected. We'll use your proxy for fetch requests.
+[WebServer]
+[WebServer]
+[WebServer] ▲ [WARNING] Duplicate key "compareMinX" in object literal [duplicate-object-key]
+[WebServer]
+[WebServer]     .open-next/server-functions/default/handler.mjs:948:54646:
+[WebServer]       948 │ ...):f2(a3[c3],this.toBBox)},compareMinX:function(a3,b3){return a...
+[WebServer]           ╵                              ~~~~~~~~~~~
+[WebServer]
+[WebServer]   The original key "compareMinX" is here:
+[WebServer]
+[WebServer]     .open-next/server-functions/default/handler.mjs:948:51545:
+[WebServer]       948 │ ...x:function(a3){return a3},compareMinX:i2,compareMinY:j2,toJSON...
+[WebServer]           ╵                              ~~~~~~~~~~~
+[WebServer]
+[WebServer]
+[WebServer] ▲ [WARNING] Duplicate key "compareMinY" in object literal [duplicate-object-key]
+[WebServer]
+[WebServer]     .open-next/server-functions/default/handler.mjs:948:54698:
+[WebServer]       948 │ ...){return a3.left-b3.left},compareMinY:function(a3,b3){return a...
+[WebServer]           ╵                              ~~~~~~~~~~~
+[WebServer]
+[WebServer]   The original key "compareMinY" is here:
+[WebServer]
+[WebServer]     .open-next/server-functions/default/handler.mjs:948:51560:
+[WebServer]       948 │ ...return a3},compareMinX:i2,compareMinY:j2,toJSON:function(){ret...
+[WebServer]           ╵                              ~~~~~~~~~~~
+[WebServer]
+[WebServer]
+[WebServer] ▲ [WARNING] Duplicate key "toBBox" in object literal [duplicate-object-key]
+[WebServer]
+[WebServer]     .open-next/server-functions/default/handler.mjs:948:54748:
+[WebServer]       948 │ ...3,b3){return a3.top-b3.top},toBBox:function(a3){return{minX:a3...
+[WebServer]           ╵                                ~~~~~~
+[WebServer]
+[WebServer]   The original key "toBBox" is here:
+[WebServer]
+[WebServer]     .open-next/server-functions/default/handler.mjs:948:51514:
+[WebServer]       948 │ ...f3=!1):g3=null}return this},toBBox:function(a3){return a3},com...
+[WebServer]           ╵                                ~~~~~~
+[WebServer]
+[WebServer]
+
+Running 42 tests using 1 worker
+
+(node:24879) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓   1 tests/browser/platform.spec.ts:61:1 › lobby search, favorites and pagination use real data (8.4s)
+  ✓   2 tests/browser/platform.spec.ts:83:3 › golden-god: Canvas loads and a server round completes (5.1s)
+  ✓   3 tests/browser/platform.spec.ts:83:3 › dragon-world: Canvas loads and a server round completes (5.3s)
+  ✓   4 tests/browser/platform.spec.ts:83:3 › phoenix-legend: Canvas loads and a server round completes (5.8s)
+  ✓   5 tests/browser/platform.spec.ts:83:3 › divine-dragon: Canvas loads and a server round completes (4.9s)
+  ✓   6 tests/browser/platform.spec.ts:83:3 › egypt-pharaoh: Canvas loads and a server round completes (7.9s)
+  ✓   7 tests/browser/platform.spec.ts:83:3 › journey-west: Canvas loads and a server round completes (6.8s)
+  ✓   8 tests/browser/platform.spec.ts:83:3 › three-kingdoms: Canvas loads and a server round completes (5.7s)
+  ✓   9 tests/browser/platform.spec.ts:83:3 › pirate-treasure: Canvas loads and a server round completes (5.5s)
+  ✓  10 tests/browser/platform.spec.ts:83:3 › fantasy-forest: Canvas loads and a server round completes (6.3s)
+  ✓  11 tests/browser/platform.spec.ts:83:3 › magic-academy: Canvas loads and a server round completes (6.3s)
+  ✓  12 tests/browser/platform.spec.ts:83:3 › gem-kingdom: Canvas loads and a server round completes (5.8s)
+  ✓  13 tests/browser/platform.spec.ts:83:3 › fruit-party: Canvas loads and a server round completes (5.5s)
+  ✓  14 tests/browser/platform.spec.ts:83:3 › candy-world: Canvas loads and a server round completes (6.1s)
+  ✓  15 tests/browser/platform.spec.ts:83:3 › lucky-star: Canvas loads and a server round completes (5.4s)
+  ✓  16 tests/browser/platform.spec.ts:83:3 › gold-miner: Canvas loads and a server round completes (7.5s)
+  ✓  17 tests/browser/platform.spec.ts:83:3 › eastern-myth: Canvas loads and a server round completes (8.1s)
+  ✓  18 tests/browser/platform.spec.ts:83:3 › western-myth: Canvas loads and a server round completes (8.7s)
+  ✓  19 tests/browser/platform.spec.ts:83:3 › future-world: Canvas loads and a server round completes (6.5s)
+  ✓  20 tests/browser/platform.spec.ts:83:3 › animal-kingdom: Canvas loads and a server round completes (6.2s)
+  ✓  21 tests/browser/platform.spec.ts:83:3 › festival: Canvas loads and a server round completes (8.6s)
+  ✓  22 tests/browser/platform.spec.ts:83:3 › mysterious-vault: Canvas loads and a server round completes (6.8s)
+  ✓  23 tests/browser/platform.spec.ts:83:3 › dragon-legend: Canvas loads and a server round completes (5.4s)
+  ✓  24 tests/browser/platform.spec.ts:83:3 › golden-age: Canvas loads and a server round completes (4.3s)
+  ✓  25 tests/browser/platform.spec.ts:83:3 › sun-temple: Canvas loads and a server round completes (7.1s)
+  ✓  26 tests/browser/platform.spec.ts:83:3 › magic-gems: Canvas loads and a server round completes (24.8s)
+  ✓  27 tests/browser/platform.spec.ts:83:3 › star-journey: Canvas loads and a server round completes (7.1s)
+  ✓  28 tests/browser/platform.spec.ts:83:3 › deep-sea: Canvas loads and a server round completes (6.8s)
+  ✓  29 tests/browser/platform.spec.ts:83:3 › ace-legend: Canvas loads and a server round completes (6.6s)
+  ✓  30 tests/browser/platform.spec.ts:83:3 › dream-garden: Canvas loads and a server round completes (5.2s)
+  ✓  31 tests/browser/platform.spec.ts:83:3 › fortune-gate: Canvas loads and a server round completes (5.7s)
+  ✓  32 tests/browser/platform.spec.ts:110:1 › mobile routes and game controls stay within the viewport (7.8s)
+  ✓  33 tests/browser/platform.spec.ts:137:1 › admin saves an announcement and the public page displays it (2.9s)
+  ✓  34 tests/browser/platform.spec.ts:158:1 › automatic play can be stopped during the first settled round (5.1s)
+  ✓  35 tests/browser/platform.spec.ts:186:1 › lost settlement response retries the same key without another debit (6.2s)
+  ✓  36 tests/browser/platform.spec.ts:223:1 › register, validation, logout and login work through the visible forms (5.0s)
+  ✓  37 tests/browser/platform.spec.ts:263:1 › another member does not inherit a saved pending round (6.8s)
+  ✓  38 tests/browser/platform.spec.ts:306:1 › mobile game spin, sound and fullscreen controls remain usable (6.0s)
+  ✓  39 tests/browser/platform.spec.ts:329:1 › tablet lobby uses four columns and generated delivery pictures (4.1s)
+  ✓  40 tests/browser/platform.spec.ts:353:1 › avatar upload is rendered from the project storage (3.2s)
+  ✓  41 tests/browser/platform.spec.ts:386:1 › new banner and symbol artwork are loaded from database bindings without code changes (9.1s)
+  ✓  42 tests/browser/platform.spec.ts:452:1 › failed login resets the single-use challenge before retry (client stub) (2.4s)
+
+  42 passed (4.8m)
+npm notice
+npm notice New major version of npm available! 11.9.0 -> 12.2.1
+npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.2.1
+npm notice To update run: npm install -g npm@12.2.1
+npm notice

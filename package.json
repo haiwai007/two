@@ -1,38 +1,46 @@
 {
   "name": "aurum-original-games",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "private": true,
   "scripts": {
     "dev": "next dev --hostname 0.0.0.0",
     "build": "next build",
     "typecheck": "tsc --noEmit",
-    "test": "node --experimental-strip-types tests/rules.test.ts",
+    "test": "node --experimental-strip-types tests/rules.test.ts && node --experimental-strip-types tests/all-games.test.ts",
     "cf:build": "opennextjs-cloudflare build",
     "preview": "opennextjs-cloudflare build && opennextjs-cloudflare preview",
-    "deploy": "opennextjs-cloudflare build && opennextjs-cloudflare deploy",
+    "deploy": "node scripts/preflight.mjs wrangler.jsonc && opennextjs-cloudflare build && opennextjs-cloudflare deploy",
     "db:local": "wrangler d1 migrations apply aurum-db --local",
     "db:remote": "wrangler d1 migrations apply aurum-db --remote",
     "seed:local": "wrangler d1 execute aurum-db --local --file=seed.sql",
-    "seed:remote": "wrangler d1 execute aurum-db --remote --file=seed.sql"
+    "seed:remote": "wrangler d1 execute aurum-db --remote --file=seed.sql",
+    "catalog:local": "wrangler d1 execute aurum-db --local --file scripts/catalog-v02.sql",
+    "catalog:remote": "wrangler d1 execute aurum-db --remote --file scripts/catalog-v02.sql",
+    "test:browser": "playwright test",
+    "assets:optimize": "node scripts/optimize-assets.mjs",
+    "assets:verify": "node scripts/media-verify.mjs",
+    "preflight": "node scripts/preflight.mjs wrangler.jsonc"
   },
   "dependencies": {
     "@opennextjs/cloudflare": "^1.14.0",
-    "next": "^15.5.0",
-    "react": "^19.1.0",
-    "react-dom": "^19.1.0",
-    "phaser": "^3.90.0",
     "framer-motion": "^12.23.0",
-    "lucide-react": "^0.468.0"
+    "lucide-react": "^0.468.0",
+    "next": "^15.5.0",
+    "phaser": "^3.90.0",
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0"
   },
   "devDependencies": {
-    "typescript": "^5.9.0",
+    "@cloudflare/workers-types": "^5.20261101.1",
+    "@playwright/test": "^1.64.1",
+    "@tailwindcss/postcss": "^4.1.0",
     "@types/node": "^24.0.0",
     "@types/react": "^19.1.0",
     "@types/react-dom": "^19.1.0",
-    "@cloudflare/workers-types": "^5.20261101.1",
-    "wrangler": "^4.45.0",
+    "sharp": "^0.35.5",
     "tailwindcss": "^4.1.0",
-    "@tailwindcss/postcss": "^4.1.0"
+    "typescript": "^5.9.0",
+    "wrangler": "^4.45.0"
   },
   "type": "module"
 }

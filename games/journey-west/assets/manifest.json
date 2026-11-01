@@ -1,0 +1,48 @@
+{
+  "notice": "Initial material references; runtime overrides come from D1. Symbol glyphs are original program artwork, not claimed as AI-generated symbol images.",
+  "gameId": "journey-west",
+  "cover": "webp-cover-journey-west-30f1e07911",
+  "banner": "webp-banner-journey-west-f2af535eae",
+  "symbols": [
+    {
+      "index": 0,
+      "label": "山",
+      "source": "procedural canvas glyph"
+    },
+    {
+      "index": 1,
+      "label": "水",
+      "source": "procedural canvas glyph"
+    },
+    {
+      "index": 2,
+      "label": "云",
+      "source": "procedural canvas glyph"
+    },
+    {
+      "index": 3,
+      "label": "月",
+      "source": "procedural canvas glyph"
+    },
+    {
+      "index": 4,
+      "label": "杖",
+      "source": "procedural canvas glyph"
+    },
+    {
+      "index": 5,
+      "label": "经",
+      "source": "procedural canvas glyph"
+    },
+    {
+      "index": 6,
+      "label": "桃",
+      "source": "procedural canvas glyph"
+    },
+    {
+      "index": 7,
+      "label": "悟",
+      "source": "procedural canvas glyph"
+    }
+  ]
+}

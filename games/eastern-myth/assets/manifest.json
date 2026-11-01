@@ -1,0 +1,38 @@
+{
+  "notice": "Initial material references; runtime overrides come from D1. Symbol glyphs are original program artwork, not claimed as AI-generated symbol images.",
+  "gameId": "eastern-myth",
+  "cover": "webp-cover-eastern-myth-69e1f8ef16",
+  "banner": "webp-banner-eastern-myth-02113cf8f0",
+  "symbols": [
+    {
+      "index": 0,
+      "label": "阴",
+      "source": "procedural canvas glyph"
+    },
+    {
+      "index": 1,
+      "label": "阳",
+      "source": "procedural canvas glyph"
+    },
+    {
+      "index": 2,
+      "label": "山",
+      "source": "procedural canvas glyph"
+    },
+    {
+      "index": 3,
+      "label": "海",
+      "source": "procedural canvas glyph"
+    },
+    {
+      "index": 4,
+      "label": "日",
+      "source": "procedural canvas glyph"
+    },
+    {
+      "index": 5,
+      "label": "月",
+      "source": "procedural canvas glyph"
+    }
+  ]
+}

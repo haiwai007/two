@@ -1,58 +1,57 @@
-# AURUM 星曜原创游戏平台 — 第一阶段工程版
+# AURUM 星曜原创游戏平台 · 0.2
 
-Next.js / React / TypeScript / Phaser 3 / OpenNext Cloudflare / D1 / R2。
+Next.js / React / TypeScript / Phaser 3 Canvas / OpenNext Cloudflare / D1 / R2。
 
-这不是已正式上线的完整30款游戏平台。已实现三种独立原创规则和Phaser场景、会员与虚拟积分账本、真实数据库后台CRUD；其余27款处于planned状态，不能启动。参考站返回Cloudflare 403，无法声称视觉或玩法1:1还原。正式域名已指定为 **h6688.win**，但当前没有Cloudflare认证，未完成生产部署。
+30个条目现已分别实现原创规则、独立程序目录、独立场景装饰、布局、合成音频及规则帮助。它们不是授权原版规则复刻，参考站仍返回403。正式域名为h6688.win，生产Cloudflare账户尚未连接，不能声称正式部署成功。
 
-## 运行
+## 本地启动
 
 ```sh
 npm ci
 npm run db:local
-npm run seed:local
-python3 scripts/finalize-assets.py
-npx wrangler d1 execute aurum-db --local --file scripts/generated-assets.sql
+node scripts/seed-if-empty.mjs --local wrangler.jsonc
 node scripts/import-assets-local.mjs
+node scripts/import-optimized-local.mjs
 ```
 
-仅在本地创建 `.dev.vars` 写入 `REQUIRE_TURNSTILE=false`，然后 `npm run dev`。
-生产必须配置Turnstile，保持验证开启。不存在默认管理员密码；注册后可运行 `node scripts/bootstrap-admin.mjs --local USER_UUID` 授予本地账号owner。
+仅本地创建`.dev.vars`：`REQUIRE_TURNSTILE=false`，然后`npm run dev -- --port 3001`。
+已有0.1数据时，先执行`npm run db:local`再执行`npm run catalog:local`，保留会员、积分、历史及offline状态。不要重放初始seed。
 
-## 检查
+## 验证
+
+构建Cloudflare产物前先停止同目录的`next dev`，避免同时写入`.next`。CI使用隔离作业。
 
 ```sh
 npm run typecheck
 npm test
 python3 tests/database_test.py
-node tests/api-integration.mjs  # 需先启动localhost:3000，仅本地D1/R2
+TEST_ORIGIN=http://localhost:3001 node tests/api-integration.mjs
+TEST_ORIGIN=http://localhost:3001 npm run test:browser
 npm run cf:build
 ```
 
-已通过9组规则/时间测试、8组数据库测试、24项编译Worker接口检查，并检查32个页面HTTP响应和85个图片HEAD响应。规则和数据库测试结果、API端到端结果见 `docs/05-test-report.md`。浏览器视觉与真机测试尚未执行。全部85项AI PNG已核验并在本地R2/D1导入；生产R2尚未创建。
+浏览器测试启动全新隔离的Chromium测试实例，不使用用户浏览器账号。本地可指定`CHROMIUM_EXECUTABLE=/usr/bin/chromium`；CI可用`npx playwright install --with-deps chromium`安装测试浏览器。测试仅接受localhost，创建本地临时会员与管理员，不能针对生产运行。
 
-## 模块
+## 程序与账本
 
-- `app`：路由、全局样式、自己的API入口。
-- `components`：大厅、会员、后台与游戏容器。
-- `games`：30个独立目录与调研档案，其中3款有独立规则和场景程序。
-- `game-engine`：共享Phaser场景基础、加载与安全随机源。
-- `server`：D1数据访问、会话、密码、权限、限流、结算与CRUD。
-- `migrations`：D1 SQLite兼容结构、约束、索引与账本触发器。
-- `seed.sql`：首次目录初始化，不重复执行。
-- `public/assets`：AI生成临时美术与明确标识的SVG备用占位图。
-- `docs/assets-manifest.json`：实际素材状态、尺寸、字节数和关联。
-- `scripts/import-assets.mjs`：将实际素材导入R2，使用内容哈希存储key，更新D1关联。
-- `wrangler.jsonc`：生产，h6688.win 与 www.h6688.win。
-- `wrangler.preview.jsonc`：独立预览数据库和存储。
+每款程序位于`games/<slug>/rules/index.ts`，场景在`scenes/Main.ts`，音频在`audio/config.ts`。公共引擎只共享绘制、动画和基础网格运算，不用一个赔率配置代替30款规则。
 
-## 部署
+免费揭示、锁定重转等阶段在同一付费局内由服务器一次计算，最多有限次数，不额外扣分、不无限触发。D1触发器把余额、记录、排行和积分流水放在同一事务中；幂等键防重复扣分，旧记录不可修改/删除，每局保存gameVersion。
 
-配置Cloudflare账号权限、创建D1/R2、替换两个环境中的database_id占位值，再按 `docs/03-deployment.md` 执行。GitHub workflow已提供，但尚未建立远程仓库或配置GitHub secrets。
+客户端支持自动10局、快速动画、跳过动画、音效、全屏、帮助及记录；网络不明时停止自动运行并保留按用户隔离的请求ID。
 
-生产素材导入：先初始化目录，运行 `python3 scripts/finalize-assets.py`，执行生成的metadata SQL，再运行 `node scripts/import-assets.mjs --remote`。预览资源可加 `--config wrangler.preview.jsonc`。不会在没有凭据时声称R2已在生产创建或图片已上传。
+## 素材
 
-系统设置支持 `site_name`、`logo_asset_id`、`banner_asset_id`、`background_asset_id`、`theme_color` 与 `registration_enabled`。图片替换先上传新版本，再将新的素材ID关联到对应游戏或设置，保留旧版本。
+85项实际AI原创PNG母图与SHA256、尺寸记录在`docs/assets-manifest.json`。它们已全部实际导入本地R2并关联本地D1，正式R2仍待账户权限。
 
-## 完成边界
+WebP交付版本由构建期脚本生成，保留全部母图；不会在Workers中运行Sharp等原生图片处理库。详细步骤见素材和部署文档。替换正式素材先上传新版本，再切换对应素材ID。
 
-待完成：授权原版资料与视觉复刻、其余27款游戏程序、正式素材替换、真实账号下的Cloudflare/GitHub部署、DNS/HTTPS/Turnstile/WAF配置，以及浏览器、触摸、全屏、音频、并发负载和生产验收。不要把本工程版视为已通过全部上线检查的生产系统。
+## 后台与发布
+
+先注册自己的账号，再使用`node scripts/bootstrap-admin.mjs --local USER_UUID`提升本地owner。没有默认生产管理员密码。所有后台模块连接D1，支持owner/editor/support角色；游戏、分类、素材、用户、积分、活动、公告、消息、程序版本和系统设置均有业务API。
+
+发布前执行`node scripts/preflight.mjs`，检查D1 ID、Turnstile、账户ID和Wrangler认证。GitHub workflow已提供；尚未创建远程仓库或配置GitHub secrets。维护Worker可按上海03:00定期清理过期会话/限流，不删除账本。
+
+每个游戏可在配置JSON的symbolAssets中绑定已上传图标ID，进入游戏时读取最新数据库素材，未绑定时使用程序字形。
+
+当前完成范围、真实测试结果和生产阻塞项分别见`docs/06-original-programs.md`、`docs/05-test-report.md`和`docs/07-maintenance.md`。生产DNS/HTTPS、Turnstile/WAF与真实设备验收未完成前，不应标记正式上线。

@@ -1,0 +1,586 @@
+[
+  {
+    "id": "golden-god",
+    "name": "黄金财神",
+    "columns": 3,
+    "rows": 3,
+    "symbols": ["金", "玉", "福", "禄", "寿", "宝", "財", "神"],
+    "color": "#c99a38",
+    "rules": "原创演示规则：3×3五条完整连线；财神7为Wild；图标倍率2/3/4/5/7/10/15/20，逐线累加。",
+    "motif": "sigil",
+    "speed": 65,
+    "audio": {
+      "melody": [146.83, 174.61, 220.0, 293.66, 220.0, 174.61],
+      "wave": "sine",
+      "interval": 850
+    },
+    "version": "0.2.0",
+    "original": true,
+    "pendingOriginalRules": true
+  },
+  {
+    "id": "dragon-world",
+    "name": "龙腾四海",
+    "columns": 5,
+    "rows": 3,
+    "symbols": ["青", "赤", "白", "玄", "玉", "珠", "金", "龍", "星", "印"],
+    "color": "#3197a1",
+    "rules": "原创演示规则：5×3从左连续三列起算243路；Wild8代替普通图标0–7，每个普通图标单独评估；奖励=向下取整(积分×路数×图标倍率×(连续列数−2)/3)；图标倍率1/2/3/4/5/6/8/10；Scatter9至少三枚使本局奖励翻倍。",
+    "motif": "orbit",
+    "speed": 77,
+    "audio": {
+      "melody": [155.56, 195.99, 233.08, 311.12, 233.08, 184.99],
+      "wave": "triangle",
+      "interval": 970
+    },
+    "version": "0.2.0",
+    "original": true,
+    "pendingOriginalRules": true
+  },
+  {
+    "id": "phoenix-legend",
+    "name": "凤凰传奇",
+    "columns": 6,
+    "rows": 5,
+    "symbols": ["红", "紫", "蓝", "金", "绿", "心", "凤"],
+    "color": "#a14b9c",
+    "rules": "原创演示规则：6×5正交相邻五枚同色成群；奖励=积分×(群大小−4)×(图标序号+1)×轮次；重力补充，最多五次连消。",
+    "motif": "embers",
+    "speed": 89,
+    "audio": {
+      "melody": [164.81, 195.99, 246.94, 329.62, 246.94, 195.99],
+      "wave": "sine",
+      "interval": 1090
+    },
+    "version": "0.2.0",
+    "original": true,
+    "pendingOriginalRules": true
+  },
+  {
+    "id": "divine-dragon",
+    "name": "神龙宝藏",
+    "columns": 4,
+    "rows": 4,
+    "symbols": ["珠", "鳞", "角", "云", "火", "金", "玉", "印"],
+    "color": "#61945c",
+    "rules": "原创演示规则：4×4六条完整连线；四个外角中两枚以上龙印7，将中央四格变Wild7；每条完整线奖励=积分×(首个非Wild图标序号+2)，全Wild按7计算。",
+    "motif": "wave",
+    "speed": 101,
+    "audio": {
+      "melody": [174.61, 220.0, 261.62, 349.22, 261.62, 207.65],
+      "wave": "sine",
+      "interval": 1210
+    },
+    "version": "0.2.0",
+    "original": true,
+    "pendingOriginalRules": true
+  },
+  {
+    "id": "egypt-pharaoh",
+    "name": "埃及法老",
+    "columns": 5,
+    "rows": 3,
+    "symbols": ["杖", "猫", "鸟", "冠", "瓶", "金", "玉", "神", "甲"],
+    "color": "#a38949",
+    "rules": "原创演示规则：5×3三条金字塔路径；Wild7可替代，Scatter8不参与连线；每条奖励=积分×(图标序号+2)×2；三枚以上Scatter触发三次不扣积分的揭示，免费揭示图标为0–7，不再触发免费揭示；所有结果同一事务结算。",
+    "motif": "rays",
+    "speed": 113,
+    "audio": {
+      "melody": [184.99, 220.0, 277.18, 369.99, 277.18, 220.0],
+      "wave": "triangle",
+      "interval": 1330
+    },
+    "version": "0.2.0",
+    "original": true,
+    "pendingOriginalRules": true
+  },
+  {
+    "id": "journey-west",
+    "name": "西游奇缘",
+    "columns": 5,
+    "rows": 4,
+    "symbols": ["山", "水", "云", "月", "杖", "经", "桃", "悟"],
+    "color": "#cc7a44",
+    "rules": "原创演示规则：5×4随机选起点，后续列路径每次上下移动一格或保持，边界截断；以首格图标为基准，后续Wild7可替代，连续三站起奖：积分×(站数−2)×(首图标序号+2)；四枚以上蟠桃6额外奖励积分×数量。",
+    "motif": "runes",
+    "speed": 65,
+    "audio": {
+      "melody": [195.99, 246.94, 293.66, 391.99, 293.66, 233.08],
+      "wave": "sine",
+      "interval": 850
+    },
+    "version": "0.2.0",
+    "original": true,
+    "pendingOriginalRules": true
+  },
+  {
+    "id": "three-kingdoms",
+    "name": "三国霸业",
+    "columns": 5,
+    "rows": 3,
+    "symbols": ["魏", "蜀", "吴", "马", "弓", "剑", "鼓"],
+    "color": "#8d5d5d",
+    "rules": "原创演示规则：5×3每一行是一军；某图标在该行出现至少三次，奖励=积分×(图标序号+1)×(数量−2)；三行都获奖时总奖励三倍。",
+    "motif": "sigil",
+    "speed": 77,
+    "audio": {
+      "melody": [207.65, 246.94, 311.12, 415.3, 311.12, 246.94],
+      "wave": "sine",
+      "interval": 970
+    },
+    "version": "0.2.0",
+    "original": true,
+    "pendingOriginalRules": true
+  },
+  {
+    "id": "pirate-treasure",
+    "name": "海盗秘宝",
+    "columns": 4,
+    "rows": 5,
+    "symbols": ["帆", "锚", "币", "舵", "酒", "剑", "图", "钥"],
+    "color": "#4178a3",
+    "rules": "原创演示规则：4×5罗盘选航线，后续列上下移动一格或保持并环绕；路径中0–2图标属于宝藏，至少三个奖励=积分×数量×2；全盘至少三把钥匙7，额外奖励=积分×钥匙数量×随机1–6。",
+    "motif": "orbit",
+    "speed": 89,
+    "audio": {
+      "melody": [220.0, 277.18, 329.62, 439.99, 329.62, 261.62],
+      "wave": "triangle",
+      "interval": 1090
+    },
+    "version": "0.2.0",
+    "original": true,
+    "pendingOriginalRules": true
+  },
+  {
+    "id": "fantasy-forest",
+    "name": "奇幻森林",
+    "columns": 5,
+    "rows": 5,
+    "symbols": ["叶", "蕨", "花", "木", "鹿", "泉", "树"],
+    "color": "#49926b",
+    "rules": "原创演示规则：5×5八方向连接同色六枚成群；奖励=积分×(群大小−5)×(图标序号+1)；包含任何外角的群奖励翻倍。",
+    "motif": "embers",
+    "speed": 101,
+    "audio": {
+      "melody": [233.08, 277.18, 349.22, 466.16, 349.22, 277.18],
+      "wave": "sine",
+      "interval": 1210
+    },
+    "version": "0.2.0",
+    "original": true,
+    "pendingOriginalRules": true
+  },
+  {
+    "id": "magic-academy",
+    "name": "魔法学院",
+    "columns": 4,
+    "rows": 6,
+    "symbols": ["风", "火", "水", "土", "光", "星"],
+    "color": "#725bb4",
+    "rules": "原创演示规则：4×6各列从上到下连续同色三枚起奖；奖励=积分×(图标序号+1)×(长度−2)；最长四枚时全局二倍，五或六枚时三倍。",
+    "motif": "wave",
+    "speed": 113,
+    "audio": {
+      "melody": [246.94, 311.12, 369.99, 493.88, 369.99, 293.66],
+      "wave": "sine",
+      "interval": 1330
+    },
+    "version": "0.2.0",
+    "original": true,
+    "pendingOriginalRules": true
+  },
+  {
+    "id": "gem-kingdom",
+    "name": "宝石王国",
+    "columns": 5,
+    "rows": 4,
+    "symbols": ["钻", "翠", "蓝", "红", "紫", "晶"],
+    "color": "#5d91af",
+    "rules": "原创演示规则：5×4每个同色2×2方块独立奖励积分×(图标序号+2)；重叠格数按所有方块格数减不同格数计算，每个重叠格额外奖励一倍积分。",
+    "motif": "rays",
+    "speed": 65,
+    "audio": {
+      "melody": [261.62, 311.12, 391.99, 523.24, 391.99, 311.12],
+      "wave": "triangle",
+      "interval": 850
+    },
+    "version": "0.2.0",
+    "original": true,
+    "pendingOriginalRules": true
+  },
+  {
+    "id": "fruit-party",
+    "name": "水果派对",
+    "columns": 6,
+    "rows": 4,
+    "symbols": ["橙", "柠", "桃", "葡", "瓜", "樱", "梨", "莓"],
+    "color": "#b67c50",
+    "rules": "原创演示规则：6×4全盘同类图标至少五枚计奖：积分×(数量−4)×(图标序号+1)；八类水果全部出现时另加两倍积分。",
+    "motif": "runes",
+    "speed": 77,
+    "audio": {
+      "melody": [277.18, 349.22, 415.3, 554.36, 415.3, 329.62],
+      "wave": "sine",
+      "interval": 970
+    },
+    "version": "0.2.0",
+    "original": true,
+    "pendingOriginalRules": true
+  },
+  {
+    "id": "candy-world",
+    "name": "糖果世界",
+    "columns": 6,
+    "rows": 5,
+    "symbols": ["糖", "果", "蜜", "巧", "甜", "星"],
+    "color": "#b65d8f",
+    "rules": "原创演示规则：6×5每行横向连续三枚同色成组，奖励=积分×(长度−2)×(图标序号+1)×波次；消除后剩余图标居中，两侧补充，最多三波。",
+    "motif": "sigil",
+    "speed": 89,
+    "audio": {
+      "melody": [146.83, 174.61, 220.0, 293.66, 220.0, 174.61],
+      "wave": "sine",
+      "interval": 1090
+    },
+    "version": "0.2.0",
+    "original": true,
+    "pendingOriginalRules": true
+  },
+  {
+    "id": "lucky-star",
+    "name": "幸运之星",
+    "columns": 5,
+    "rows": 5,
+    "symbols": ["红", "蓝", "绿", "紫", "金", "月", "星"],
+    "color": "#7074b4",
+    "rules": "原创演示规则：5×5中心为星6时，八条射线逐步读取相邻星，遇到非星停止，每条奖励=积分×射线星数×(星数+1)；中心非星时，和中心同色的图标全盘至少六枚，奖励=积分×(数量−5)×(中心序号+1)。",
+    "motif": "orbit",
+    "speed": 101,
+    "audio": {
+      "melody": [155.56, 195.99, 233.08, 311.12, 233.08, 184.99],
+      "wave": "triangle",
+      "interval": 1210
+    },
+    "version": "0.2.0",
+    "original": true,
+    "pendingOriginalRules": true
+  },
+  {
+    "id": "gold-miner",
+    "name": "黄金矿工",
+    "columns": 5,
+    "rows": 3,
+    "symbols": ["矿", "金", "钻", "石", "土", "灯", "镐", "车", "尘"],
+    "color": "#9e7d40",
+    "rules": "原创演示规则：5×3矿石0/1/2价值分别为1/2/3倍积分；初盘至少三矿触发两次不扣积分的重转，已得矿石锁定；最终至少六矿时收集全部价值，满15矿价值三倍；不会额外扣分或无限重触发。",
+    "motif": "embers",
+    "speed": 113,
+    "audio": {
+      "melody": [164.81, 195.99, 246.94, 329.62, 246.94, 195.99],
+      "wave": "sine",
+      "interval": 1330
+    },
+    "version": "0.2.0",
+    "original": true,
+    "pendingOriginalRules": true
+  },
+  {
+    "id": "eastern-myth",
+    "name": "东方神话",
+    "columns": 4,
+    "rows": 4,
+    "symbols": ["阴", "阳", "山", "海", "日", "月"],
+    "color": "#588b8a",
+    "rules": "原创演示规则：4×4与中心对称位置逐对比较，共八对；每对同色奖励=积分×(图标序号+1)；至少六对时全局二倍，八对时四倍。",
+    "motif": "wave",
+    "speed": 65,
+    "audio": {
+      "melody": [174.61, 220.0, 261.62, 349.22, 261.62, 207.65],
+      "wave": "sine",
+      "interval": 850
+    },
+    "version": "0.2.0",
+    "original": true,
+    "pendingOriginalRules": true
+  },
+  {
+    "id": "western-myth",
+    "name": "西方神话",
+    "columns": 3,
+    "rows": 5,
+    "symbols": ["雷", "冠", "弓", "盾", "翼", "光", "神", "电"],
+    "color": "#6b6ab1",
+    "rules": "原创演示规则：3×5任一原始列有雷7时，将该列改成右邻列中间图标；若该参考也是雷则使用6；变换后检查六条三列斜线路径；每条奖励=积分×(图标序号+1)×2。",
+    "motif": "rays",
+    "speed": 77,
+    "audio": {
+      "melody": [184.99, 220.0, 277.18, 369.99, 277.18, 220.0],
+      "wave": "triangle",
+      "interval": 970
+    },
+    "version": "0.2.0",
+    "original": true,
+    "pendingOriginalRules": true
+  },
+  {
+    "id": "future-world",
+    "name": "未来世界",
+    "columns": 7,
+    "rows": 3,
+    "symbols": ["芯", "轨", "城", "光", "舰", "码", "能", "脉"],
+    "color": "#447f9c",
+    "rules": "原创演示规则：7×3中央中格为脉冲7时，将中央行第3–5格改为中央列上格图标；每行从左边和右边分别评估连续同色三枚起奖=积分×(连续数−2)×(图标序号+1)；两方向独立计奖。",
+    "motif": "runes",
+    "speed": 89,
+    "audio": {
+      "melody": [195.99, 246.94, 293.66, 391.99, 293.66, 233.08],
+      "wave": "sine",
+      "interval": 1090
+    },
+    "version": "0.2.0",
+    "original": true,
+    "pendingOriginalRules": true
+  },
+  {
+    "id": "animal-kingdom",
+    "name": "动物王国",
+    "columns": 5,
+    "rows": 4,
+    "symbols": ["狮", "虎", "象", "鹰", "鹿", "狼"],
+    "color": "#818347",
+    "rules": "原创演示规则：5×4同类动物在一列中具有相邻纵向对即为栖地；同类动物至少三个连续栖地迁徙，奖励=积分×(图标序号+1)×(连续栖地数−2)×2。每列只取首个纵向对。",
+    "motif": "sigil",
+    "speed": 101,
+    "audio": {
+      "melody": [207.65, 246.94, 311.12, 415.3, 311.12, 246.94],
+      "wave": "sine",
+      "interval": 1210
+    },
+    "version": "0.2.0",
+    "original": true,
+    "pendingOriginalRules": true
+  },
+  {
+    "id": "festival",
+    "name": "节日狂欢",
+    "columns": 5,
+    "rows": 3,
+    "symbols": ["灯", "鼓", "花", "礼", "星", "焰", "乐", "彩"],
+    "color": "#b56a52",
+    "rules": "原创演示规则：5×3至少三枚彩纸7进入庆典模式，仅边框普通同色四枚起奖=积分×(图标序号+1)×(数量−3)×2；否则只检查中间一行完整五连，奖励=积分×(图标序号+1)×5。",
+    "motif": "orbit",
+    "speed": 113,
+    "audio": {
+      "melody": [220.0, 277.18, 329.62, 439.99, 329.62, 261.62],
+      "wave": "triangle",
+      "interval": 1330
+    },
+    "version": "0.2.0",
+    "original": true,
+    "pendingOriginalRules": true
+  },
+  {
+    "id": "mysterious-vault",
+    "name": "神秘宝库",
+    "columns": 3,
+    "rows": 3,
+    "symbols": ["〇", "一", "二", "三", "四", "五"],
+    "color": "#8e6999",
+    "rules": "原创演示规则：3×3每列是密码锁，(上格+下格)除以6的余数等于中格即开锁；每锁奖励=积分×(中格序号+1)；三锁全开再增加随机3–14倍积分。",
+    "motif": "embers",
+    "speed": 65,
+    "audio": {
+      "melody": [233.08, 277.18, 349.22, 466.16, 349.22, 277.18],
+      "wave": "sine",
+      "interval": 850
+    },
+    "version": "0.2.0",
+    "original": true,
+    "pendingOriginalRules": true
+  },
+  {
+    "id": "dragon-legend",
+    "name": "龙之传说",
+    "columns": 5,
+    "rows": 4,
+    "symbols": ["珠", "角", "云", "火", "金", "玉", "鳞", "龙"],
+    "color": "#438d8a",
+    "rules": "原创演示规则：5×4原始某列有至少两龙7时，下一列全变Wild7，不连续传播新产生的Wild；从左连续三列起评估1024路；普通图标0–6独立计奖=向下取整(积分×路数×(图标序号+1)×(连续列数−2)/8)。",
+    "motif": "wave",
+    "speed": 77,
+    "audio": {
+      "melody": [246.94, 311.12, 369.99, 493.88, 369.99, 293.66],
+      "wave": "sine",
+      "interval": 970
+    },
+    "version": "0.2.0",
+    "original": true,
+    "pendingOriginalRules": true
+  },
+  {
+    "id": "golden-age",
+    "name": "黄金时代",
+    "columns": 3,
+    "rows": 2,
+    "symbols": ["铜", "银", "金", "玉", "冠", "皇"],
+    "color": "#ac8244",
+    "rules": "原创演示规则：3×2两条完整横线；图标倍率2/3/5/8/12/20；初盘至少三皇冠5，将所有3–5改为5，免费重铸一次，原盘与重铸奖励相加，不再触发重铸。",
+    "motif": "rays",
+    "speed": 89,
+    "audio": {
+      "melody": [261.62, 311.12, 391.99, 523.24, 391.99, 311.12],
+      "wave": "triangle",
+      "interval": 1090
+    },
+    "version": "0.2.0",
+    "original": true,
+    "pendingOriginalRules": true
+  },
+  {
+    "id": "sun-temple",
+    "name": "太阳神殿",
+    "columns": 5,
+    "rows": 5,
+    "symbols": ["霞", "云", "焰", "光", "日", "金", "阳"],
+    "color": "#b68f47",
+    "rules": "原创演示规则：5×5以中央图标为光源；内圈8格同色至少4枚、外圈16格至少6枚分别计奖；奖励=积分×(中心序号+1)×(同色数−门槛+1)×圈半径；两圈全部同色时总奖励三倍。",
+    "motif": "runes",
+    "speed": 101,
+    "audio": {
+      "melody": [277.18, 349.22, 415.3, 554.36, 415.3, 329.62],
+      "wave": "sine",
+      "interval": 1210
+    },
+    "version": "0.2.0",
+    "original": true,
+    "pendingOriginalRules": true
+  },
+  {
+    "id": "magic-gems",
+    "name": "魔法宝石",
+    "columns": 4,
+    "rows": 4,
+    "symbols": ["红", "蓝", "绿", "紫", "白", "金"],
+    "color": "#648d88",
+    "rules": "原创演示规则：4×4中央四格顺时针旋转一次；旋转前后各独立评估正交同色四枚成群，奖励=积分×(群大小−3)×(图标序号+1)，两阶段相加，不再旋转。",
+    "motif": "sigil",
+    "speed": 113,
+    "audio": {
+      "melody": [146.83, 174.61, 220.0, 293.66, 220.0, 174.61],
+      "wave": "sine",
+      "interval": 1330
+    },
+    "version": "0.2.0",
+    "original": true,
+    "pendingOriginalRules": true
+  },
+  {
+    "id": "star-journey",
+    "name": "星辰之旅",
+    "columns": 7,
+    "rows": 3,
+    "symbols": ["船", "月", "日", "云", "轨", "光", "星"],
+    "color": "#6265ac",
+    "rules": "原创演示规则：7×3七点星图行号依次2/1/3/2/1/3/2；星图路径中连续三颗星6起奖=积分×(长度−2)平方×3；七点全星另加20倍积分。",
+    "motif": "orbit",
+    "speed": 65,
+    "audio": {
+      "melody": [155.56, 195.99, 233.08, 311.12, 233.08, 184.99],
+      "wave": "triangle",
+      "interval": 850
+    },
+    "version": "0.2.0",
+    "original": true,
+    "pendingOriginalRules": true
+  },
+  {
+    "id": "deep-sea",
+    "name": "深海秘境",
+    "columns": 4,
+    "rows": 6,
+    "symbols": ["贝", "珊", "鱼", "珠", "藻", "潮", "蓝", "泡"],
+    "color": "#426b9d",
+    "rules": "原创演示规则：4×6各列向上循环移1/2/3/4格；变换后每行从左同色连续三枚起奖=积分×(图标序号+1)×(长度−2)；初盘气泡7至少五枚，连线奖励二倍并另加积分×气泡数。",
+    "motif": "embers",
+    "speed": 77,
+    "audio": {
+      "melody": [164.81, 195.99, 246.94, 329.62, 246.94, 195.99],
+      "wave": "sine",
+      "interval": 970
+    },
+    "version": "0.2.0",
+    "original": true,
+    "pendingOriginalRules": true
+  },
+  {
+    "id": "ace-legend",
+    "name": "王牌传奇",
+    "columns": 5,
+    "rows": 3,
+    "symbols": [
+      "2",
+      "3",
+      "4",
+      "5",
+      "6",
+      "7",
+      "8",
+      "9",
+      "10",
+      "J",
+      "Q",
+      "K",
+      "A"
+    ],
+    "color": "#994f60",
+    "rules": "原创演示规则：5×3只作为转轴点数符号，无发牌、下注选择或棋牌对局；每行五同/四同/三加二/三同/两对/一对倍率50/15/8/4/3/1；全盘至少三个A12，另加积分×A数量×2。",
+    "motif": "wave",
+    "speed": 89,
+    "audio": {
+      "melody": [174.61, 220.0, 261.62, 349.22, 261.62, 207.65],
+      "wave": "sine",
+      "interval": 1090
+    },
+    "version": "0.2.0",
+    "original": true,
+    "pendingOriginalRules": true
+  },
+  {
+    "id": "dream-garden",
+    "name": "梦幻花园",
+    "columns": 5,
+    "rows": 5,
+    "symbols": ["玫", "兰", "莲", "菊", "茉", "葵", "水"],
+    "color": "#6c9067",
+    "rules": "原创演示规则：5×5随机季节激活棋盘一种奇偶格；活跃格中同花0–5至少四枚奖励=积分×(图标序号+1)×(数量−3)；获奖花中任一与水6正交相邻时该花奖励翻倍。",
+    "motif": "rays",
+    "speed": 101,
+    "audio": {
+      "melody": [184.99, 220.0, 277.18, 369.99, 277.18, 220.0],
+      "wave": "triangle",
+      "interval": 1210
+    },
+    "version": "0.2.0",
+    "original": true,
+    "pendingOriginalRules": true
+  },
+  {
+    "id": "fortune-gate",
+    "name": "财富之门",
+    "columns": 6,
+    "rows": 3,
+    "symbols": ["金", "银", "铜", "玉", "红", "蓝", "紫", "钥"],
+    "color": "#b48e52",
+    "rules": "原创演示规则：6×3外向内三组镜像双轴；每组对应的三行全部相同或有钥匙Wild7才开门；第1/2/3门奖励4/8/12倍积分；三门全开总基础奖励三倍；至少两门再加随机1–9倍积分。",
+    "motif": "runes",
+    "speed": 113,
+    "audio": {
+      "melody": [195.99, 246.94, 293.66, 391.99, 293.66, 233.08],
+      "wave": "sine",
+      "interval": 1330
+    },
+    "version": "0.2.0",
+    "original": true,
+    "pendingOriginalRules": true
+  }
+]

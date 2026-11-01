@@ -1,0 +1,67 @@
+
+> aurum-original-games@0.2.0 test
+> node --experimental-strip-types tests/rules.test.ts && node --experimental-strip-types tests/all-games.test.ts
+
+✔ golden: five independent lines and wild substitution (4.094517ms)
+✔ dragon: ways counted from left, scatter double (0.79328ms)
+✔ phoenix: cluster cascade has explicit five-round bound (1.684549ms)
+✔ invalid games and stakes cannot play (0.692588ms)
+✔ cryptographic range and distribution invariants (17.974622ms)
+✔ 1000 deterministic mixed rounds per original game preserve result contracts (51.979326ms)
+✔ www canonical redirect preserves path and query (0.265446ms)
+✔ canonical root and unrelated hosts are left unchanged (0.175406ms)
+✔ member timestamps use Shanghai timezone including midnight rollover (18.080851ms)
+ℹ tests 9
+ℹ suites 0
+ℹ pass 9
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 109.05941
+✔ golden-god: 1000 round contracts, deterministic replay and stake scaling (13.384195ms)
+✔ dragon-world: 1000 round contracts, deterministic replay and stake scaling (14.611198ms)
+✔ phoenix-legend: 1000 round contracts, deterministic replay and stake scaling (44.820518ms)
+✔ divine-dragon: 1000 round contracts, deterministic replay and stake scaling (16.812593ms)
+✔ egypt-pharaoh: 1000 round contracts, deterministic replay and stake scaling (20.606829ms)
+✔ journey-west: 1000 round contracts, deterministic replay and stake scaling (13.442053ms)
+✔ three-kingdoms: 1000 round contracts, deterministic replay and stake scaling (9.704426ms)
+✔ pirate-treasure: 1000 round contracts, deterministic replay and stake scaling (7.758067ms)
+✔ fantasy-forest: 1000 round contracts, deterministic replay and stake scaling (32.10496ms)
+✔ magic-academy: 1000 round contracts, deterministic replay and stake scaling (7.678149ms)
+✔ gem-kingdom: 1000 round contracts, deterministic replay and stake scaling (5.518463ms)
+✔ fruit-party: 1000 round contracts, deterministic replay and stake scaling (14.564102ms)
+✔ candy-world: 1000 round contracts, deterministic replay and stake scaling (8.949698ms)
+✔ lucky-star: 1000 round contracts, deterministic replay and stake scaling (9.645265ms)
+✔ gold-miner: 1000 round contracts, deterministic replay and stake scaling (17.91762ms)
+✔ eastern-myth: 1000 round contracts, deterministic replay and stake scaling (4.788914ms)
+✔ western-myth: 1000 round contracts, deterministic replay and stake scaling (10.936601ms)
+✔ future-world: 1000 round contracts, deterministic replay and stake scaling (11.98193ms)
+✔ animal-kingdom: 1000 round contracts, deterministic replay and stake scaling (11.127639ms)
+✔ festival: 1000 round contracts, deterministic replay and stake scaling (6.882057ms)
+✔ mysterious-vault: 1000 round contracts, deterministic replay and stake scaling (3.926174ms)
+✔ dragon-legend: 1000 round contracts, deterministic replay and stake scaling (15.325564ms)
+✔ golden-age: 1000 round contracts, deterministic replay and stake scaling (16.290878ms)
+✔ sun-temple: 1000 round contracts, deterministic replay and stake scaling (17.467002ms)
+✔ magic-gems: 1000 round contracts, deterministic replay and stake scaling (26.361524ms)
+✔ star-journey: 1000 round contracts, deterministic replay and stake scaling (6.911257ms)
+✔ deep-sea: 1000 round contracts, deterministic replay and stake scaling (11.840155ms)
+✔ ace-legend: 1000 round contracts, deterministic replay and stake scaling (13.42606ms)
+✔ dream-garden: 1000 round contracts, deterministic replay and stake scaling (14.969189ms)
+✔ fortune-gate: 1000 round contracts, deterministic replay and stake scaling (5.813331ms)
+✔ all 30 programs are unique source modules and prototype keys are rejected (1.439313ms)
+✔ enclosed free reveals are bounded and do not retrigger (0.204886ms)
+✔ special mechanic fixtures have independent payout behavior (0.407889ms)
+ℹ tests 33
+ℹ suites 0
+ℹ pass 33
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 437.913478
+npm notice
+npm notice New major version of npm available! 11.9.0 -> 12.2.1
+npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.2.1
+npm notice To update run: npm install -g npm@12.2.1
+npm notice

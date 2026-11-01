@@ -1,0 +1,48 @@
+{
+  "notice": "Initial material references; runtime overrides come from D1. Symbol glyphs are original program artwork, not claimed as AI-generated symbol images.",
+  "gameId": "pirate-treasure",
+  "cover": "webp-cover-pirate-treasure-0e1a5b6c7e",
+  "banner": "webp-banner-pirate-treasure-986dae5408",
+  "symbols": [
+    {
+      "index": 0,
+      "label": "帆",
+      "source": "procedural canvas glyph"
+    },
+    {
+      "index": 1,
+      "label": "锚",
+      "source": "procedural canvas glyph"
+    },
+    {
+      "index": 2,
+      "label": "币",
+      "source": "procedural canvas glyph"
+    },
+    {
+      "index": 3,
+      "label": "舵",
+      "source": "procedural canvas glyph"
+    },
+    {
+      "index": 4,
+      "label": "酒",
+      "source": "procedural canvas glyph"
+    },
+    {
+      "index": 5,
+      "label": "剑",
+      "source": "procedural canvas glyph"
+    },
+    {
+      "index": 6,
+      "label": "图",
+      "source": "procedural canvas glyph"
+    },
+    {
+      "index": 7,
+      "label": "钥",
+      "source": "procedural canvas glyph"
+    }
+  ]
+}

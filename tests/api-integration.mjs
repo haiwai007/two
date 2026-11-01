@@ -76,13 +76,26 @@ assert.equal(me.balance, 10000);
 ok("registration creates secure session and initial ledger");
 const catalog = await request("games");
 assert.equal(catalog.games.length, 30);
+assert.ok(catalog.games.every((g) => g.version === "0.2.0"));
 await request("favorites/golden-god", "POST", {});
 assert.equal((await request("favorites")).games.length, 1);
 await request("favorites/golden-god", "DELETE", {});
 assert.equal((await request("favorites")).games.length, 0);
 ok("catalog and favorites persist");
+for (const game of catalog.games) {
+  const asset = await fetch(origin + "/api/assets/" + game.cover_asset_id, {
+    method: "HEAD",
+    redirect: "manual",
+  });
+  assert.ok([200, 302].includes(asset.status));
+  if (asset.status === 200)
+    assert.ok(
+      ["image/png", "image/webp"].includes(asset.headers.get("content-type")),
+    );
+}
+ok("all 30 catalog delivery covers resolve");
 let expected = 10000;
-for (const id of ["golden-god", "dragon-world", "phoenix-legend"]) {
+for (const { id } of catalog.games) {
   const key = crypto.randomUUID(),
     body = { stake: 10, requestKey: key };
   const first = await request("play/" + id, "POST", body);
@@ -93,9 +106,9 @@ for (const id of ["golden-god", "dragon-world", "phoenix-legend"]) {
   assert.deepEqual(second.round, first.round);
   assert.equal(second.user.balance, expected);
 }
-ok("all three independent games settle and retry idempotently");
+ok("all 30 independent programs settle and retry idempotently");
 await request(
-  "play/divine-dragon",
+  "play/not-implemented",
   "POST",
   { stake: 10, requestKey: crypto.randomUUID() },
   409,
@@ -108,8 +121,8 @@ await request(
 );
 ok("planned games and invalid stakes rejected");
 const profile = await request("profile");
-assert.equal(profile.records.length, 3);
-assert.equal(profile.points.length, 4);
+assert.equal(profile.records.length, 30);
+assert.equal(profile.points.length, 31);
 ok("round history and initial/game ledgers match");
 await request("admin/statistics", "GET", undefined, 403);
 ok("normal member cannot access admin");
@@ -145,13 +158,31 @@ await request("admin/announcements/" + announcement.id, "PATCH", {
 });
 await request("admin/announcements/" + announcement.id, "DELETE");
 ok("admin statistics and audited content CRUD");
+const cleaned = await request("admin/maintenance", "POST", {});
+assert.ok(
+  Number.isInteger(cleaned.sessions) && Number.isInteger(cleaned.rateLimits),
+);
+ok("owner expiry cleanup uses the audited maintenance service");
+await request(
+  "admin/integrations",
+  "POST",
+  {
+    game_id: "golden-god",
+    version: "999.0",
+    status: "published",
+    program_path: "/games/golden-god",
+    rules: "uncompiled",
+  },
+  409,
+);
+ok("uncompiled program versions cannot be published");
 await request("admin/users/" + me.id, "PATCH", {
   delta: 50,
   reason: "local QA",
 });
 assert.equal((await request("auth/me")).user.balance, expected + 50);
 const records = await request("admin/users/" + me.id);
-assert.equal(records.records.length, 3);
+assert.equal(records.records.length, 30);
 ok("admin points adjustment and member records");
 const image = Buffer.from(
     "iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP8/x8AAwMCAO+aS1sAAAAASUVORK5CYII=",
@@ -264,6 +295,7 @@ await request("admin/admins", "POST", {
 });
 cookie = secondaryCookie;
 await request("admin/settings", "GET", undefined, 403);
+await request("admin/maintenance", "POST", {}, 403);
 await request("admin/games/golden-god", "PATCH", { name: "unauthorized" }, 403);
 cookie = ownerCookie;
 await request("admin/admins/" + secondaryUser.id, "PATCH", { role: "editor" });

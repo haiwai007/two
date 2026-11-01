@@ -1,5 +1,5 @@
 "use client";
-import { useEffect, useState, useMemo, useCallback } from "react";
+import { useEffect, useState, useMemo, useCallback, useRef } from "react";
 import Link from "next/link";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
@@ -46,6 +46,7 @@ export async function api<T = any>(
   data?: unknown,
 ): Promise<T> {
   const response = await fetch("/api/" + path, {
+    keepalive: method !== "GET" && path.startsWith("favorites/"),
     method,
     headers: method === "GET" ? {} : { "Content-Type": "application/json" },
     body: data === undefined ? undefined : JSON.stringify(data),
@@ -67,7 +68,7 @@ export function Cover({
       src={id ? "/api/assets/" + id : "/assets/" + game.slug + ".svg"}
       onError={(e) => {
         const fallback =
-          "/assets/" + game.slug + (banner ? "-banner" : "-cover") + ".svg";
+          "/optimized/" + game.slug + (banner ? "-banner" : "-cover") + ".webp";
         if (!e.currentTarget.src.endsWith(fallback))
           e.currentTarget.src = fallback;
       }}
@@ -98,17 +99,20 @@ export default function Platform() {
     >([{ id: "slots", slug: "slots", name: "老虎机电子游戏" }]),
     [user, setUser] = useState<Member | null>(null),
     [connected, setConnected] = useState(false),
+    [catalogLoaded, setCatalogLoaded] = useState(false),
     [loaded, setLoaded] = useState(false),
     [toast, setToast] = useState(""),
     [mobile, setMobile] = useState(false),
     [query, setQuery] = useState(""),
     [sort, setSort] = useState("recommended"),
+    [visibleCount, setVisibleCount] = useState(18),
     [filter, setFilter] = useState("all"),
     [favorites, setFavorites] = useState<string[]>([]),
+    [savingFavorites, setSavingFavorites] = useState<string[]>([]),
     [siteSettings, setSiteSettings] = useState<Record<string, string>>({}),
     [homeEvents, setHomeEvents] = useState<Record<string, unknown>[]>([]),
     [announcement, setAnnouncement] = useState(
-      "首批三款原创 HTML5 演示开放体验，探索各不相同的玩法。",
+      "30款原创 HTML5 演示开放体验，探索各不相同的玩法。",
     );
   const notify = useCallback((message: string) => setToast(message), []);
   const refresh = useCallback(async () => {
@@ -147,7 +151,8 @@ export default function Platform() {
         setCategories(data.categories);
         setConnected(true);
       })
-      .catch(() => setConnected(false));
+      .catch(() => setConnected(false))
+      .finally(() => setCatalogLoaded(true));
   }, [refresh]);
   useEffect(() => {
     setMobile(false);
@@ -169,18 +174,23 @@ export default function Platform() {
       router.push("/login");
       return;
     }
+    if (savingFavorites.includes(game.id)) return;
+    const wasSaved = favorites.includes(game.id);
+    setSavingFavorites((prev) => [...prev, game.id]);
     try {
-      await api(
-        "favorites/" + game.id,
-        favorites.includes(game.id) ? "DELETE" : "POST",
-      );
+      await api("favorites/" + game.id, wasSaved ? "DELETE" : "POST");
       setFavorites((prev) =>
-        prev.includes(game.id)
-          ? prev.filter((x) => x !== game.id)
-          : [...prev, game.id],
+        wasSaved
+          ? prev.filter((id) => id !== game.id)
+          : prev.includes(game.id)
+            ? prev
+            : [...prev, game.id],
       );
-    } catch (e) {
-      notify((e as Error).message);
+      notify(wasSaved ? "已取消收藏" : "已收藏");
+    } catch (error) {
+      notify((error as Error).message);
+    } finally {
+      setSavingFavorites((prev) => prev.filter((id) => id !== game.id));
     }
   };
   const gameId = path.split("/")[2],
@@ -237,6 +247,8 @@ export default function Platform() {
               "favorite " + (favorites.includes(game.id) ? "saved" : "")
             }
             aria-label={"收藏" + game.name}
+            disabled={savingFavorites.includes(game.id)}
+            aria-busy={savingFavorites.includes(game.id)}
             onClick={() => void toggleFavorite(game)}
           >
             <Heart
@@ -461,7 +473,7 @@ export default function Platform() {
                       src={
                         siteSettings.banner_asset_id
                           ? "/api/assets/" + siteSettings.banner_asset_id
-                          : "/assets/hero-ai.png"
+                          : "/optimized/hero-ai.webp"
                       }
                       alt="首页推荐横幅"
                     />
@@ -589,9 +601,17 @@ export default function Platform() {
                   </label>
                 </div>
                 {filtered.length ? (
-                  cards(isHome ? filtered.slice(0, 12) : filtered)
+                  cards(filtered.slice(0, isHome ? 12 : visibleCount))
                 ) : (
                   <Empty text="没有找到匹配的游戏，试试其他关键词。" />
+                )}
+                {!isHome && filtered.length > visibleCount && (
+                  <button
+                    className="view-all"
+                    onClick={() => setVisibleCount((n) => n + 18)}
+                  >
+                    加载更多 · 已显示{visibleCount}/{filtered.length}
+                  </button>
                 )}
                 {isHome && (
                   <Link className="view-all" href="/games">
@@ -704,20 +724,32 @@ export default function Platform() {
               <Empty text="游戏不存在" />
             ))}
           {path.startsWith("/play/") &&
-            (selected?.status === "published" ? (
+            (selected?.status === "published" && loaded && catalogLoaded ? (
               <GamePlayer
-                key={selected.id}
+                key={selected.id + ":" + (user?.id ?? "guest")}
                 id={selected.id}
                 name={selected.name}
                 rules={selected.rules}
+                backgroundAssetId={selected.banner_asset_id}
                 balance={user?.balance ?? null}
+                userId={user?.id}
                 onBalance={(n) =>
-                  setUser((prev) => (prev ? { ...prev, balance: n } : null))
+                  setUser((prev) =>
+                    prev && prev.id === user?.id
+                      ? { ...prev, balance: n }
+                      : prev,
+                  )
                 }
                 notify={notify}
               />
             ) : (
-              <Empty text="这款游戏尚未开放，请返回大厅选择可玩的原创演示。" />
+              <Empty
+                text={
+                  selected?.status === "published"
+                    ? "正在加载会员与游戏配置…"
+                    : "这款游戏尚未开放，请返回大厅选择可玩的原创演示。"
+                }
+              />
             ))}
           {(path === "/login" || path === "/register") && (
             <Auth
@@ -861,6 +893,7 @@ function Auth({
   onSuccess: () => Promise<void>;
   notify: (s: string) => void;
 }) {
+  const widgetRef = useRef<string | undefined>(undefined);
   const [busy, setBusy] = useState(false),
     [token, setToken] = useState(""),
     [error, setError] = useState("");
@@ -888,7 +921,9 @@ function Auth({
             theme: "dark",
             callback: (value: string) => setToken(value),
             "expired-callback": () => setToken(""),
+            "error-callback": () => setToken(""),
           });
+          widgetRef.current = widget;
         };
         if ((window as unknown as { turnstile?: unknown }).turnstile) render();
         else {
@@ -904,7 +939,8 @@ function Auth({
       .catch(() => setError("业务服务暂不可用，请连接数据库后重试"));
     return () => {
       cancelled = true;
-      if (widget)
+      widgetRef.current = undefined;
+      if (widget !== undefined)
         (
           window as unknown as { turnstile?: { remove: (id: string) => void } }
         ).turnstile?.remove(widget);
@@ -929,6 +965,9 @@ function Auth({
       notify(register ? "注册成功，已获得10,000体验积分" : "欢迎回来");
     } catch (e) {
       setError((e as Error).message);
+      setToken("");
+      const challenge = (window as unknown as { turnstile?: { reset: (id: string) => void } }).turnstile;
+      if (widgetRef.current !== undefined) challenge?.reset(widgetRef.current);
     } finally {
       setBusy(false);
     }
@@ -940,7 +979,7 @@ function Auth({
           src={
             bannerAssetId
               ? "/api/assets/" + bannerAssetId
-              : "/assets/hero-ai.png"
+              : "/optimized/hero-ai.webp"
           }
           alt="原创金龙"
         />
@@ -1118,6 +1157,11 @@ function Profile({
       {path === "/profile" && (
         <section className="panel">
           <h2>个人资料</h2>
+          {user.role && (
+            <Link className="outline" href="/admin">
+              管理控制台
+            </Link>
+          )}
           <p>邮箱：{user.email}</p>
           <label className="avatar-upload">
             上传头像（PNG/JPEG/WebP，最大2MB）

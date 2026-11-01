@@ -1,10 +1,10 @@
 # Cloudflare 部署与运维
 
-本次环境 `wrangler whoami` 结果为未认证。因此以下是可执行部署流程，不是已部署证明。没有真实生产URL或自定义域名。
+本次环境 `wrangler whoami` 结果为未认证。因此以下是可执行部署流程，不是已部署证明。域名h6688.win与www.h6688.win已配置，但尚未实际绑定，没有验证过的生产URL。
 
 ## 本地
 
-Node24、Python3。`npm ci` → `npm run db:local` → `npm run seed:local`。
+Node24、Python3。`npm ci` → `npm run db:local` → `node scripts/seed-if-empty.mjs --local wrangler.jsonc` → 导入原图和WebP（见08-asset-delivery.md）。
 仅本地可创建 `.dev.vars` 写 `REQUIRE_TURNSTILE=false`。生产保留true。
 `npm run dev`。端到端测试 `node tests/api-integration.mjs` 只允许localhost，创建随机测试账号并临时提升本地测试管理员。切勿针对生产执行。
 `npm run typecheck`、`npm test`、`python3 tests/database_test.py`、`npm run cf:build`。
@@ -56,7 +56,7 @@ WAF在控制台启用托管规则；对auth路径设置速率限制，保留应�
 
 ## 生产验收（待执行）
 
-首页、大厅、注册登录、账号资料、收藏、三款游戏Canvas/动画/音效/全屏、积分和记录、后台权限/CRUD、R2上传/替换/删除、手机平板、HTTPS、主域名及www跳转、Turnstile及WAF、Workers错误日志。没有完成这些检查前，不应标记正式上线。
+首页、大厅、注册登录、账号资料、收藏、30款游戏Canvas/动画/音效/全屏、积分和记录、后台权限/CRUD、R2上传/替换/删除、手机平板、HTTPS、主域名及www跳转、Turnstile及WAF、Workers错误日志。没有完成这些检查前，不应标记正式上线。
 
 ## 本次验证补充
-已实际生成85项AI PNG并导入本地R2，85条D1素材记录关联成功。兼容日期固定为2026-10-30，与本次安装的workerd支持范围一致；日期不必等于日历当天。素材输出的实际像素尺寸记录在manifest中，未声称全部恰好为1920×1080或512×512。
+已实际生成85项AI PNG并导入本地R2，85条D1素材记录关联成功。兼容日期固定为2026-10-30，与本次安装的workerd支持范围一致；日期不必等于日历当天。素材输出的实际像素尺寸记录在manifest中，PNG母图维度保持原始输出；WebP交付版本已统一为1920×1080、800×600、512×512及首页1920×800。

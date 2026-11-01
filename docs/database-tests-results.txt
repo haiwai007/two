@@ -1,0 +1,16 @@
+test_atomic_ledger (__main__.DatabaseTests.test_atomic_ledger) ... ok
+test_catalog (__main__.DatabaseTests.test_catalog) ... ok
+test_catalog_upgrade_preserves_custom_content_and_offline_state (__main__.DatabaseTests.test_catalog_upgrade_preserves_custom_content_and_offline_state) ... ok
+test_concurrent_balance (__main__.DatabaseTests.test_concurrent_balance) ... ok
+test_duplicate (__main__.DatabaseTests.test_duplicate) ... ok
+test_foreign_key (__main__.DatabaseTests.test_foreign_key) ... ok
+test_immutable_ledgers (__main__.DatabaseTests.test_immutable_ledgers) ... ok
+test_insufficient (__main__.DatabaseTests.test_insufficient) ... ok
+test_ledger_arithmetic (__main__.DatabaseTests.test_ledger_arithmetic) ... ok
+test_stale_admin_update (__main__.DatabaseTests.test_stale_admin_update) ... ok
+test_unimplemented (__main__.DatabaseTests.test_unimplemented) ... ok
+
+----------------------------------------------------------------------
+Ran 11 tests in 0.175s
+
+OK

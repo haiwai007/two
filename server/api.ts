@@ -1,5 +1,10 @@
+import { cleanExpired } from "./maintenance";
 import { Repository, environment } from "./db";
-import { calculate } from "../game-engine/rules";
+import {
+  calculate,
+  isImplementedGame,
+  programVersion,
+} from "../game-engine/rules";
 import {
   current,
   checkOrigin,
@@ -276,6 +281,14 @@ export async function handle(req: Request) {
         id,
       );
       if (!asset) fail("素材不存在", 404);
+      if (asset.storage_key.startsWith("bundled-optimized/"))
+        return new Response(null, {
+          status: 302,
+          headers: {
+            Location: "/optimized/" + asset.storage_key.slice(18),
+            "Cache-Control": "public,max-age=300",
+          },
+        });
       if (asset.storage_key.startsWith("bundled/"))
         return new Response(null, {
           status: 302,
@@ -555,6 +568,12 @@ export async function handle(req: Request) {
     }
     if (resource === "admin") {
       const actor = requireAdmin(id === "admins" || id === "settings");
+      if (id === "maintenance" && method === "POST") {
+        requireAdmin(true);
+        const result = await cleanExpired(env.DB);
+        await repo.batch([audit("maintenance.expiry", "manual", result)]);
+        return json(result);
+      }
       if (id === "statistics" || !id)
         return json({
           users: await repo.one(
@@ -749,13 +768,14 @@ export async function handle(req: Request) {
           );
           if (!asset) fail("素材不存在", 404);
           const referenced = await repo.one<{ total: number }>(
-            "SELECT (SELECT COUNT(*) FROM system_settings WHERE value=?)+(SELECT COUNT(*) FROM game_categories WHERE icon=?)+(SELECT COUNT(*) FROM users WHERE avatar=?) AS total",
+            "SELECT (SELECT COUNT(*) FROM system_settings WHERE value=?)+(SELECT COUNT(*) FROM game_categories WHERE icon=?)+(SELECT COUNT(*) FROM users WHERE avatar=?)+(SELECT COUNT(*) FROM games g,json_each(CASE WHEN json_valid(g.config) THEN g.config ELSE '{}' END,'$.symbolAssets') a WHERE a.value=?) AS total",
+            action,
             action,
             action,
             action,
           );
           if (referenced?.total)
-            fail("素材仍用于网站设置、分类或头像，请先替换关联", 409);
+            fail("素材仍用于网站设置、分类、头像或游戏符号，请先替换关联", 409);
 
           await repo.batch([
             repo.statement("DELETE FROM game_assets WHERE id=?", action),
@@ -766,7 +786,7 @@ export async function handle(req: Request) {
           return json({ ok: true });
         }
       }
-      const def = adminTables[id];
+      const def = Object.hasOwn(adminTables, id) ? adminTables[id] : undefined;
       if (def) {
         if (method === "GET")
           return json({
@@ -833,15 +853,63 @@ export async function handle(req: Request) {
           if (
             id === "games" &&
             data.status === "published" &&
-            !["golden-god", "dragon-world", "phoenix-legend"].includes(
-              action ?? String(data.id),
-            )
+            !isImplementedGame(action ?? String(data.id))
           )
             fail("游戏尚未实现，不能发布");
+          if (id === "integrations" && data.status === "published") {
+            const existing = action
+              ? await repo.one<{ game_id: string; version: string }>(
+                  "SELECT game_id,version FROM game_integrations WHERE id=?",
+                  action,
+                )
+              : null;
+            const gameId = String(data.game_id ?? existing?.game_id ?? ""),
+              version = String(data.version ?? existing?.version ?? "");
+            if (!isImplementedGame(gameId) || version !== programVersion)
+              fail("该版本尚未编译部署，不能标记为已发布", 409);
+          }
+          if (
+            id === "games" &&
+            data.version &&
+            isImplementedGame(action ?? String(data.id)) &&
+            data.version !== programVersion
+          )
+            fail("游戏版本必须与已部署程序一致；新版本请先通过CI发布", 409);
           if (id === "games" && data.config) {
             try {
-              JSON.parse(String(data.config));
-            } catch {
+              const parsed = JSON.parse(String(data.config));
+              if (parsed.symbolAssets !== undefined) {
+                if (
+                  !parsed.symbolAssets ||
+                  typeof parsed.symbolAssets !== "object" ||
+                  Array.isArray(parsed.symbolAssets)
+                )
+                  fail("符号素材映射必须是对象");
+                for (const [index, assetId] of Object.entries(
+                  parsed.symbolAssets,
+                )) {
+                  if (
+                    !/^\d{1,2}$/.test(index) ||
+                    Number(index) > 15 ||
+                    typeof assetId !== "string" ||
+                    assetId.length > 100
+                  )
+                    fail("符号素材映射无效");
+                  const asset = await repo.one<{ media_type: string }>(
+                    "SELECT media_type FROM game_assets WHERE id=?",
+                    assetId,
+                  );
+                  if (
+                    !asset ||
+                    !["image/png", "image/jpeg", "image/webp"].includes(
+                      asset.media_type,
+                    )
+                  )
+                    fail("符号必须关联已上传的PNG/JPEG/WebP图片");
+                }
+              }
+            } catch (error) {
+              if ((error as Error & { status?: number }).status) throw error;
               fail("游戏配置必须为JSON");
             }
           }

@@ -1,0 +1,48 @@
+{
+  "notice": "Initial material references; runtime overrides come from D1. Symbol glyphs are original program artwork, not claimed as AI-generated symbol images.",
+  "gameId": "deep-sea",
+  "cover": "webp-cover-deep-sea-b0e5e36ef6",
+  "banner": "webp-banner-deep-sea-21bf31543b",
+  "symbols": [
+    {
+      "index": 0,
+      "label": "贝",
+      "source": "procedural canvas glyph"
+    },
+    {
+      "index": 1,
+      "label": "珊",
+      "source": "procedural canvas glyph"
+    },
+    {
+      "index": 2,
+      "label": "鱼",
+      "source": "procedural canvas glyph"
+    },
+    {
+      "index": 3,
+      "label": "珠",
+      "source": "procedural canvas glyph"
+    },
+    {
+      "index": 4,
+      "label": "藻",
+      "source": "procedural canvas glyph"
+    },
+    {
+      "index": 5,
+      "label": "潮",
+      "source": "procedural canvas glyph"
+    },
+    {
+      "index": 6,
+      "label": "蓝",
+      "source": "procedural canvas glyph"
+    },
+    {
+      "index": 7,
+      "label": "泡",
+      "source": "procedural canvas glyph"
+    }
+  ]
+}

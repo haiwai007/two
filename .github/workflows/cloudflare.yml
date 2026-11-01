@@ -30,7 +30,7 @@ jobs:
           include-hidden-files: true
   production:
     if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
-    needs: validate
+    needs: [validate, browser]
     environment: production
     runs-on: ubuntu-latest
     env:
@@ -43,11 +43,16 @@ jobs:
           node-version: 24
           cache: npm
       - run: npm ci
+      - run: node scripts/preflight.mjs wrangler.jsonc
       - run: npm run db:remote
+      - run: node scripts/seed-if-empty.mjs --remote wrangler.jsonc
+      - run: node scripts/import-assets.mjs --remote
+      - run: npx wrangler d1 execute aurum-db --remote --file scripts/optimized-assets.sql
+      - run: node scripts/import-assets.mjs --remote --optimized
       - run: npm run deploy
   preview:
     if: github.event_name != 'pull_request' && github.ref == 'refs/heads/preview'
-    needs: validate
+    needs: [validate, browser]
     environment: preview
     runs-on: ubuntu-latest
     env:
@@ -60,6 +65,44 @@ jobs:
           node-version: 24
           cache: npm
       - run: npm ci
+      - run: node scripts/preflight.mjs wrangler.preview.jsonc
       - run: npx wrangler d1 migrations apply aurum-preview-db --remote --config wrangler.preview.jsonc
+      - run: node scripts/seed-if-empty.mjs --remote wrangler.preview.jsonc
+      - run: node scripts/import-assets.mjs --remote --config wrangler.preview.jsonc
+      - run: npx wrangler d1 execute aurum-preview-db --remote --config wrangler.preview.jsonc --file scripts/optimized-assets.sql
+      - run: node scripts/import-assets.mjs --remote --optimized --config wrangler.preview.jsonc
       - run: npm run cf:build
       - run: npx wrangler deploy --config wrangler.preview.jsonc
+  browser:
+    needs: validate
+    runs-on: ubuntu-latest
+    env:
+      TEST_ORIGIN: http://localhost:8788
+      PLAYWRIGHT_START_SERVER: "1"
+      WRANGLER_SEND_METRICS: "false"
+      XDG_CONFIG_HOME: ${{ github.workspace }}/.test-state/config
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+      - run: npm ci
+      - run: npx playwright install --with-deps chromium
+      - uses: actions/download-artifact@v4
+        with:
+          name: cloudflare-worker
+          path: .open-next
+      - run: node -e "require('fs').writeFileSync('.dev.vars','REQUIRE_TURNSTILE=false'+String.fromCharCode(10))"
+      - run: npm run db:local
+      - run: node scripts/seed-if-empty.mjs --local wrangler.jsonc
+      - run: node scripts/import-assets-local.mjs
+      - run: node scripts/import-optimized-local.mjs
+      - run: npm run test:browser
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: browser-report
+          path: |
+            playwright-report/
+            test-results/

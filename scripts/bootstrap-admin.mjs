@@ -7,7 +7,7 @@ if (
   throw new Error(
     "Usage: node scripts/bootstrap-admin.mjs --local|--remote EXISTING_USER_UUID",
   );
-const sql = `INSERT INTO admin_users(user_id,role) VALUES('${userId}','owner');`;
+const sql = `INSERT INTO admin_users(user_id,role) VALUES('${userId}','owner'); INSERT INTO audit_logs(id,actor_id,action,target,detail) VALUES('${crypto.randomUUID()}',NULL,'admin.bootstrap','${userId}','{}');`;
 const result = spawnSync(
   process.execPath,
   [

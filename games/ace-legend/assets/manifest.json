@@ -1,0 +1,73 @@
+{
+  "notice": "Initial material references; runtime overrides come from D1. Symbol glyphs are original program artwork, not claimed as AI-generated symbol images.",
+  "gameId": "ace-legend",
+  "cover": "webp-cover-ace-legend-4f83796287",
+  "banner": "webp-banner-ace-legend-101b4afabe",
+  "symbols": [
+    {
+      "index": 0,
+      "label": "2",
+      "source": "procedural canvas glyph"
+    },
+    {
+      "index": 1,
+      "label": "3",
+      "source": "procedural canvas glyph"
+    },
+    {
+      "index": 2,
+      "label": "4",
+      "source": "procedural canvas glyph"
+    },
+    {
+      "index": 3,
+      "label": "5",
+      "source": "procedural canvas glyph"
+    },
+    {
+      "index": 4,
+      "label": "6",
+      "source": "procedural canvas glyph"
+    },
+    {
+      "index": 5,
+      "label": "7",
+      "source": "procedural canvas glyph"
+    },
+    {
+      "index": 6,
+      "label": "8",
+      "source": "procedural canvas glyph"
+    },
+    {
+      "index": 7,
+      "label": "9",
+      "source": "procedural canvas glyph"
+    },
+    {
+      "index": 8,
+      "label": "10",
+      "source": "procedural canvas glyph"
+    },
+    {
+      "index": 9,
+      "label": "J",
+      "source": "procedural canvas glyph"
+    },
+    {
+      "index": 10,
+      "label": "Q",
+      "source": "procedural canvas glyph"
+    },
+    {
+      "index": 11,
+      "label": "K",
+      "source": "procedural canvas glyph"
+    },
+    {
+      "index": 12,
+      "label": "A",
+      "source": "procedural canvas glyph"
+    }
+  ]
+}

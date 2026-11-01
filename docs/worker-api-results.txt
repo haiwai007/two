@@ -3,11 +3,14 @@ PASS anonymous play rejected
 PASS cross-origin writes rejected
 PASS registration creates secure session and initial ledger
 PASS catalog and favorites persist
-PASS all three independent games settle and retry idempotently
+PASS all 30 catalog delivery covers resolve
+PASS all 30 independent programs settle and retry idempotently
 PASS planned games and invalid stakes rejected
 PASS round history and initial/game ledgers match
 PASS normal member cannot access admin
 PASS admin statistics and audited content CRUD
+PASS owner expiry cleanup uses the audited maintenance service
+PASS uncompiled program versions cannot be published
 PASS admin points adjustment and member records
 PASS referenced site artwork cannot be deleted
 PASS R2 image upload, retrieval and deletion
@@ -21,18 +24,21 @@ PASS administrator CRUD and owner/editor/support boundaries
 PASS member block and unblock invalidate sessions
 PASS password rotation invalidates sessions; login and logout work
 {
-  "passed": 22,
+  "passed": 25,
   "checks": [
     "D1 and R2 bindings available",
     "anonymous play rejected",
     "cross-origin writes rejected",
     "registration creates secure session and initial ledger",
     "catalog and favorites persist",
-    "all three independent games settle and retry idempotently",
+    "all 30 catalog delivery covers resolve",
+    "all 30 independent programs settle and retry idempotently",
     "planned games and invalid stakes rejected",
     "round history and initial/game ledgers match",
     "normal member cannot access admin",
     "admin statistics and audited content CRUD",
+    "owner expiry cleanup uses the audited maintenance service",
+    "uncompiled program versions cannot be published",
     "admin points adjustment and member records",
     "referenced site artwork cannot be deleted",
     "R2 image upload, retrieval and deletion",
@@ -49,4 +55,4 @@ PASS password rotation invalidates sessions; login and logout work
 }
 PASS bundled/R2 artwork retrieval
 PASS asset HEAD response
-API integration complete: 24 checks passed; real-domain www redirect remains a production check.
+API integration complete: 27 checks passed; real-domain www redirect remains a production check.

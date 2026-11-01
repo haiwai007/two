@@ -15,8 +15,16 @@ const bucket = config.r2_buckets.find(
     (b) => b.binding === "BUCKET",
   ).bucket_name,
   dbName = config.d1_databases.find((b) => b.binding === "DB").database_name;
+const optimized = process.argv.includes("--optimized");
 const root = process.cwd(),
-  manifest = JSON.parse(readFileSync("docs/assets-manifest.json", "utf8"));
+  manifest = JSON.parse(
+    readFileSync(
+      optimized
+        ? "docs/optimized-assets-manifest.json"
+        : "docs/assets-manifest.json",
+      "utf8",
+    ),
+  );
 function wrangler(args) {
   const p = spawnSync(
     process.execPath,
@@ -33,7 +41,9 @@ for (const asset of manifest.assets) {
   if (asset.status !== "generated") continue;
   const file = resolve(root, asset.path);
   if (
-    !file.startsWith(resolve(root, "public/assets") + "/") ||
+    !file.startsWith(
+      resolve(root, optimized ? "public/optimized" : "public/assets") + "/",
+    ) ||
     !existsSync(file)
   )
     throw new Error("Missing or invalid source: " + asset.path);
@@ -41,7 +51,8 @@ for (const asset of manifest.assets) {
     .update(readFileSync(file))
     .digest("hex")
     .slice(0, 16);
-  const key = "original/" + digest + "/" + asset.filename;
+  const key =
+    (optimized ? "delivery/" : "original/") + digest + "/" + asset.filename;
   wrangler([
     "r2",
     "object",
@@ -51,11 +62,11 @@ for (const asset of manifest.assets) {
     "--file",
     file,
     "--content-type",
-    "image/png",
+    asset.mediaType ?? "image/png",
   ]);
   const id = asset.assetId.replaceAll("'", "''");
   updates.push(
-    `UPDATE game_assets SET storage_key='${key}',media_type='image/png',size=${statSync(file).size} WHERE id='${id}';`,
+    `UPDATE game_assets SET storage_key='${key}',media_type='${asset.mediaType ?? "image/png"}',size=${statSync(file).size} WHERE id='${id}';`,
   );
 }
 const output = resolve(root, "scripts/imported-assets.sql");

@@ -3,74 +3,51 @@ import {
   type RandomInt,
   type Round,
 } from "../../../game-engine/random.ts";
+import { draw, clone, groups } from "../../../game-engine/primitives.ts";
 export function phoenix(stake: number, rng: RandomInt = secureInt): Round {
-  let grid = Array.from({ length: 6 }, () =>
-    Array.from({ length: 5 }, () => rng(7)),
-  );
-  const first = grid.map((c) => [...c]),
+  let grid = draw(6, 5, 7, rng);
+  const initial = clone(grid),
     cascades: number[][][] = [],
-    wins: number[][] = [];
-  let reward = 0,
-    level = 1;
-  for (; level <= 5; level++) {
-    const seen = new Set<number>(),
-      remove = new Set<number>();
-    for (let c = 0; c < 6; c++)
-      for (let r = 0; r < 5; r++) {
-        const start = c * 5 + r;
-        if (seen.has(start)) continue;
-        const group: number[] = [],
-          queue = [start];
-        seen.add(start);
-        while (queue.length) {
-          const n = queue.pop()!;
-          group.push(n);
-          const x = Math.floor(n / 5),
-            y = n % 5;
-          for (const [a, b] of [
-            [x - 1, y],
-            [x + 1, y],
-            [x, y - 1],
-            [x, y + 1],
-          ]) {
-            const id = a * 5 + b;
-            if (
-              a >= 0 &&
-              a < 6 &&
-              b >= 0 &&
-              b < 5 &&
-              !seen.has(id) &&
-              grid[a][b] === grid[c][r]
-            ) {
-              seen.add(id);
-              queue.push(id);
-            }
-          }
-        }
-        if (group.length >= 5) {
-          group.forEach((x) => remove.add(x));
-          wins.push(group);
-          reward += stake * (group.length - 4) * (grid[c][r] + 1) * level;
-        }
-      }
-    if (!remove.size) break;
+    stages: NonNullable<Round["steps"]> = [];
+  let reward = 0;
+  for (let wave = 1; wave <= 5; wave++) {
+    const wins = groups(grid).filter((g) => g.length >= 5);
+    if (!wins.length) break;
+    const value = wins.reduce(
+      (sum, g) =>
+        sum +
+        stake *
+          (g.length - 4) *
+          (grid[Math.floor(g[0] / 5)][g[0] % 5] + 1) *
+          wave,
+      0,
+    );
+    reward += value;
+    stages.push({
+      grid: clone(grid),
+      wins,
+      reward: value,
+      label: `凤凰涅槃 · 第${wave}轮`,
+    });
+    const remove = new Set(wins.flat());
     grid = grid.map((col, c) => {
-      const remain = col.filter((_, r) => !remove.has(c * 5 + r));
+      const keep = col.filter((_, r) => !remove.has(c * 5 + r));
       return [
-        ...Array.from({ length: 5 - remain.length }, () => rng(7)),
-        ...remain,
+        ...Array.from({ length: 5 - keep.length }, () => rng(7)),
+        ...keep,
       ];
     });
-    cascades.push(grid.map((c) => [...c]));
+    cascades.push(clone(grid));
   }
   return {
-    grid: first,
+    grid: initial,
     reward,
-    wins,
+    wins: stages[0]?.wins ?? [],
     cascades,
-    feature: cascades.length
-      ? `涅槃连消 ${cascades.length} 次`
+    steps: stages.slice(1),
+    feature: stages.length
+      ? `涅槃连消 ${stages.length} 次`
       : "相邻五枚 · 集群消除",
-    multiplier: Math.min(level, 5),
+    multiplier: Math.min(stages.length + 1, 5),
   };
 }
