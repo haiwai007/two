@@ -2,11 +2,14 @@ import { readFileSync } from "node:fs";
 import { resolve } from "node:path";
 import { pathToFileURL } from "node:url";
 
-export async function bootstrapFirstOwner({ userId, expiresAt, query, now = Date.now() }) {
-  if (!userId) return { firstOwner: "not-configured-no-changes" };
-  if (!/^[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}$/i.test(userId)) throw Error("Invalid first-owner account identifier");
+export async function bootstrapFirstOwner({ userId, expiresAt, query, required = false, now = Date.now() }) {
   if (!Number.isFinite(Date.parse(expiresAt))) throw Error("Invalid first-owner initialization window");
   if (now >= Date.parse(expiresAt)) return { firstOwner: "expired-no-changes" };
+  if (!userId) {
+    if (required) throw Error("Configure the private build secret AURUM_FIRST_OWNER_ID to initialize the first owner");
+    return { firstOwner: "not-configured-no-changes" };
+  }
+  if (!/^[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}$/i.test(userId)) throw Error("Invalid first-owner account identifier");
   const owners = (await query("SELECT user_id FROM admin_users WHERE role='owner' LIMIT 100")).rows;
   if (owners.length && !owners.some(owner => owner.user_id === userId)) throw Error("A different owner already exists; no permissions changed");
   const target = await query("SELECT id,status FROM users WHERE id=? LIMIT 1", [userId]);
@@ -30,7 +33,7 @@ async function main() {
   const { expiresAt } = JSON.parse(readFileSync("scripts/first-owner-window.json", "utf8"));
   const userId = process.env.AURUM_FIRST_OWNER_ID;
   if (!userId || Date.now() >= Date.parse(expiresAt)) {
-    console.log(JSON.stringify(await bootstrapFirstOwner({ userId, expiresAt, query: async () => { throw Error("Unexpected database access"); } })));
+    console.log(JSON.stringify(await bootstrapFirstOwner({ userId, expiresAt, required: true, query: async () => { throw Error("Unexpected database access"); } })));
     return;
   }
   const { unstable_readConfig: readConfig } = await import("wrangler");
@@ -47,6 +50,6 @@ async function main() {
     if (!response.ok || data.success !== true || !Array.isArray(data.result) || data.result.some(result => result.success === false)) throw Error(`First-owner D1 operation failed (HTTP ${response.status}); no response body or credentials logged`);
     return { rows: data.result.flatMap(result => result.results ?? []), changes: data.result.reduce((sum, result) => sum + (result.meta?.changes ?? 0), 0) };
   };
-  console.log(JSON.stringify(await bootstrapFirstOwner({ userId, expiresAt, query })));
+  console.log(JSON.stringify(await bootstrapFirstOwner({ userId, expiresAt, required: true, query })));
 }
 if (process.argv[1] && import.meta.url === pathToFileURL(resolve(process.argv[1])).href) main().catch(error => { console.error(error.message); process.exitCode = 1; });

@@ -70,3 +70,7 @@ test("an owner appearing between reads and insert is not overwritten", async () 
   assert.equal(db.prepare("SELECT user_id FROM admin_users").get().user_id, otherId);
   db.close();
 });
+
+test("required initialization cannot silently succeed without the private build secret", async () => {
+  await assert.rejects(bootstrapFirstOwner({ userId: undefined, expiresAt: "2099-01-01T00:00:00Z", required: true, query: async () => assert.fail("No database access allowed") }), /private build secret AURUM_FIRST_OWNER_ID/);
+});
