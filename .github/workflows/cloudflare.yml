@@ -22,6 +22,7 @@ jobs:
       - run: npm run typecheck
       - run: npm test
       - run: node --test tests/provision.test.mjs
+      - run: node --test tests/cloudflare-deploy.test.mjs
       - run: python3 tests/database_test.py
       - run: npm run cf:build
       - uses: actions/upload-artifact@v4

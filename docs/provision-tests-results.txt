@@ -1,9 +1,13 @@
-✔ tests/provision.test.mjs (73.842827ms)
-ℹ tests 1
+✔ first deployment provisions three resources and returns secret separately (2.080447ms)
+✔ retry reuses existing resources without creating duplicates or rotating secrets (1.048292ms)
+✔ unavailable domain fails before any writes (2.972549ms)
+✔ explicit database binding cannot silently switch to another database (0.302372ms)
+✔ ambiguous widget names and wrong allowed domains are rejected (0.663619ms)
+ℹ tests 5
 ℹ suites 0
-ℹ pass 1
+ℹ pass 5
 ℹ fail 0
 ℹ cancelled 0
 ℹ skipped 0
 ℹ todo 0
-ℹ duration_ms 85.951512
+ℹ duration_ms 15.951833

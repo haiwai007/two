@@ -10,6 +10,7 @@
     "cf:build": "opennextjs-cloudflare build",
     "preview": "opennextjs-cloudflare build && opennextjs-cloudflare preview",
     "deploy": "node scripts/preflight.mjs wrangler.jsonc && opennextjs-cloudflare build && opennextjs-cloudflare deploy",
+    "deploy:cloudflare": "node scripts/deploy-cloudflare.mjs --remote",
     "db:local": "wrangler d1 migrations apply aurum-db --local",
     "db:remote": "wrangler d1 migrations apply aurum-db --remote",
     "seed:local": "wrangler d1 execute aurum-db --local --file=seed.sql",
