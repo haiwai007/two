@@ -1,0 +1,52 @@
+PASS D1 and R2 bindings available
+PASS anonymous play rejected
+PASS cross-origin writes rejected
+PASS registration creates secure session and initial ledger
+PASS catalog and favorites persist
+PASS all three independent games settle and retry idempotently
+PASS planned games and invalid stakes rejected
+PASS round history and initial/game ledgers match
+PASS normal member cannot access admin
+PASS admin statistics and audited content CRUD
+PASS admin points adjustment and member records
+PASS referenced site artwork cannot be deleted
+PASS R2 image upload, retrieval and deletion
+PASS categories create, edit, list and delete persist
+PASS events create, edit, list and delete persist
+PASS messages create, edit, list and delete persist
+PASS settings create, edit, list and delete persist
+PASS games create, edit, list and delete persist
+PASS integrations create, edit, list and delete persist
+PASS administrator CRUD and owner/editor/support boundaries
+PASS member block and unblock invalidate sessions
+PASS password rotation invalidates sessions; login and logout work
+{
+  "passed": 22,
+  "checks": [
+    "D1 and R2 bindings available",
+    "anonymous play rejected",
+    "cross-origin writes rejected",
+    "registration creates secure session and initial ledger",
+    "catalog and favorites persist",
+    "all three independent games settle and retry idempotently",
+    "planned games and invalid stakes rejected",
+    "round history and initial/game ledgers match",
+    "normal member cannot access admin",
+    "admin statistics and audited content CRUD",
+    "admin points adjustment and member records",
+    "referenced site artwork cannot be deleted",
+    "R2 image upload, retrieval and deletion",
+    "categories create, edit, list and delete persist",
+    "events create, edit, list and delete persist",
+    "messages create, edit, list and delete persist",
+    "settings create, edit, list and delete persist",
+    "games create, edit, list and delete persist",
+    "integrations create, edit, list and delete persist",
+    "administrator CRUD and owner/editor/support boundaries",
+    "member block and unblock invalidate sessions",
+    "password rotation invalidates sessions; login and logout work"
+  ]
+}
+PASS bundled/R2 artwork retrieval
+PASS asset HEAD response
+API integration complete: 24 checks passed; real-domain www redirect remains a production check.

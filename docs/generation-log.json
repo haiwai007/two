@@ -1,0 +1,621 @@
+{
+  "generator": "image_gen",
+  "notice": "Actual generation requests and copied output files; initial hero and three demo covers documented separately in assets-manifest.",
+  "records": [
+    {
+      "id": "phoenix-legend",
+      "kind": "banner",
+      "file": "phoenix-legend-banner.png",
+      "status": "generated",
+      "prompt": "Original cinematic fantasy game background banner for \"凤凰传奇\" (phoenix-legend). Build a unique panoramic world appropriate to this specific theme, detailed magical environments, luxurious metal and gemstone accents, beautiful sophisticated 3D rendering, epic atmospheric lighting. Wide 1920x1080 composition, a distinct scene rather than a cover image. No words, letters, numbers, logos or existing franchise characters."
+    },
+    {
+      "id": "egypt-pharaoh",
+      "kind": "banner",
+      "file": "egypt-pharaoh-banner.png",
+      "status": "generated",
+      "prompt": "Original cinematic fantasy game background banner for \"埃及法老\" (egypt-pharaoh). Build a unique panoramic world appropriate to this specific theme, detailed magical environments, luxurious metal and gemstone accents, beautiful sophisticated 3D rendering, epic atmospheric lighting. Wide 1920x1080 composition, a distinct scene rather than a cover image. No words, letters, numbers, logos or existing franchise characters."
+    },
+    {
+      "id": "dragon-world",
+      "kind": "banner",
+      "file": "dragon-world-banner.png",
+      "status": "generated",
+      "prompt": "Original cinematic fantasy game background banner for \"龙腾四海\" (dragon-world). Build a unique panoramic world appropriate to this specific theme, detailed magical environments, luxurious metal and gemstone accents, beautiful sophisticated 3D rendering, epic atmospheric lighting. Wide 1920x1080 composition, a distinct scene rather than a cover image. No words, letters, numbers, logos or existing franchise characters."
+    },
+    {
+      "id": "divine-dragon",
+      "kind": "cover",
+      "file": "divine-dragon-cover.png",
+      "status": "generated",
+      "prompt": "Original premium cinematic 3D fantasy game promotional cover themed \"神龙宝藏\" (divine-dragon), a unique elaborate central hero or artifact and a rich setting matching this particular theme. Lustrous metals and gemstones, dramatic beautiful light, sophisticated high detail. Wide 800x600 composition. No words, letters, numbers, logos or copied existing characters. Distinct original temporary art."
+    },
+    {
+      "id": "journey-west",
+      "kind": "cover",
+      "file": "journey-west-cover.png",
+      "status": "generated",
+      "prompt": "Original premium cinematic 3D fantasy game promotional cover themed \"西游奇缘\" (journey-west), a unique elaborate central hero or artifact and a rich setting matching this particular theme. Lustrous metals and gemstones, dramatic beautiful light, sophisticated high detail. Wide 800x600 composition. No words, letters, numbers, logos or copied existing characters. Distinct original temporary art."
+    },
+    {
+      "id": "journey-west",
+      "kind": "banner",
+      "file": "journey-west-banner.png",
+      "status": "generated",
+      "prompt": "Original cinematic fantasy game background banner for \"西游奇缘\" (journey-west). Build a unique panoramic world appropriate to this specific theme, detailed magical environments, luxurious metal and gemstone accents, beautiful sophisticated 3D rendering, epic atmospheric lighting. Wide 1920x1080 composition, a distinct scene rather than a cover image. No words, letters, numbers, logos or existing franchise characters."
+    },
+    {
+      "id": "egypt-pharaoh",
+      "kind": "cover",
+      "file": "egypt-pharaoh-cover.png",
+      "status": "generated",
+      "prompt": "Original premium cinematic 3D fantasy game promotional cover themed \"埃及法老\" (egypt-pharaoh), a unique elaborate central hero or artifact and a rich setting matching this particular theme. Lustrous metals and gemstones, dramatic beautiful light, sophisticated high detail. Wide 800x600 composition. No words, letters, numbers, logos or copied existing characters. Distinct original temporary art."
+    },
+    {
+      "id": "three-kingdoms",
+      "kind": "cover",
+      "file": "three-kingdoms-cover.png",
+      "status": "generated",
+      "prompt": "Original premium cinematic 3D fantasy game promotional cover themed \"三国霸业\" (three-kingdoms), a unique elaborate central hero or artifact and a rich setting matching this particular theme. Lustrous metals and gemstones, dramatic beautiful light, sophisticated high detail. Wide 800x600 composition. No words, letters, numbers, logos or copied existing characters. Distinct original temporary art."
+    },
+    {
+      "id": "golden-god",
+      "kind": "banner",
+      "file": "golden-god-banner.png",
+      "status": "generated",
+      "prompt": "Original cinematic fantasy game background banner for \"黄金财神\" (golden-god). Build a unique panoramic world appropriate to this specific theme, detailed magical environments, luxurious metal and gemstone accents, beautiful sophisticated 3D rendering, epic atmospheric lighting. Wide 1920x1080 composition, a distinct scene rather than a cover image. No words, letters, numbers, logos or existing franchise characters."
+    },
+    {
+      "id": "divine-dragon",
+      "kind": "banner",
+      "file": "divine-dragon-banner.png",
+      "status": "generated",
+      "prompt": "Original cinematic fantasy game background banner for \"神龙宝藏\" (divine-dragon). Build a unique panoramic world appropriate to this specific theme, detailed magical environments, luxurious metal and gemstone accents, beautiful sophisticated 3D rendering, epic atmospheric lighting. Wide 1920x1080 composition, a distinct scene rather than a cover image. No words, letters, numbers, logos or existing franchise characters."
+    },
+    {
+      "id": "three-kingdoms",
+      "kind": "banner",
+      "file": "three-kingdoms-banner.png",
+      "status": "generated",
+      "prompt": "Original cinematic fantasy game background banner for \"三国霸业\" (three-kingdoms). Build a unique panoramic world appropriate to this specific theme, detailed magical environments, luxurious metal and gemstone accents, beautiful sophisticated 3D rendering, epic atmospheric lighting. Wide 1920x1080 composition, a distinct scene rather than a cover image. No words, letters, numbers, logos or existing franchise characters."
+    },
+    {
+      "id": "pirate-treasure",
+      "kind": "cover",
+      "file": "pirate-treasure-cover.png",
+      "status": "generated",
+      "prompt": "Original premium cinematic 3D fantasy game promotional cover themed \"海盗秘宝\" (pirate-treasure), a unique elaborate central hero or artifact and a rich setting matching this particular theme. Lustrous metals and gemstones, dramatic beautiful light, sophisticated high detail. Wide 800x600 composition. No words, letters, numbers, logos or copied existing characters. Distinct original temporary art."
+    },
+    {
+      "id": "pirate-treasure",
+      "kind": "banner",
+      "file": "pirate-treasure-banner.png",
+      "status": "generated",
+      "prompt": "Original cinematic fantasy game background banner for \"海盗秘宝\" (pirate-treasure). Build a unique panoramic world appropriate to this specific theme, detailed magical environments, luxurious metal and gemstone accents, beautiful sophisticated 3D rendering, epic atmospheric lighting. Wide 1920x1080 composition, a distinct scene rather than a cover image. No words, letters, numbers, logos or existing franchise characters."
+    },
+    {
+      "id": "gem-kingdom",
+      "kind": "cover",
+      "file": "gem-kingdom-cover.png",
+      "status": "generated",
+      "prompt": "Original premium cinematic 3D fantasy game promotional cover themed \"宝石王国\" (gem-kingdom), a unique elaborate central hero or artifact and a rich setting matching this particular theme. Lustrous metals and gemstones, dramatic beautiful light, sophisticated high detail. Wide 800x600 composition. No words, letters, numbers, logos or copied existing characters. Distinct original temporary art."
+    },
+    {
+      "id": "gem-kingdom",
+      "kind": "banner",
+      "file": "gem-kingdom-banner.png",
+      "status": "generated",
+      "prompt": "Original cinematic fantasy game background banner for \"宝石王国\" (gem-kingdom). Build a unique panoramic world appropriate to this specific theme, detailed magical environments, luxurious metal and gemstone accents, beautiful sophisticated 3D rendering, epic atmospheric lighting. Wide 1920x1080 composition, a distinct scene rather than a cover image. No words, letters, numbers, logos or existing franchise characters."
+    },
+    {
+      "id": "fantasy-forest",
+      "kind": "banner",
+      "file": "fantasy-forest-banner.png",
+      "status": "generated",
+      "prompt": "Original cinematic fantasy game background banner for \"奇幻森林\" (fantasy-forest). Build a unique panoramic world appropriate to this specific theme, detailed magical environments, luxurious metal and gemstone accents, beautiful sophisticated 3D rendering, epic atmospheric lighting. Wide 1920x1080 composition, a distinct scene rather than a cover image. No words, letters, numbers, logos or existing franchise characters."
+    },
+    {
+      "id": "fantasy-forest",
+      "kind": "cover",
+      "file": "fantasy-forest-cover.png",
+      "status": "generated",
+      "prompt": "Original premium cinematic 3D fantasy game promotional cover themed \"奇幻森林\" (fantasy-forest), a unique elaborate central hero or artifact and a rich setting matching this particular theme. Lustrous metals and gemstones, dramatic beautiful light, sophisticated high detail. Wide 800x600 composition. No words, letters, numbers, logos or copied existing characters. Distinct original temporary art."
+    },
+    {
+      "id": "magic-academy",
+      "kind": "cover",
+      "file": "magic-academy-cover.png",
+      "status": "generated",
+      "prompt": "Original premium cinematic 3D fantasy game promotional cover themed \"魔法学院\" (magic-academy), a unique elaborate central hero or artifact and a rich setting matching this particular theme. Lustrous metals and gemstones, dramatic beautiful light, sophisticated high detail. Wide 800x600 composition. No words, letters, numbers, logos or copied existing characters. Distinct original temporary art."
+    },
+    {
+      "id": "fruit-party",
+      "kind": "cover",
+      "file": "fruit-party-cover.png",
+      "status": "generated",
+      "prompt": "Original premium cinematic 3D fantasy game promotional cover themed \"水果派对\" (fruit-party), a unique elaborate central hero or artifact and a rich setting matching this particular theme. Lustrous metals and gemstones, dramatic beautiful light, sophisticated high detail. Wide 800x600 composition. No words, letters, numbers, logos or copied existing characters. Distinct original temporary art."
+    },
+    {
+      "id": "candy-world",
+      "kind": "cover",
+      "file": "candy-world-cover.png",
+      "status": "generated",
+      "prompt": "Original premium cinematic 3D fantasy game promotional cover themed \"糖果世界\" (candy-world), a unique elaborate central hero or artifact and a rich setting matching this particular theme. Lustrous metals and gemstones, dramatic beautiful light, sophisticated high detail. Wide 800x600 composition. No words, letters, numbers, logos or copied existing characters. Distinct original temporary art."
+    },
+    {
+      "id": "fruit-party",
+      "kind": "banner",
+      "file": "fruit-party-banner.png",
+      "status": "generated",
+      "prompt": "Original cinematic fantasy game background banner for \"水果派对\" (fruit-party). Build a unique panoramic world appropriate to this specific theme, detailed magical environments, luxurious metal and gemstone accents, beautiful sophisticated 3D rendering, epic atmospheric lighting. Wide 1920x1080 composition, a distinct scene rather than a cover image. No words, letters, numbers, logos or existing franchise characters."
+    },
+    {
+      "id": "lucky-star",
+      "kind": "cover",
+      "file": "lucky-star-cover.png",
+      "status": "generated",
+      "prompt": "Original premium cinematic 3D fantasy game promotional cover themed \"幸运之星\" (lucky-star), a unique elaborate central hero or artifact and a rich setting matching this particular theme. Lustrous metals and gemstones, dramatic beautiful light, sophisticated high detail. Wide 800x600 composition. No words, letters, numbers, logos or copied existing characters. Distinct original temporary art."
+    },
+    {
+      "id": "magic-academy",
+      "kind": "banner",
+      "file": "magic-academy-banner.png",
+      "status": "generated",
+      "prompt": "Original cinematic fantasy game background banner for \"魔法学院\" (magic-academy). Build a unique panoramic world appropriate to this specific theme, detailed magical environments, luxurious metal and gemstone accents, beautiful sophisticated 3D rendering, epic atmospheric lighting. Wide 1920x1080 composition, a distinct scene rather than a cover image. No words, letters, numbers, logos or existing franchise characters."
+    },
+    {
+      "id": "gold-miner",
+      "kind": "banner",
+      "file": "gold-miner-banner.png",
+      "status": "generated",
+      "prompt": "Original cinematic fantasy game background banner for \"黄金矿工\" (gold-miner). Build a unique panoramic world appropriate to this specific theme, detailed magical environments, luxurious metal and gemstone accents, beautiful sophisticated 3D rendering, epic atmospheric lighting. Wide 1920x1080 composition, a distinct scene rather than a cover image. No words, letters, numbers, logos or existing franchise characters."
+    },
+    {
+      "id": "gold-miner",
+      "kind": "cover",
+      "file": "gold-miner-cover.png",
+      "status": "generated",
+      "prompt": "Original premium cinematic 3D fantasy game promotional cover themed \"黄金矿工\" (gold-miner), a unique elaborate central hero or artifact and a rich setting matching this particular theme. Lustrous metals and gemstones, dramatic beautiful light, sophisticated high detail. Wide 800x600 composition. No words, letters, numbers, logos or copied existing characters. Distinct original temporary art."
+    },
+    {
+      "id": "lucky-star",
+      "kind": "banner",
+      "file": "lucky-star-banner.png",
+      "status": "generated",
+      "prompt": "Original cinematic fantasy game background banner for \"幸运之星\" (lucky-star). Build a unique panoramic world appropriate to this specific theme, detailed magical environments, luxurious metal and gemstone accents, beautiful sophisticated 3D rendering, epic atmospheric lighting. Wide 1920x1080 composition, a distinct scene rather than a cover image. No words, letters, numbers, logos or existing franchise characters."
+    },
+    {
+      "id": "candy-world",
+      "kind": "banner",
+      "file": "candy-world-banner.png",
+      "status": "generated",
+      "prompt": "Original cinematic fantasy game background banner for \"糖果世界\" (candy-world). Build a unique panoramic world appropriate to this specific theme, detailed magical environments, luxurious metal and gemstone accents, beautiful sophisticated 3D rendering, epic atmospheric lighting. Wide 1920x1080 composition, a distinct scene rather than a cover image. No words, letters, numbers, logos or existing franchise characters."
+    },
+    {
+      "id": "eastern-myth",
+      "kind": "banner",
+      "file": "eastern-myth-banner.png",
+      "status": "generated",
+      "prompt": "Original cinematic fantasy game background banner for \"东方神话\" (eastern-myth). Build a unique panoramic world appropriate to this specific theme, detailed magical environments, luxurious metal and gemstone accents, beautiful sophisticated 3D rendering, epic atmospheric lighting. Wide 1920x1080 composition, a distinct scene rather than a cover image. No words, letters, numbers, logos or existing franchise characters."
+    },
+    {
+      "id": "western-myth",
+      "kind": "banner",
+      "file": "western-myth-banner.png",
+      "status": "generated",
+      "prompt": "Original cinematic fantasy game background banner for \"西方神话\" (western-myth). Build a unique panoramic world appropriate to this specific theme, detailed magical environments, luxurious metal and gemstone accents, beautiful sophisticated 3D rendering, epic atmospheric lighting. Wide 1920x1080 composition, a distinct scene rather than a cover image. No words, letters, numbers, logos or existing franchise characters."
+    },
+    {
+      "id": "future-world",
+      "kind": "cover",
+      "file": "future-world-cover.png",
+      "status": "generated",
+      "prompt": "Original premium cinematic 3D fantasy game promotional cover themed \"未来世界\" (future-world), a unique elaborate central hero or artifact and a rich setting matching this particular theme. Lustrous metals and gemstones, dramatic beautiful light, sophisticated high detail. Wide 800x600 composition. No words, letters, numbers, logos or copied existing characters. Distinct original temporary art."
+    },
+    {
+      "id": "future-world",
+      "kind": "banner",
+      "file": "future-world-banner.png",
+      "status": "generated",
+      "prompt": "Original cinematic fantasy game background banner for \"未来世界\" (future-world). Build a unique panoramic world appropriate to this specific theme, detailed magical environments, luxurious metal and gemstone accents, beautiful sophisticated 3D rendering, epic atmospheric lighting. Wide 1920x1080 composition, a distinct scene rather than a cover image. No words, letters, numbers, logos or existing franchise characters."
+    },
+    {
+      "id": "animal-kingdom",
+      "kind": "banner",
+      "file": "animal-kingdom-banner.png",
+      "status": "generated",
+      "prompt": "Original cinematic fantasy game background banner for \"动物王国\" (animal-kingdom). Build a unique panoramic world appropriate to this specific theme, detailed magical environments, luxurious metal and gemstone accents, beautiful sophisticated 3D rendering, epic atmospheric lighting. Wide 1920x1080 composition, a distinct scene rather than a cover image. No words, letters, numbers, logos or existing franchise characters."
+    },
+    {
+      "id": "festival",
+      "kind": "banner",
+      "file": "festival-banner.png",
+      "status": "generated",
+      "prompt": "Original cinematic fantasy game background banner for \"节日狂欢\" (festival). Build a unique panoramic world appropriate to this specific theme, detailed magical environments, luxurious metal and gemstone accents, beautiful sophisticated 3D rendering, epic atmospheric lighting. Wide 1920x1080 composition, a distinct scene rather than a cover image. No words, letters, numbers, logos or existing franchise characters."
+    },
+    {
+      "id": "mysterious-vault",
+      "kind": "cover",
+      "file": "mysterious-vault-cover.png",
+      "status": "generated",
+      "prompt": "Original premium cinematic 3D fantasy game promotional cover themed \"神秘宝库\" (mysterious-vault), a unique elaborate central hero or artifact and a rich setting matching this particular theme. Lustrous metals and gemstones, dramatic beautiful light, sophisticated high detail. Wide 800x600 composition. No words, letters, numbers, logos or copied existing characters. Distinct original temporary art."
+    },
+    {
+      "id": "western-myth",
+      "kind": "cover",
+      "file": "western-myth-cover.png",
+      "status": "generated",
+      "prompt": "Original premium cinematic 3D fantasy game promotional cover themed \"西方神话\" (western-myth), a unique elaborate central hero or artifact and a rich setting matching this particular theme. Lustrous metals and gemstones, dramatic beautiful light, sophisticated high detail. Wide 800x600 composition. No words, letters, numbers, logos or copied existing characters. Distinct original temporary art."
+    },
+    {
+      "id": "eastern-myth",
+      "kind": "cover",
+      "file": "eastern-myth-cover.png",
+      "status": "generated",
+      "prompt": "Original premium cinematic 3D fantasy game promotional cover themed \"东方神话\" (eastern-myth), a unique elaborate central hero or artifact and a rich setting matching this particular theme. Lustrous metals and gemstones, dramatic beautiful light, sophisticated high detail. Wide 800x600 composition. No words, letters, numbers, logos or copied existing characters. Distinct original temporary art."
+    },
+    {
+      "id": "animal-kingdom",
+      "kind": "cover",
+      "file": "animal-kingdom-cover.png",
+      "status": "generated",
+      "prompt": "Original premium cinematic 3D fantasy game promotional cover themed \"动物王国\" (animal-kingdom), a unique elaborate central hero or artifact and a rich setting matching this particular theme. Lustrous metals and gemstones, dramatic beautiful light, sophisticated high detail. Wide 800x600 composition. No words, letters, numbers, logos or copied existing characters. Distinct original temporary art."
+    },
+    {
+      "id": "golden-age",
+      "kind": "cover",
+      "file": "golden-age-cover.png",
+      "status": "generated",
+      "prompt": "Original premium cinematic 3D fantasy game promotional cover themed \"黄金时代\" (golden-age), a unique elaborate central hero or artifact and a rich setting matching this particular theme. Lustrous metals and gemstones, dramatic beautiful light, sophisticated high detail. Wide 800x600 composition. No words, letters, numbers, logos or copied existing characters. Distinct original temporary art."
+    },
+    {
+      "id": "dragon-legend",
+      "kind": "cover",
+      "file": "dragon-legend-cover.png",
+      "status": "generated",
+      "prompt": "Original premium cinematic 3D fantasy game promotional cover themed \"龙之传说\" (dragon-legend), a unique elaborate central hero or artifact and a rich setting matching this particular theme. Lustrous metals and gemstones, dramatic beautiful light, sophisticated high detail. Wide 800x600 composition. No words, letters, numbers, logos or copied existing characters. Distinct original temporary art."
+    },
+    {
+      "id": "festival",
+      "kind": "cover",
+      "file": "festival-cover.png",
+      "status": "generated",
+      "prompt": "Original premium cinematic 3D fantasy game promotional cover themed \"节日狂欢\" (festival), a unique elaborate central hero or artifact and a rich setting matching this particular theme. Lustrous metals and gemstones, dramatic beautiful light, sophisticated high detail. Wide 800x600 composition. No words, letters, numbers, logos or copied existing characters. Distinct original temporary art."
+    },
+    {
+      "id": "golden-age",
+      "kind": "banner",
+      "file": "golden-age-banner.png",
+      "status": "generated",
+      "prompt": "Original cinematic fantasy game background banner for \"黄金时代\" (golden-age). Build a unique panoramic world appropriate to this specific theme, detailed magical environments, luxurious metal and gemstone accents, beautiful sophisticated 3D rendering, epic atmospheric lighting. Wide 1920x1080 composition, a distinct scene rather than a cover image. No words, letters, numbers, logos or existing franchise characters."
+    },
+    {
+      "id": "mysterious-vault",
+      "kind": "banner",
+      "file": "mysterious-vault-banner.png",
+      "status": "generated",
+      "prompt": "Original cinematic fantasy game background banner for \"神秘宝库\" (mysterious-vault). Build a unique panoramic world appropriate to this specific theme, detailed magical environments, luxurious metal and gemstone accents, beautiful sophisticated 3D rendering, epic atmospheric lighting. Wide 1920x1080 composition, a distinct scene rather than a cover image. No words, letters, numbers, logos or existing franchise characters."
+    },
+    {
+      "id": "dragon-legend",
+      "kind": "banner",
+      "file": "dragon-legend-banner.png",
+      "status": "generated",
+      "prompt": "Original cinematic fantasy game background banner for \"龙之传说\" (dragon-legend). Build a unique panoramic world appropriate to this specific theme, detailed magical environments, luxurious metal and gemstone accents, beautiful sophisticated 3D rendering, epic atmospheric lighting. Wide 1920x1080 composition, a distinct scene rather than a cover image. No words, letters, numbers, logos or existing franchise characters."
+    },
+    {
+      "id": "magic-gems",
+      "kind": "cover",
+      "file": "magic-gems-cover.png",
+      "status": "generated",
+      "prompt": "Original premium cinematic 3D fantasy game promotional cover themed \"魔法宝石\" (magic-gems), a unique elaborate central hero or artifact and a rich setting matching this particular theme. Lustrous metals and gemstones, dramatic beautiful light, sophisticated high detail. Wide 800x600 composition. No words, letters, numbers, logos or copied existing characters. Distinct original temporary art."
+    },
+    {
+      "id": "sun-temple",
+      "kind": "banner",
+      "file": "sun-temple-banner.png",
+      "status": "generated",
+      "prompt": "Original cinematic fantasy game background banner for \"太阳神殿\" (sun-temple). Build a unique panoramic world appropriate to this specific theme, detailed magical environments, luxurious metal and gemstone accents, beautiful sophisticated 3D rendering, epic atmospheric lighting. Wide 1920x1080 composition, a distinct scene rather than a cover image. No words, letters, numbers, logos or existing franchise characters."
+    },
+    {
+      "id": "magic-gems",
+      "kind": "banner",
+      "file": "magic-gems-banner.png",
+      "status": "generated",
+      "prompt": "Original cinematic fantasy game background banner for \"魔法宝石\" (magic-gems). Build a unique panoramic world appropriate to this specific theme, detailed magical environments, luxurious metal and gemstone accents, beautiful sophisticated 3D rendering, epic atmospheric lighting. Wide 1920x1080 composition, a distinct scene rather than a cover image. No words, letters, numbers, logos or existing franchise characters."
+    },
+    {
+      "id": "sun-temple",
+      "kind": "cover",
+      "file": "sun-temple-cover.png",
+      "status": "generated",
+      "prompt": "Original premium cinematic 3D fantasy game promotional cover themed \"太阳神殿\" (sun-temple), a unique elaborate central hero or artifact and a rich setting matching this particular theme. Lustrous metals and gemstones, dramatic beautiful light, sophisticated high detail. Wide 800x600 composition. No words, letters, numbers, logos or copied existing characters. Distinct original temporary art."
+    },
+    {
+      "id": "star-journey",
+      "kind": "cover",
+      "file": "star-journey-cover.png",
+      "status": "generated",
+      "prompt": "Original premium cinematic 3D fantasy game promotional cover themed \"星辰之旅\" (star-journey), a unique elaborate central hero or artifact and a rich setting matching this particular theme. Lustrous metals and gemstones, dramatic beautiful light, sophisticated high detail. Wide 800x600 composition. No words, letters, numbers, logos or copied existing characters. Distinct original temporary art."
+    },
+    {
+      "id": "deep-sea",
+      "kind": "cover",
+      "file": "deep-sea-cover.png",
+      "status": "generated",
+      "prompt": "Original premium cinematic 3D fantasy game promotional cover themed \"深海秘境\" (deep-sea), a unique elaborate central hero or artifact and a rich setting matching this particular theme. Lustrous metals and gemstones, dramatic beautiful light, sophisticated high detail. Wide 800x600 composition. No words, letters, numbers, logos or copied existing characters. Distinct original temporary art."
+    },
+    {
+      "id": "deep-sea",
+      "kind": "banner",
+      "file": "deep-sea-banner.png",
+      "status": "generated",
+      "prompt": "Original cinematic fantasy game background banner for \"深海秘境\" (deep-sea). Build a unique panoramic world appropriate to this specific theme, detailed magical environments, luxurious metal and gemstone accents, beautiful sophisticated 3D rendering, epic atmospheric lighting. Wide 1920x1080 composition, a distinct scene rather than a cover image. No words, letters, numbers, logos or existing franchise characters."
+    },
+    {
+      "id": "ace-legend",
+      "kind": "cover",
+      "file": "ace-legend-cover.png",
+      "status": "generated",
+      "prompt": "Original premium cinematic 3D fantasy game promotional cover themed \"王牌传奇\" (ace-legend), a unique elaborate central hero or artifact and a rich setting matching this particular theme. Lustrous metals and gemstones, dramatic beautiful light, sophisticated high detail. Wide 800x600 composition. No words, letters, numbers, logos or copied existing characters. Distinct original temporary art."
+    },
+    {
+      "id": "ace-legend",
+      "kind": "banner",
+      "file": "ace-legend-banner.png",
+      "status": "generated",
+      "prompt": "Original cinematic fantasy game background banner for \"王牌传奇\" (ace-legend). Build a unique panoramic world appropriate to this specific theme, detailed magical environments, luxurious metal and gemstone accents, beautiful sophisticated 3D rendering, epic atmospheric lighting. Wide 1920x1080 composition, a distinct scene rather than a cover image. No words, letters, numbers, logos or existing franchise characters."
+    },
+    {
+      "id": "dream-garden",
+      "kind": "cover",
+      "file": "dream-garden-cover.png",
+      "status": "generated",
+      "prompt": "Original premium cinematic 3D fantasy game promotional cover themed \"梦幻花园\" (dream-garden), a unique elaborate central hero or artifact and a rich setting matching this particular theme. Lustrous metals and gemstones, dramatic beautiful light, sophisticated high detail. Wide 800x600 composition. No words, letters, numbers, logos or copied existing characters. Distinct original temporary art."
+    },
+    {
+      "id": "star-journey",
+      "kind": "banner",
+      "file": "star-journey-banner.png",
+      "status": "generated",
+      "prompt": "Original cinematic fantasy game background banner for \"星辰之旅\" (star-journey). Build a unique panoramic world appropriate to this specific theme, detailed magical environments, luxurious metal and gemstone accents, beautiful sophisticated 3D rendering, epic atmospheric lighting. Wide 1920x1080 composition, a distinct scene rather than a cover image. No words, letters, numbers, logos or existing franchise characters."
+    },
+    {
+      "id": "dream-garden",
+      "kind": "banner",
+      "file": "dream-garden-banner.png",
+      "status": "generated",
+      "prompt": "Original cinematic fantasy game background banner for \"梦幻花园\" (dream-garden). Build a unique panoramic world appropriate to this specific theme, detailed magical environments, luxurious metal and gemstone accents, beautiful sophisticated 3D rendering, epic atmospheric lighting. Wide 1920x1080 composition, a distinct scene rather than a cover image. No words, letters, numbers, logos or existing franchise characters."
+    },
+    {
+      "id": "fortune-gate",
+      "kind": "cover",
+      "file": "fortune-gate-cover.png",
+      "status": "generated",
+      "prompt": "Original premium cinematic 3D fantasy game promotional cover themed \"财富之门\" (fortune-gate), a unique elaborate central hero or artifact and a rich setting matching this particular theme. Lustrous metals and gemstones, dramatic beautiful light, sophisticated high detail. Wide 800x600 composition. No words, letters, numbers, logos or copied existing characters. Distinct original temporary art."
+    },
+    {
+      "id": "fortune-gate",
+      "kind": "banner",
+      "file": "fortune-gate-banner.png",
+      "status": "generated",
+      "prompt": "Original cinematic fantasy game background banner for \"财富之门\" (fortune-gate). Build a unique panoramic world appropriate to this specific theme, detailed magical environments, luxurious metal and gemstone accents, beautiful sophisticated 3D rendering, epic atmospheric lighting. Wide 1920x1080 composition, a distinct scene rather than a cover image. No words, letters, numbers, logos or existing franchise characters."
+    },
+    {
+      "id": "event-origins",
+      "kind": "event",
+      "filename": "event-origins.png",
+      "prompt": "Original cinematic 3D fantasy event promotional artwork, an original golden celestial temple opening above clouds. Premium intricate rendering and atmospheric lighting. No words, numbers or logos. Wide 1920x1080 composition. Clearly original, no existing brands.",
+      "transparent": false,
+      "status": "generated",
+      "path": "public/assets/event-origins.png"
+    },
+    {
+      "id": "event-gems",
+      "kind": "event",
+      "filename": "event-gems.png",
+      "prompt": "Original cinematic 3D fantasy event promotional artwork, a magnificent vault of fantastical multicolored gemstones. Premium intricate rendering and atmospheric lighting. No words, numbers or logos. Wide 1920x1080 composition. Clearly original, no existing brands.",
+      "transparent": false,
+      "status": "generated",
+      "path": "public/assets/event-gems.png"
+    },
+    {
+      "id": "event-phoenix",
+      "kind": "event",
+      "filename": "event-phoenix.png",
+      "prompt": "Original cinematic 3D fantasy event promotional artwork, a violet phoenix rebirth celebration in a crystal palace. Premium intricate rendering and atmospheric lighting. No words, numbers or logos. Wide 1920x1080 composition. Clearly original, no existing brands.",
+      "transparent": false,
+      "status": "generated",
+      "path": "public/assets/event-phoenix.png"
+    },
+    {
+      "id": "icon-heart",
+      "kind": "icon",
+      "filename": "icon-heart.png",
+      "prompt": "A single original premium 3D fantasy UI icon, a ruby heart in a gold filigree frame. Refined crisp details, matching luxury midnight-blue/champagne-gold/purple game interface, front three-quarter view, isolated centered with generous padding, no text or logos. 512x512. Transparent background.",
+      "transparent": true,
+      "status": "generated",
+      "path": "public/assets/icon-heart.png"
+    },
+    {
+      "id": "icon-slot",
+      "kind": "icon",
+      "filename": "icon-slot.png",
+      "prompt": "A single original premium 3D fantasy UI icon, an ornate miniature golden fantasy slot reel. Refined crisp details, matching luxury midnight-blue/champagne-gold/purple game interface, front three-quarter view, isolated centered with generous padding, no text or logos. 512x512. Transparent background.",
+      "transparent": true,
+      "status": "generated",
+      "path": "public/assets/icon-slot.png"
+    },
+    {
+      "id": "event-stars",
+      "kind": "event",
+      "filename": "event-stars.png",
+      "prompt": "Original cinematic 3D fantasy event promotional artwork, a magical observatory amid a golden galaxy. Premium intricate rendering and atmospheric lighting. No words, numbers or logos. Wide 1920x1080 composition. Clearly original, no existing brands.",
+      "transparent": false,
+      "status": "generated",
+      "path": "public/assets/event-stars.png"
+    },
+    {
+      "id": "icon-gift",
+      "kind": "icon",
+      "filename": "icon-gift.png",
+      "prompt": "A single original premium 3D fantasy UI icon, a gold gift box with purple ribbon. Refined crisp details, matching luxury midnight-blue/champagne-gold/purple game interface, front three-quarter view, isolated centered with generous padding, no text or logos. 512x512. Transparent background.",
+      "transparent": true,
+      "status": "generated",
+      "path": "public/assets/icon-gift.png"
+    },
+    {
+      "id": "event-dragon",
+      "kind": "event",
+      "filename": "event-dragon.png",
+      "prompt": "Original cinematic 3D fantasy event promotional artwork, a luminous turquoise dragon pearl festival over an ocean. Premium intricate rendering and atmospheric lighting. No words, numbers or logos. Wide 1920x1080 composition. Clearly original, no existing brands.",
+      "transparent": false,
+      "status": "generated",
+      "path": "public/assets/event-dragon.png"
+    },
+    {
+      "id": "icon-star",
+      "kind": "icon",
+      "filename": "icon-star.png",
+      "prompt": "A single original premium 3D fantasy UI icon, a five-point gold and violet jewel star. Refined crisp details, matching luxury midnight-blue/champagne-gold/purple game interface, front three-quarter view, isolated centered with generous padding, no text or logos. 512x512. Transparent background.",
+      "transparent": true,
+      "status": "generated",
+      "path": "public/assets/icon-star.png"
+    },
+    {
+      "id": "icon-trophy",
+      "kind": "icon",
+      "filename": "icon-trophy.png",
+      "prompt": "A single original premium 3D fantasy UI icon, a gold and sapphire trophy. Refined crisp details, matching luxury midnight-blue/champagne-gold/purple game interface, front three-quarter view, isolated centered with generous padding, no text or logos. 512x512. Transparent background.",
+      "transparent": true,
+      "status": "generated",
+      "path": "public/assets/icon-trophy.png"
+    },
+    {
+      "id": "icon-crown",
+      "kind": "icon",
+      "filename": "icon-crown.png",
+      "prompt": "A single original premium 3D fantasy UI icon, a fantasy golden crown with purple gemstones. Refined crisp details, matching luxury midnight-blue/champagne-gold/purple game interface, front three-quarter view, isolated centered with generous padding, no text or logos. 512x512. Transparent background.",
+      "transparent": true,
+      "status": "generated",
+      "path": "public/assets/icon-crown.png"
+    },
+    {
+      "id": "icon-gem",
+      "kind": "icon",
+      "filename": "icon-gem.png",
+      "prompt": "A single original premium 3D fantasy UI icon, a brilliant violet faceted gemstone. Refined crisp details, matching luxury midnight-blue/champagne-gold/purple game interface, front three-quarter view, isolated centered with generous padding, no text or logos. 512x512. Transparent background.",
+      "transparent": true,
+      "status": "generated",
+      "path": "public/assets/icon-gem.png"
+    },
+    {
+      "id": "icon-shield",
+      "kind": "icon",
+      "filename": "icon-shield.png",
+      "prompt": "A single original premium 3D fantasy UI icon, a gold and jade shield. Refined crisp details, matching luxury midnight-blue/champagne-gold/purple game interface, front three-quarter view, isolated centered with generous padding, no text or logos. 512x512. Transparent background.",
+      "transparent": true,
+      "status": "generated",
+      "path": "public/assets/icon-shield.png"
+    },
+    {
+      "id": "icon-coin",
+      "kind": "icon",
+      "filename": "icon-coin.png",
+      "prompt": "A single original premium 3D fantasy UI icon, a golden coin with an original abstract sun symbol. Refined crisp details, matching luxury midnight-blue/champagne-gold/purple game interface, front three-quarter view, isolated centered with generous padding, no text or logos. 512x512. Transparent background.",
+      "transparent": true,
+      "status": "generated",
+      "path": "public/assets/icon-coin.png"
+    },
+    {
+      "id": "icon-bell",
+      "kind": "icon",
+      "filename": "icon-bell.png",
+      "prompt": "A single original premium 3D fantasy UI icon, a polished golden notification bell. Refined crisp details, matching luxury midnight-blue/champagne-gold/purple game interface, front three-quarter view, isolated centered with generous padding, no text or logos. 512x512. Transparent background.",
+      "transparent": true,
+      "status": "generated",
+      "path": "public/assets/icon-bell.png"
+    },
+    {
+      "id": "icon-phoenix",
+      "kind": "icon",
+      "filename": "icon-phoenix.png",
+      "prompt": "A single original premium 3D fantasy UI icon, a sculptural ruby phoenix feather. Refined crisp details, matching luxury midnight-blue/champagne-gold/purple game interface, front three-quarter view, isolated centered with generous padding, no text or logos. 512x512. Transparent background.",
+      "transparent": true,
+      "status": "generated",
+      "path": "public/assets/icon-phoenix.png"
+    },
+    {
+      "id": "icon-dragon",
+      "kind": "icon",
+      "filename": "icon-dragon.png",
+      "prompt": "A single original premium 3D fantasy UI icon, a sculptural jade dragon head. Refined crisp details, matching luxury midnight-blue/champagne-gold/purple game interface, front three-quarter view, isolated centered with generous padding, no text or logos. 512x512. Transparent background.",
+      "transparent": true,
+      "status": "generated",
+      "path": "public/assets/icon-dragon.png"
+    },
+    {
+      "id": "icon-sun",
+      "kind": "icon",
+      "filename": "icon-sun.png",
+      "prompt": "A single original premium 3D fantasy UI icon, a gold and amber sun ornament. Refined crisp details, matching luxury midnight-blue/champagne-gold/purple game interface, front three-quarter view, isolated centered with generous padding, no text or logos. 512x512. Transparent background.",
+      "transparent": true,
+      "status": "generated",
+      "path": "public/assets/icon-sun.png"
+    },
+    {
+      "id": "page-background",
+      "kind": "decoration",
+      "filename": "page-background.png",
+      "prompt": "Original fantasy game website background artwork: almost black midnight navy and subtle violet atmospheric clouds, very low contrast, no focal object. Sophisticated subtle texture, suitable behind readable UI, wide 1920x1080 composition. No text, letters or logos.",
+      "transparent": false,
+      "status": "generated",
+      "path": "public/assets/page-background.png"
+    },
+    {
+      "id": "icon-moon",
+      "kind": "icon",
+      "filename": "icon-moon.png",
+      "prompt": "A single original premium 3D fantasy UI icon, a silver and sapphire crescent moon. Refined crisp details, matching luxury midnight-blue/champagne-gold/purple game interface, front three-quarter view, isolated centered with generous padding, no text or logos. 512x512. Transparent background.",
+      "transparent": true,
+      "status": "generated",
+      "path": "public/assets/icon-moon.png"
+    },
+    {
+      "id": "lobby-decoration",
+      "kind": "decoration",
+      "filename": "lobby-decoration.png",
+      "prompt": "Original fantasy game website background artwork: delicate abstract champagne gold filigree framing deep navy space with tiny stars. Sophisticated subtle texture, suitable behind readable UI, wide 1920x1080 composition. No text, letters or logos.",
+      "transparent": false,
+      "status": "generated",
+      "path": "public/assets/lobby-decoration.png"
+    },
+    {
+      "id": "icon-key",
+      "kind": "icon",
+      "filename": "icon-key.png",
+      "prompt": "A single original premium 3D fantasy UI icon, an ornate golden magical key. Refined crisp details, matching luxury midnight-blue/champagne-gold/purple game interface, front three-quarter view, isolated centered with generous padding, no text or logos. 512x512. Transparent background.",
+      "transparent": true,
+      "status": "generated",
+      "path": "public/assets/icon-key.png"
+    },
+    {
+      "id": "icon-portal",
+      "kind": "icon",
+      "filename": "icon-portal.png",
+      "prompt": "A single original premium 3D fantasy UI icon, a small magical purple and gold portal. Refined crisp details, matching luxury midnight-blue/champagne-gold/purple game interface, front three-quarter view, isolated centered with generous padding, no text or logos. 512x512. Transparent background.",
+      "transparent": true,
+      "status": "generated",
+      "path": "public/assets/icon-portal.png"
+    },
+    {
+      "id": "icon-laurel",
+      "kind": "icon",
+      "filename": "icon-laurel.png",
+      "prompt": "A single original premium 3D fantasy UI icon, a pair of gold victory laurel branches. Refined crisp details, matching luxury midnight-blue/champagne-gold/purple game interface, front three-quarter view, isolated centered with generous padding, no text or logos. 512x512. Transparent background.",
+      "transparent": true,
+      "status": "generated",
+      "path": "public/assets/icon-laurel.png"
+    }
+  ]
+}

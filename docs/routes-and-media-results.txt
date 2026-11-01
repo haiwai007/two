@@ -1,0 +1,1 @@
+{"htmlRoutes":32,"assetHeadChecks":85,"status":"passed","limitation":"HTTP responses only; browser interaction, Canvas and visual/mobile QA not performed"}

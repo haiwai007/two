@@ -1,0 +1,49 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "aurum-original-games",
+  "main": ".open-next/worker.js",
+  "compatibility_date": "2026-10-30",
+  "compatibility_flags": ["nodejs_compat"],
+  "assets": {
+    "directory": ".open-next/assets",
+    "binding": "ASSETS",
+  },
+  "observability": {
+    "enabled": true,
+  },
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "aurum-db",
+      "database_id": "REPLACE_WITH_CREATED_D1_ID",
+      "migrations_dir": "migrations",
+    },
+  ],
+  "r2_buckets": [
+    {
+      "binding": "BUCKET",
+      "bucket_name": "aurum-assets",
+    },
+  ],
+  "vars": {
+    "SITE_NAME": "AURUM",
+    "TURNSTILE_SITE_KEY": "",
+    "REQUIRE_TURNSTILE": "true",
+  },
+  "routes": [
+    {
+      "pattern": "h6688.win",
+      "custom_domain": true,
+    },
+    {
+      "pattern": "www.h6688.win",
+      "custom_domain": true,
+    },
+  ],
+  "services": [
+    {
+      "binding": "WORKER_SELF_REFERENCE",
+      "service": "aurum-original-games",
+    },
+  ],
+}

@@ -1,0 +1,3 @@
+UPDATE game_assets SET storage_key='bundled/golden-god-cover.png',media_type='image/png',size=2907769 WHERE id='cover-golden-god';
+UPDATE game_assets SET storage_key='bundled/dragon-world-cover.png',media_type='image/png',size=3380439 WHERE id='cover-dragon-world';
+UPDATE game_assets SET storage_key='bundled/phoenix-legend-cover.png',media_type='image/png',size=3119279 WHERE id='cover-phoenix-legend';
