@@ -10,12 +10,12 @@ const {scanPayments,approvePayment}=await import('../.test-state/payment-tests/p
 const {TronRpc}=await import('../.test-state/payment-tests/tron-rpc.js');
 const {Repository}=await import('../.test-state/payment-tests/repository.js');
 function setup(){
- const sql=new DatabaseSync(':memory:');for(const f of readdirSync('migrations').filter(f=>f.endsWith('.sql')).sort())sql.exec(readFileSync('migrations/'+f,'utf8'));
+ let queryCount=0;const sql=new DatabaseSync(':memory:');for(const f of readdirSync('migrations').filter(f=>f.endsWith('.sql')).sort())sql.exec(readFileSync('migrations/'+f,'utf8'));
  sql.exec("INSERT INTO users(id,username,email,password_hash) VALUES('u','test','test@example.test','h');INSERT INTO virtual_points(user_id,balance) VALUES('u',100);INSERT INTO game_assets(id,storage_key,media_type,size,original_name) VALUES('qr','qr','image/png',10,'test.png')");
- function statement(text,args=[]){return {bind(...values){return statement(text,values)},async first(){return sql.prepare(text).get(...args)??null},async all(){return {results:sql.prepare(text).all(...args)}},async run(){return {meta:sql.prepare(text).run(...args)}}};}
+ function statement(text,args=[]){return {bind(...values){return statement(text,values)},async first(){queryCount++;return sql.prepare(text).get(...args)??null},async all(){queryCount++;return {results:sql.prepare(text).all(...args)}},async run(){queryCount++;return {meta:sql.prepare(text).run(...args)}}};}
  const db={prepare:statement,async batch(items){sql.exec('BEGIN');try{const result=[];for(const item of items)result.push(await item.run());sql.exec('COMMIT');return result}catch(e){sql.exec('ROLLBACK');throw e}}};
  const settings={enabled:true,autoApproval:true,address:'T9yD14Nj9j7xAB4dbGeiX9h8unkKHxuWwb',qrAssetId:'qr',qrConfirmed:true,revision:0,instructions:''};sql.prepare("UPDATE system_settings SET value=? WHERE key='payment_usdt_trc20'").run(JSON.stringify(settings));
- return {sql,db,repo:new Repository(db),settings};
+ return {sql,db,repo:new Repository(db),settings,queries:()=>queryCount};
 }
 const user={id:'u'};
 test('quote requests are idempotent, precise, private and limited to five active orders',async()=>{
@@ -63,4 +63,12 @@ test('scheduled discovery verifies solidified receipt then settles atomically (R
  else if(url.endsWith('/getnowblock'))data={block_header:{raw_data:{number:105}}};else throw Error('Unexpected RPC endpoint');
  return new Response(JSON.stringify(data));};
  try{assert.equal((await scanPayments({DB:db})).status,'ok');assert.equal(sql.prepare('SELECT status FROM recharge_orders').get().status,'approved');assert.equal(sql.prepare('SELECT COUNT(*) n FROM point_records').get().n,1);assert.equal(calls.length,4);assert.ok(calls.slice(1).every(url=>url.includes('/walletsolidity/')));}finally{globalThis.fetch=previous;sql.close()}
+});
+
+test('one hundred cached history entries use a bounded number of D1 queries',async()=>{
+ const {sql,db,repo,settings,queries}=setup();await paymentOrderAction(repo,{DB:db},user,false,undefined,'POST',{amount:10,requestKey:crypto.randomUUID()},settings);
+ const ids=Array.from({length:100},(_,i)=>i.toString(16).padStart(64,'0'));
+ for(const id of ids)sql.prepare('INSERT INTO chain_checked_transactions VALUES(?,?)').run(id,Date.now());
+ const previous=globalThis.fetch;globalThis.fetch=async()=>new Response(JSON.stringify({data:ids.map(transaction_id=>({transaction_id})),meta:{}}));
+ try{const before=queries();assert.equal((await scanPayments({DB:db})).status,'ok');assert.ok(queries()-before<20,'Cached entries must not trigger a separate D1 query per transaction');assert.equal(sql.prepare('SELECT COUNT(*) n FROM point_records').get().n,0);}finally{globalThis.fetch=previous;sql.close()}
 });

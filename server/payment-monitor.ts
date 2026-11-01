@@ -6,7 +6,7 @@ export async function storeVerified(repo:Repository,rpc:TronRpc,txId:string) {
  if(await repo.one("SELECT 1 FROM chain_checked_transactions WHERE tx_id=?",txId))return;
  const events=await rpc.verified(txId);
  await repo.batch([
-  ...events.map(e=>repo.statement("INSERT OR IGNORE INTO chain_transfers(tx_id,log_index,recipient_hex,sender_hex,amount_micro,block_number,block_ms,verified) VALUES(?,?,?,?,?,?,?,1)",e.txId,e.logIndex,e.recipientHex,e.senderHex,e.amountMicro,e.blockNumber,e.blockTimestamp)),
+  repo.statement("INSERT OR IGNORE INTO chain_transfers(tx_id,log_index,recipient_hex,sender_hex,amount_micro,block_number,block_ms,verified) SELECT json_extract(value,'$.txId'),json_extract(value,'$.logIndex'),json_extract(value,'$.recipientHex'),json_extract(value,'$.senderHex'),json_extract(value,'$.amountMicro'),json_extract(value,'$.blockNumber'),json_extract(value,'$.blockTimestamp'),1 FROM json_each(?)",JSON.stringify(events)),
   repo.statement("INSERT OR IGNORE INTO chain_checked_transactions(tx_id,checked_ms) VALUES(?,?)",txId,Date.now()),
  ]);
 }
@@ -33,7 +33,7 @@ export async function scanPayments(env:Env) {
  let checked=0;
  try {
   await repo.run("UPDATE recharge_orders SET status='expired' WHERE status='pending' AND expires_ms<?",now);
-  const addresses=await repo.all<{address:string;since_ms:number}>("SELECT address,MIN(created_ms) since_ms FROM recharge_orders WHERE status IN ('pending','expired','manual_review','cancelled') AND created_ms>? GROUP BY address ORDER BY COALESCE((SELECT scanned_ms FROM payment_scan_cursors c WHERE c.address=recharge_orders.address),0),MIN(created_ms) LIMIT 5",now-86400000);
+  const addresses=await repo.all<{address:string;since_ms:number}>("SELECT address,MIN(created_ms) since_ms FROM recharge_orders WHERE status IN ('pending','expired','manual_review','cancelled') AND created_ms>? GROUP BY address ORDER BY COALESCE((SELECT scanned_ms FROM payment_scan_cursors c WHERE c.address=recharge_orders.address),0),MIN(created_ms) LIMIT 1",now-86400000);
   const rpc=new TronRpc(env);let budget=6;
   for(const item of addresses){
    if(budget<=0||Date.now()-now>40000)break;
@@ -41,14 +41,15 @@ export async function scanPayments(env:Env) {
    const cursor=await repo.one<{fingerprint:string;since_ms:number}>("SELECT * FROM payment_scan_cursors WHERE address=?",item.address);
    const since=cursor?.fingerprint?cursor.since_ms:item.since_ms;
    const page=await rpc.history(item.address,since,cursor?.fingerprint??"");let complete=true;
+   const cached=new Set((await repo.all<{tx_id:string}>("SELECT tx_id FROM chain_checked_transactions WHERE tx_id IN (SELECT value FROM json_each(?))",JSON.stringify(page.ids))).map(row=>row.tx_id));
    for(const id of page.ids){
-    if(await repo.one("SELECT 1 FROM chain_checked_transactions WHERE tx_id=?",id))continue;
+    if(cached.has(id))continue;
     if(budget<=0||Date.now()-now>40000){complete=false;break;}
     await storeVerified(repo,rpc,id);budget--;checked++;
    }
    if(complete)await repo.run("INSERT INTO payment_scan_cursors(address,fingerprint,since_ms) VALUES(?,?,?) ON CONFLICT(address) DO UPDATE SET fingerprint=excluded.fingerprint,since_ms=excluded.since_ms",item.address,page.fingerprint,since);
   }
-  const matches=await repo.all<{id:string}>("SELECT DISTINCT r.id FROM recharge_orders r JOIN chain_transfers e ON e.recipient_hex=r.address_hex AND e.amount_micro=CAST(r.quote_micro AS TEXT) AND e.block_ms>=r.created_ms WHERE r.status IN ('pending','expired','cancelled') LIMIT 100");
+  const matches=await repo.all<{id:string}>("SELECT DISTINCT r.id FROM recharge_orders r JOIN chain_transfers e ON e.recipient_hex=r.address_hex AND e.amount_micro=CAST(r.quote_micro AS TEXT) AND e.block_ms>=r.created_ms WHERE r.status IN ('pending','expired','cancelled') LIMIT 4");
   let refused=0;
   for(const match of matches){try{await approvePayment(repo,match.id,"auto");}catch{refused++;await repo.run("UPDATE recharge_orders SET status='manual_review',review_note='自动入账条件未满足，请人工复核' WHERE id=? AND status IN ('pending','expired','cancelled')",match.id);}}
   await repo.run("UPDATE payment_monitor_state SET last_scan_ms=?,last_error=?,scanned=scanned+?,next_poll_ms=?,lease_until=0 WHERE name='trc20' AND lease_id=?",Date.now(),refused?"settlement_review_required":null,checked,now+50000,lease);
