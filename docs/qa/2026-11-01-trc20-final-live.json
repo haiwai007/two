@@ -1,0 +1,28 @@
+{
+  "checkedAt": "2026-11-01T14:06:50.287Z",
+  "commit": "5c04c32",
+  "cloudflareVersion": "37312074-9a2a-450b-993e-f1b9667f9dca",
+  "mode": "anonymous read-only",
+  "checks": [
+    {
+      "path": "/api/health",
+      "status": 200
+    },
+    {
+      "path": "/recharge",
+      "status": 200
+    },
+    {
+      "path": "/admin/recharge",
+      "status": 200
+    },
+    {
+      "path": "/api/recharge",
+      "status": 401
+    },
+    {
+      "path": "/api/admin/recharge",
+      "status": 401
+    }
+  ]
+}

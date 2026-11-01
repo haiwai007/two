@@ -19,7 +19,7 @@ for (const resource of ["events", "announcements"]) {
   const body = await r.text();
   assert.ok(!/\bAI\b|AURUM|星曜/.test(body), `${resource} still contains old public labels`);
 }
-for (const path of ["/api/profile", "/api/admin/statistics"]) {
+for (const path of ["/api/profile", "/api/admin/statistics", "/api/recharge", "/api/admin/recharge"]) {
   const r = await request(path);
   assert.ok([401, 403].includes(r.status), `${path} exposed to an anonymous visitor: ${r.status}`);
 }
@@ -53,7 +53,7 @@ try {
     });
     const page = await context.newPage();
     page.on("pageerror", error => report.browserErrors.push({ viewport: viewport.width, message: error.message }));
-    for (const path of ["/", "/games", "/login", "/register", "/profile", "/admin", "/play/golden-god"]) {
+    for (const path of ["/", "/games", "/login", "/register", "/profile", "/admin", "/recharge", "/admin/recharge", "/play/golden-god"]) {
       const nav = await page.goto(origin + path, { waitUntil: "domcontentloaded", timeout: 45000 });
       assert.equal(nav.status(), 200, path);
       await page.locator(".topbar").waitFor();
@@ -94,7 +94,7 @@ try {
         await page.waitForFunction(() => [...document.querySelectorAll(".game-card img")].every(img => img.complete && img.naturalWidth > 0));
         await page.evaluate(() => window.scrollTo(0, 0));
       }
-      if (path === "/games" || path === "/play/golden-god") await page.screenshot({ path: `${output}/${viewport.width}-${path.startsWith("/play") ? "game" : "lobby"}.png`, fullPage: true });
+      if (["/games", "/play/golden-god", "/recharge"].includes(path)) await page.screenshot({ path: `${output}/${viewport.width}-${path === "/recharge" ? "recharge" : path.startsWith("/play") ? "game" : "lobby"}.png`, fullPage: true, animations: "disabled" });
     }
     await context.close();
   }
