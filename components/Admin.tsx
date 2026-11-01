@@ -195,7 +195,7 @@ export default function Admin({
   );
   return (
     <>
-      <div className="eyebrow">AURUM CONTROL CENTER</div>
+      <div className="eyebrow">海盈国际 · 管理中心</div>
       <div className="section-heading">
         <h1>{config.title}</h1>
         {module === "statistics" && user.role === "owner" && (
@@ -422,7 +422,7 @@ export default function Admin({
                               target="_blank"
                               rel="noreferrer"
                             >
-                              {String(row.original_name)}{" "}
+                              {String(row.original_name).replace(/[-_]ai(?=\.)/gi, "")}{" "}
                               <ExternalLink size={13} />
                             </a>
                             <small>

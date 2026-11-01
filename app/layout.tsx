@@ -1,8 +1,8 @@
 import "./globals.css";
 import type { Metadata } from "next";
 export const metadata: Metadata = {
-  title: "AURUM 星曜 · 原创游戏",
-  description: "独立开发的HTML5游戏与虚拟积分体验",
+  title: "海盈国际 · 游戏平台",
+  description: "海盈国际，精彩游戏与虚拟积分体验",
 };
 export default function RootLayout({
   children,

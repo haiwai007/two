@@ -13,6 +13,12 @@ const response = await request("/api/games");
 assert.equal(response.status, 200);
 const { games } = await response.json();
 assert.equal(games.length, 30);
+for (const resource of ["events", "announcements"]) {
+  const r = await request("/api/" + resource);
+  assert.equal(r.status, 200);
+  const body = await r.text();
+  assert.ok(!/\bAI\b|AURUM|星曜/.test(body), `${resource} still contains old public labels`);
+}
 for (const path of ["/api/profile", "/api/admin/statistics"]) {
   const r = await request(path);
   assert.ok([401, 403].includes(r.status), `${path} exposed to an anonymous visitor: ${r.status}`);
@@ -68,6 +74,12 @@ try {
         await page.locator(".game-stage canvas").waitFor({ timeout: 30000 });
         await page.getByRole("button", { name: "开始游戏", exact: true }).click();
         await page.getByText("请先登录后体验游戏", { exact: true }).waitFor();
+      }
+      assert.match(await page.title(), /海盈国际/);
+      const visibleText = await page.locator("body").innerText();
+      assert.ok(!/\bAI\b|AURUM|星曜/.test(visibleText), `${path} still shows old branding or AI labels`);
+      if (viewport.width < 640) {
+        assert.ok((await page.locator(".topbar-left").evaluate(el => getComputedStyle(el, "::after").content)).includes("海盈国际"));
       }
       const dimensions = await page.evaluate(() => ({ width: innerWidth, documentWidth: document.documentElement.scrollWidth }));
       assert.ok(dimensions.documentWidth <= dimensions.width + 1, `${viewport.width}px ${path} overflows: ${dimensions.documentWidth}`);
