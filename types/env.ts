@@ -4,4 +4,5 @@ export interface Env {
   TURNSTILE_SECRET_KEY?: string;
   TURNSTILE_SITE_KEY?: string;
   REQUIRE_TURNSTILE?: string;
+  TRONGRID_API_KEY?: string;
 }

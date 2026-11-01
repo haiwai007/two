@@ -10,6 +10,7 @@ import {
   ExternalLink,
   X,
 } from "lucide-react";
+import Recharge from "./Recharge";
 import { api, DataTable, Empty } from "./Platform";
 type Row = Record<string, unknown>;
 const modules: Record<
@@ -83,6 +84,7 @@ const modules: Record<
       content: "内容",
     },
   },
+  recharge: { title: "收款管理", fields: {} },
   settings: { title: "系统设置", key: "key", fields: { value: "设置值" } },
   admins: {
     title: "管理员管理",
@@ -115,6 +117,7 @@ export default function Admin({
     [revision, setRevision] = useState("");
   const load = useCallback(async () => {
     setError("");
+    if (module === "recharge") return;
     try {
       const data = await api("admin/" + module);
       if (module === "statistics") setStats(data);
@@ -327,7 +330,8 @@ export default function Admin({
           />
         </>
       )}
-      {module !== "statistics" && (
+      {module === "recharge" && <Recharge admin userId={user.id} role={user.role} notify={notify}/>}
+      {module !== "statistics" && module !== "recharge" && (
         <>
           <div className="admin-toolbar">
             <label className="catalog-search">
@@ -449,7 +453,7 @@ export default function Admin({
                       </td>
                       <td>
                         <div className="row-actions">
-                          {module === "users" ? (
+                          {module === "settings" && row.key === "payment_usdt_trc20" ? <Link href="/admin/recharge">前往收款管理</Link> : module === "users" ? (
                             <>
                               <button
                                 onClick={() => setSelected(String(row.id))}
@@ -488,10 +492,11 @@ export default function Admin({
                                     if (input === null) return;
                                     const delta = Number(input);
                                     if (
-                                      !Number.isSafeInteger(delta) ||
+                                      !/^[-]?\d+(\.\d{1,2})?$/.test(input) ||
+                                      !Number.isFinite(delta) ||
                                       !delta
                                     ) {
-                                      notify("请输入非零整数");
+                                      notify("请输入非零积分，最多两位小数");
                                       return;
                                     }
                                     const reason =

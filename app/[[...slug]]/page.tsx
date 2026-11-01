@@ -19,6 +19,8 @@ const pages = new Set([
   "announcements",
   "messages",
   "download",
+  "recharge",
+  "admin/recharge",
   "admin",
   "admin/games",
   "admin/categories",

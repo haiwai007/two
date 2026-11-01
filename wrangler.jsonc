@@ -1,7 +1,8 @@
 {
   "$schema": "node_modules/wrangler/config-schema.json",
   "name": "aurum-original-games",
-  "main": ".open-next/worker.js",
+  "main": "workers/site.ts",
+  "triggers": { "crons": ["* * * * *"] },
   "compatibility_date": "2026-10-30",
   "compatibility_flags": ["nodejs_compat"],
   "assets": {

@@ -525,3 +525,82 @@ test("a form cannot submit before verification and widget errors can be retried 
   await submit.click();
   await expect.poll(() => submissions).toBe(1);
 });
+
+test("owner configures TRC20, members create precise orders and approval updates fractional wallet", async ({ page, baseURL }) => {
+  const previous = (await (await page.request.get('/api/admin/recharge')).json()).settings;
+  let assetId: string | undefined;
+  const origin = { Origin: baseURL! };
+  try {
+    await page.goto('/admin/recharge');
+    await expect(page.getByRole('heading', { name: 'USDT-TRC20 收款设置' })).toBeVisible();
+    for(const width of [375,820,1440]){
+      await page.setViewportSize({width,height:1000});
+      expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth)).toBeTruthy();
+      await page.screenshot({path:'.test-state/recharge-admin-'+width+'.png',fullPage:true,animations:'disabled'});
+    }
+    await page.getByLabel('TRC20收款地址').fill('invalid-wallet');
+    await page.getByRole('button', { name: '保存收款设置' }).click();
+    await expect(page.locator('.form-error')).toContainText('有效的TRON');
+    // Checksum-only burn-address fixture; this entire test is restricted to localhost.
+    const address = 'T9yD14Nj9j7xAB4dbGeiX9h8unkKHxuWwb';
+    await page.getByLabel('TRC20收款地址').fill(address);
+    const upload = page.waitForResponse(r => r.url().endsWith('/api/admin/assets') && r.request().method()==='POST');
+    await page.getByLabel('上传收款二维码').setInputFiles({ name:'local-test-qr.png', mimeType:'image/png', buffer:Buffer.from('iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP8/x8AAwMCAO+jSfoAAAAASUVORK5CYII=','base64') });
+    const uploaded = await upload;
+    expect(uploaded.status()).toBe(201);
+    assetId = (await uploaded.json()).ids[0];
+    await page.getByLabel('已自行扫描并核对二维码与填写的收款地址一致').check();
+    await page.getByLabel('开放充值').check();
+    const saved = page.waitForResponse(r => r.url().endsWith('/api/admin/recharge') && r.request().method()==='PATCH');
+    await page.getByRole('button', { name:'保存收款设置' }).click();
+    expect((await saved).status()).toBe(200);
+    expect((await page.request.delete('/api/admin/assets/'+assetId,{headers:origin})).status()).toBe(409);
+    expect((await page.request.patch('/api/admin/settings/payment_usdt_trc20',{headers:origin,data:{value:'{}'}})).status()).toBe(400);
+    expect((await page.request.patch('/api/admin/recharge',{headers:origin,data:previous})).status()).toBe(409);
+    await page.goto('/recharge');
+    await expect(page.getByRole('heading',{name:'USDT-TRC20 充值'})).toBeVisible();
+    await page.getByLabel('充值金额').fill('10');
+    const quoteResponse=page.waitForResponse(r=>r.url().endsWith('/api/recharge')&&r.request().method()==='POST');
+    await page.getByRole('button',{name:'生成应付金额'}).click();
+    const order=(await (await quoteResponse).json()).order;
+    await expect(page.locator('textarea')).toHaveValue(address);
+    await expect(page.getByAltText('USDT-TRC20收款二维码')).toBeVisible();
+    await expect(page.locator('.recharge-order h3')).toContainText((order.quote_micro/1000000).toFixed(2));
+    for(const width of [375,820,1440]){
+      await page.setViewportSize({width,height:1000});
+      expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth)).toBeTruthy();
+      await page.screenshot({path:'.test-state/recharge-member-'+width+'.png',fullPage:true,animations:'disabled'});
+    }
+    const owner=(await (await page.request.get('/api/auth/me')).json()).user;
+    // Locally injected verified receipt fixture, never a real payment or production bypass.
+    const hash=(crypto.randomUUID()+crypto.randomUUID()).replaceAll('-','');
+    execFileSync(process.execPath,['node_modules/wrangler/bin/wrangler.js','d1','execute','aurum-db','--local','--command',
+      `INSERT INTO chain_transfers VALUES('${hash}',0,'${order.address_hex}','sender','${order.quote_micro}',100,${order.created_ms+1},1);INSERT OR IGNORE INTO chain_checked_transactions VALUES('${hash}',${Date.now()})`],{stdio:'pipe'});
+    const approved=await page.request.patch('/api/admin/recharge/'+order.id,{headers:origin,data:{action:'approve',txHash:hash,confirmed:true}});
+    expect(approved.status()).toBe(200);
+    expect((await page.request.patch('/api/admin/recharge/'+order.id,{headers:origin,data:{action:'approve',txHash:hash,confirmed:true}})).status()).toBe(200);
+    const updated=(await (await page.request.get('/api/auth/me')).json()).user;
+    expect(Math.round(updated.balance*100)).toBe(Math.round(owner.balance*100)+order.credit_minor);
+    await expect(page.getByText('已到账',{exact:true})).toBeVisible();
+    const member = await createRequest.newContext({baseURL,extraHTTPHeaders:origin});
+    const name='recharge_'+Date.now().toString(36);
+    expect((await member.post('/api/auth/register',{data:{username:name,email:name+'@example.test',password:crypto.randomUUID()+'Pass',agreement:true}})).status()).toBe(201);
+    expect((await member.get('/api/admin/recharge')).status()).toBe(403);
+    expect((await member.patch('/api/admin/recharge',{data:{...previous}})).status()).toBe(403);
+    expect((await member.patch('/api/recharge/'+order.id,{data:{action:'cancel'}})).status()).toBe(404);
+    const requestKey=crypto.randomUUID();
+    const created=await member.post('/api/recharge',{data:{amount:10,requestKey}});
+    expect(created.status()).toBe(200);
+    const memberOrder=(await created.json()).order;
+    expect(memberOrder.quote_micro).not.toBe(order.quote_micro);
+    expect(memberOrder.credit_minor*10000).toBe(memberOrder.quote_micro);
+    expect((await (await member.post('/api/recharge',{data:{amount:10,requestKey}})).json()).order.id).toBe(memberOrder.id);
+    expect((await member.patch('/api/admin/recharge/'+memberOrder.id,{data:{action:'approve',confirmed:true}})).status()).toBe(403);
+    expect((await (await member.get('/api/auth/me')).json()).user.balance).toBe(10000);
+    await member.dispose();
+  } finally {
+    const current = (await (await page.request.get('/api/admin/recharge')).json()).settings;
+    await page.request.patch('/api/admin/recharge',{headers:origin,data:{...previous,revision:current.revision}});
+    if(assetId) await page.request.delete('/api/admin/assets/'+assetId,{headers:origin});
+  }
+});

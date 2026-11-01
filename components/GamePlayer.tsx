@@ -297,7 +297,7 @@ export default function GamePlayer({
       <div className="player-controls">
         <div>
           <small>可用积分</small>
-          <b>{balance?.toLocaleString() ?? "请先登录"}</b>
+          <b>{balance?.toLocaleString("zh-CN", {minimumFractionDigits:2,maximumFractionDigits:2}) ?? "请先登录"}</b>
         </div>
         <label>
           <small>本局积分</small>

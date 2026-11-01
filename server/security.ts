@@ -1,4 +1,4 @@
-import { Repository } from "./db";
+import { Repository } from "./repository";
 import type { Env } from "../types/env";
 export { verifyTurnstile as turnstile } from "./turnstile";
 const enc = new TextEncoder();
@@ -92,7 +92,7 @@ export async function current(
   if (!cookie) return null;
   const digest = hex(await crypto.subtle.digest("SHA-256", enc.encode(cookie)));
   return repo.one<User>(
-    `SELECT u.id,u.username,u.email,u.avatar,u.status,a.role,p.balance FROM sessions s JOIN users u ON u.id=s.user_id LEFT JOIN admin_users a ON a.user_id=u.id JOIN virtual_points p ON p.user_id=u.id WHERE s.id=? AND s.expires_at>? AND u.status='active'`,
+    `SELECT u.id,u.username,u.email,u.avatar,u.status,a.role,(p.balance*100+p.balance_fraction)/100.0 AS balance FROM sessions s JOIN users u ON u.id=s.user_id LEFT JOIN admin_users a ON a.user_id=u.id JOIN virtual_points p ON p.user_id=u.id WHERE s.id=? AND s.expires_at>? AND u.status='active'`,
     digest,
     Date.now(),
   );

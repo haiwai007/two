@@ -1,3 +1,6 @@
+import { pointMinor, pointParts, MAX_POINT_MINOR } from "../lib/money";
+import { rechargeApi } from "./recharge";
+import { RECHARGE_KEY } from "../lib/recharge";
 import { cleanExpired } from "./maintenance";
 import { Repository, environment } from "./db";
 import {
@@ -256,6 +259,7 @@ export async function handle(req: Request) {
           "SELECT * FROM events WHERE status='published' AND (starts_at IS NULL OR datetime(starts_at)<=datetime('now')) AND (ends_at IS NULL OR datetime(ends_at)>datetime('now')) LIMIT 3",
         ),
       });
+    if (resource === "recharge") return await rechargeApi(req, repo, user, false, () => body(req), env);
     if (resource === "games" && method === "GET") {
       if (id) {
         const game = await repo.one(
@@ -436,7 +440,7 @@ export async function handle(req: Request) {
           user: u,
           records,
           points: await repo.all(
-            "SELECT * FROM point_records WHERE user_id=? ORDER BY created_at DESC LIMIT 100",
+            "SELECT id,user_id,type,(delta*100+delta_fraction)/100.0 AS delta,(before_balance*100+before_fraction)/100.0 AS before_balance,(after_balance*100+after_fraction)/100.0 AS after_balance,game_record_id,created_at FROM point_records WHERE user_id=? ORDER BY created_at DESC LIMIT 100",
             u.id,
           ),
           favorites: await repo.all(
@@ -567,7 +571,8 @@ export async function handle(req: Request) {
       });
     }
     if (resource === "admin") {
-      const actor = requireAdmin(id === "admins" || id === "settings");
+      const actor = requireAdmin(id === "admins" || id === "settings" || id === "recharge");
+      if (id === "recharge") return await rechargeApi(req, repo, actor, true, () => body(req), env);
       if (id === "maintenance" && method === "POST") {
         requireAdmin(true);
         const result = await cleanExpired(env.DB);
@@ -612,7 +617,7 @@ export async function handle(req: Request) {
         if (method === "GET" && !action)
           return json({
             items: await repo.all(
-              "SELECT u.id,u.username,u.email,u.status,u.created_at,p.balance FROM users u JOIN virtual_points p ON p.user_id=u.id WHERE u.username LIKE ? ORDER BY u.created_at DESC LIMIT 200",
+              "SELECT u.id,u.username,u.email,u.status,u.created_at,(p.balance*100+p.balance_fraction)/100.0 AS balance FROM users u JOIN virtual_points p ON p.user_id=u.id WHERE u.username LIKE ? ORDER BY u.created_at DESC LIMIT 200",
               "%" + (url.searchParams.get("q") ?? "").slice(0, 100) + "%",
             ),
           });
@@ -621,29 +626,27 @@ export async function handle(req: Request) {
           if (actor.role === "editor") fail("没有用户管理权限", 403);
           if (data.delta !== undefined) {
             if (actor.role !== "owner") fail("仅所有者可以调整积分", 403);
-            const delta = Number(data.delta);
-            if (
-              !Number.isSafeInteger(delta) ||
-              Math.abs(delta) > 1000000 ||
-              !delta
-            )
-              fail("积分调整值无效");
-            const wallet = await repo.one<{ balance: number }>(
-              "SELECT balance FROM virtual_points WHERE user_id=?",
-              action,
-            );
-            if (!wallet || wallet.balance + delta < 0) fail("余额不合法");
+            const deltaMinor = pointMinor(data.delta);
+            if (!deltaMinor || Math.abs(deltaMinor) > 100000000) fail("积分调整值无效");
+            const wallet = await repo.one<{ balance:number; balance_fraction:number }>("SELECT balance,balance_fraction FROM virtual_points WHERE user_id=?", action);
+            if (!wallet) fail("账户不存在");
+            const afterMinor = wallet.balance * 100 + wallet.balance_fraction + deltaMinor;
+            if (afterMinor < 0 || afterMinor > MAX_POINT_MINOR) fail("余额不合法");
+            const after = pointParts(afterMinor);
             await repo.batch([
               repo.statement(
-                "INSERT INTO point_records(id,user_id,type,delta,before_balance,after_balance) VALUES(?,?,'admin',?,?,?)",
+                "INSERT INTO point_records(id,user_id,type,delta,before_balance,after_balance,delta_fraction,before_fraction,after_fraction) VALUES(?,?,'admin',?,?,?,?,?,?)",
                 uid(),
                 action,
-                delta,
+                after.whole-wallet.balance,
                 wallet.balance,
-                wallet.balance + delta,
+                after.whole,
+                after.fraction-wallet.balance_fraction,
+                wallet.balance_fraction,
+                after.fraction,
               ),
               audit("points.adjust", action, {
-                delta,
+                delta: deltaMinor / 100,
                 reason: textField(data.reason, "调整原因", 500),
               }),
             ]);
@@ -768,7 +771,9 @@ export async function handle(req: Request) {
           );
           if (!asset) fail("素材不存在", 404);
           const referenced = await repo.one<{ total: number }>(
-            "SELECT (SELECT COUNT(*) FROM system_settings WHERE value=?)+(SELECT COUNT(*) FROM game_categories WHERE icon=?)+(SELECT COUNT(*) FROM users WHERE avatar=?)+(SELECT COUNT(*) FROM games g,json_each(CASE WHEN json_valid(g.config) THEN g.config ELSE '{}' END,'$.symbolAssets') a WHERE a.value=?) AS total",
+            "SELECT (SELECT COUNT(*) FROM system_settings WHERE value=?)+(SELECT COUNT(*) FROM game_categories WHERE icon=?)+(SELECT COUNT(*) FROM users WHERE avatar=?)+(SELECT COUNT(*) FROM games g,json_each(CASE WHEN json_valid(g.config) THEN g.config ELSE '{}' END,'$.symbolAssets') a WHERE a.value=?)+(SELECT COUNT(*) FROM system_settings WHERE key='payment_usdt_trc20' AND json_extract(CASE WHEN json_valid(value) THEN value ELSE '{}' END,'$.qrAssetId')=?)+(SELECT COUNT(*) FROM recharge_orders WHERE qr_asset_id=?) AS total",
+            action,
+            action,
             action,
             action,
             action,
@@ -795,6 +800,7 @@ export async function handle(req: Request) {
         if (actor.role === "support") fail("没有编辑权限", 403);
         if (id === "admins" && action === actor.id)
           fail("不能修改自己的管理员权限");
+        if (id === "settings" && action === RECHARGE_KEY && method !== "GET") fail("请通过收款管理修改充值配置");
         if (method === "DELETE" && action) {
           if (id === "games") {
             const count = await repo.one<{ total: number }>(
@@ -836,6 +842,7 @@ export async function handle(req: Request) {
         if (method === "POST" || method === "PATCH") {
           const data = await body(req),
             keys = def.fields.filter((k) => data[k] !== undefined);
+          if (id === "settings" && data.key === RECHARGE_KEY) fail("请通过收款管理修改充值配置");
           if (!keys.length) fail("没有可保存字段");
           for (const k of keys) {
             if (

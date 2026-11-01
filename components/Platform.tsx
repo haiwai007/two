@@ -31,6 +31,7 @@ import initialCatalog from "../lib/catalog.json";
 import { formatTimestamp } from "../lib/time";
 import GamePlayer from "./GamePlayer";
 import Admin from "./Admin";
+import Recharge from "./Recharge";
 export type Game = (typeof initialCatalog)[number];
 type Member = {
   id: string;
@@ -84,6 +85,7 @@ const mainNav = [
   { href: "/profile/favorites", label: "我的收藏", icon: Heart },
 ];
 const moreNav = [
+  { href: "/recharge", label: "充值中心", icon: Coins },
   { href: "/leaderboard", label: "积分排行榜", icon: Trophy },
   { href: "/events", label: "活动中心", icon: Gift },
   { href: "/announcements", label: "公告中心", icon: Bell },
@@ -406,7 +408,7 @@ export default function Platform() {
               <>
                 <Link href="/profile/points" className="balance">
                   <Coins size={16} />
-                  {user.balance.toLocaleString()}
+                  {user.balance.toLocaleString("zh-CN", {minimumFractionDigits:2,maximumFractionDigits:2})}
                 </Link>
                 <Link href="/profile" className="user-link">
                   <UserRound size={18} />
@@ -792,6 +794,7 @@ export default function Platform() {
               }
             />
           )}
+          {path === "/recharge" && <Recharge key={user?.id ?? "guest"} userId={user?.id} notify={notify} onBalance={balance=>setUser(prev=>prev?{...prev,balance}:prev)}/>}
           {path.startsWith("/admin") && (
             <Admin path={path} user={user} notify={notify} />
           )}
@@ -800,6 +803,7 @@ export default function Platform() {
             ![
               "/login",
               "/register",
+              "/recharge",
               "/download",
               "/leaderboard",
               "/events",
@@ -825,7 +829,7 @@ export default function Platform() {
             <span>原创世界，非凡体验。</span>
           </div>
           <p>
-            仅提供虚拟积分体验 · 无充值、提现或现金兑换 · 原创演示非授权原版复刻
+            积分仅用于站内体验 · 不支持积分提现或现金兑换 · 原创演示非授权原版复刻
           </p>
           <small>© 2026 海盈国际</small>
         </footer>
@@ -1170,7 +1174,7 @@ function Profile({
         </div>
         <div className="points-summary">
           <small>可用虚拟积分</small>
-          <strong>{user.balance.toLocaleString()}</strong>
+          <strong>{user.balance.toLocaleString("zh-CN", {minimumFractionDigits:2,maximumFractionDigits:2})}</strong>
         </div>
       </div>
       <div className="subnav">

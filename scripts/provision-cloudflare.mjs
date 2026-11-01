@@ -78,7 +78,7 @@ async function main() {
   }
   mkdirSync(".test-state", { recursive: true });
   const file = resolve(".test-state/deploy-secrets.json");
-  writeFileSync(file, JSON.stringify({ TURNSTILE_SECRET_KEY: result.secret }), { mode: 0o600 });
+  writeFileSync(file, JSON.stringify({ TURNSTILE_SECRET_KEY: result.secret, ...(process.env.AURUM_TRONGRID_API_KEY ? { TRONGRID_API_KEY: process.env.AURUM_TRONGRID_API_KEY } : {}) }), { mode: 0o600 });
   chmodSync(file, 0o600);
   console.log(JSON.stringify({ provisioned: true, databaseId: result.databaseId, bucket: result.bucketName, turnstileConfigured: true, secretFile: ".test-state/deploy-secrets.json" }));
 }

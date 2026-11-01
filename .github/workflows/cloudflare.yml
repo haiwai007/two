@@ -27,6 +27,10 @@ jobs:
       - run: node --test tests/production-smoke.test.mjs
       - run: node --experimental-strip-types tests/turnstile.test.ts
       - run: python3 tests/database_test.py
+      - run: python3 tests/payments_test.py
+      - run: node tests/payment-service.test.mjs
+      - run: node --experimental-strip-types tests/recharge.test.ts
+      - run: node --experimental-strip-types tests/tron-receipt.test.ts
       - run: npm run cf:build
       - uses: actions/upload-artifact@v4
         with:
@@ -52,6 +56,7 @@ jobs:
       - name: Create or reuse production resources
         run: node scripts/provision-cloudflare.mjs --remote
       - run: node scripts/preflight.mjs wrangler.jsonc
+      - run: node scripts/d1-restore-point.mjs
       - run: npm run db:remote
       - run: node scripts/seed-if-empty.mjs --remote wrangler.jsonc
       - run: node scripts/import-assets.mjs --remote

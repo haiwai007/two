@@ -2218,3 +2218,13 @@ td code {
     height: 44px;
   }
 }
+ .recharge-page { max-width:1080px; }
+.recharge-settings { margin-bottom:28px; }
+.recharge-settings label,.recharge-display label { margin-bottom:18px; }
+.recharge-settings input:not([type=checkbox]),.recharge-settings textarea,.recharge-display textarea { width:100%; }
+.recharge-display textarea { resize:none; word-break:break-all; }
+.payment-qr { display:flex; flex-direction:column; align-items:flex-start; gap:12px; margin:18px 0; }
+.payment-qr img { width:240px; max-width:100%; aspect-ratio:1; object-fit:contain; background:white; padding:12px; border-radius:12px; }
+.payment-instructions { margin-top:20px; white-space:pre-wrap; overflow-wrap:anywhere; }
+@media(max-width:639px) { .recharge-display .section-heading { flex-wrap:wrap; gap:12px; } }
+.recharge-orders{display:grid;gap:16px;margin-top:28px}.recharge-order{min-width:0}.recharge-order label{display:grid;gap:8px;margin:16px 0}.recharge-order input,.recharge-order textarea{width:100%;min-width:0}.recharge-order small,.payment-hash{overflow-wrap:anywhere}.recharge-actions{display:flex;gap:10px;flex-wrap:wrap}.recharge-order h3{font-size:24px}.recharge-page>.panel{margin-bottom:20px}
