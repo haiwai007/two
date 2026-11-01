@@ -1,0 +1,382 @@
+{
+  "origin": "https://h6688.win",
+  "checkedAt": "2026-11-01T09:52:42.646Z",
+  "mode": "anonymous read-only",
+  "assets": [
+    {
+      "assetId": "webp-cover-dragon-world-607e61e9c6",
+      "status": 200
+    },
+    {
+      "assetId": "webp-banner-dragon-world-2bb7c5d05a",
+      "status": 200
+    },
+    {
+      "assetId": "webp-cover-phoenix-legend-8fc1188ce4",
+      "status": 200
+    },
+    {
+      "assetId": "webp-cover-golden-god-809c6b0dee",
+      "status": 200
+    },
+    {
+      "assetId": "webp-banner-golden-god-8a29d18980",
+      "status": 200
+    },
+    {
+      "assetId": "webp-cover-divine-dragon-49f4965fa2",
+      "status": 200
+    },
+    {
+      "assetId": "webp-banner-divine-dragon-c8c50cbe19",
+      "status": 200
+    },
+    {
+      "assetId": "webp-banner-phoenix-legend-52f11c1f03",
+      "status": 200
+    },
+    {
+      "assetId": "webp-cover-egypt-pharaoh-6bf7183d09",
+      "status": 200
+    },
+    {
+      "assetId": "webp-banner-egypt-pharaoh-8ea5e1df1b",
+      "status": 200
+    },
+    {
+      "assetId": "webp-cover-three-kingdoms-61bd57cca3",
+      "status": 200
+    },
+    {
+      "assetId": "webp-banner-journey-west-f2af535eae",
+      "status": 200
+    },
+    {
+      "assetId": "webp-cover-journey-west-30f1e07911",
+      "status": 200
+    },
+    {
+      "assetId": "webp-banner-three-kingdoms-ae2051980b",
+      "status": 200
+    },
+    {
+      "assetId": "webp-banner-pirate-treasure-986dae5408",
+      "status": 200
+    },
+    {
+      "assetId": "webp-cover-fantasy-forest-ed667e3ecf",
+      "status": 200
+    },
+    {
+      "assetId": "webp-banner-fantasy-forest-be81b41312",
+      "status": 200
+    },
+    {
+      "assetId": "webp-cover-magic-academy-25333e986f",
+      "status": 200
+    },
+    {
+      "assetId": "webp-cover-gem-kingdom-cff500003b",
+      "status": 200
+    },
+    {
+      "assetId": "webp-cover-pirate-treasure-0e1a5b6c7e",
+      "status": 200
+    },
+    {
+      "assetId": "webp-banner-gem-kingdom-6519921672",
+      "status": 200
+    },
+    {
+      "assetId": "webp-banner-magic-academy-86fe28a794",
+      "status": 200
+    },
+    {
+      "assetId": "webp-cover-fruit-party-18539a1961",
+      "status": 200
+    },
+    {
+      "assetId": "webp-banner-candy-world-c874fee575",
+      "status": 200
+    },
+    {
+      "assetId": "webp-cover-candy-world-2ca1094241",
+      "status": 200
+    },
+    {
+      "assetId": "webp-banner-fruit-party-5b585a241f",
+      "status": 200
+    },
+    {
+      "assetId": "webp-banner-lucky-star-8fc0257fc3",
+      "status": 200
+    },
+    {
+      "assetId": "webp-cover-lucky-star-46b36cdf7e",
+      "status": 200
+    },
+    {
+      "assetId": "webp-cover-gold-miner-3f76301137",
+      "status": 200
+    },
+    {
+      "assetId": "webp-banner-gold-miner-23ce12671e",
+      "status": 200
+    },
+    {
+      "assetId": "webp-cover-eastern-myth-69e1f8ef16",
+      "status": 200
+    },
+    {
+      "assetId": "webp-banner-eastern-myth-02113cf8f0",
+      "status": 200
+    },
+    {
+      "assetId": "webp-cover-western-myth-26a8009882",
+      "status": 200
+    },
+    {
+      "assetId": "webp-banner-western-myth-039a21f029",
+      "status": 200
+    },
+    {
+      "assetId": "webp-cover-future-world-30fb32f574",
+      "status": 200
+    },
+    {
+      "assetId": "webp-banner-future-world-02b5608647",
+      "status": 200
+    },
+    {
+      "assetId": "webp-cover-animal-kingdom-93e5ed217d",
+      "status": 200
+    },
+    {
+      "assetId": "webp-cover-festival-84da98927e",
+      "status": 200
+    },
+    {
+      "assetId": "webp-banner-festival-17bc82b75b",
+      "status": 200
+    },
+    {
+      "assetId": "webp-banner-animal-kingdom-da30e62efb",
+      "status": 200
+    },
+    {
+      "assetId": "webp-cover-mysterious-vault-2b3beb09d6",
+      "status": 200
+    },
+    {
+      "assetId": "webp-banner-mysterious-vault-45485c6e93",
+      "status": 200
+    },
+    {
+      "assetId": "webp-cover-dragon-legend-8d5d5baefe",
+      "status": 200
+    },
+    {
+      "assetId": "webp-banner-dragon-legend-a0d5031691",
+      "status": 200
+    },
+    {
+      "assetId": "webp-cover-golden-age-1cff7c385f",
+      "status": 200
+    },
+    {
+      "assetId": "webp-banner-golden-age-ed75adb397",
+      "status": 200
+    },
+    {
+      "assetId": "webp-cover-sun-temple-132e1c910a",
+      "status": 200
+    },
+    {
+      "assetId": "webp-banner-sun-temple-6e46cdc714",
+      "status": 200
+    },
+    {
+      "assetId": "webp-cover-magic-gems-184de5dae3",
+      "status": 200
+    },
+    {
+      "assetId": "webp-banner-magic-gems-b9629ead7d",
+      "status": 200
+    },
+    {
+      "assetId": "webp-cover-star-journey-68c4652b77",
+      "status": 200
+    },
+    {
+      "assetId": "webp-banner-star-journey-0268abdc91",
+      "status": 200
+    },
+    {
+      "assetId": "webp-cover-deep-sea-b0e5e36ef6",
+      "status": 200
+    },
+    {
+      "assetId": "webp-banner-deep-sea-21bf31543b",
+      "status": 200
+    },
+    {
+      "assetId": "webp-cover-ace-legend-4f83796287",
+      "status": 200
+    },
+    {
+      "assetId": "webp-banner-ace-legend-101b4afabe",
+      "status": 200
+    },
+    {
+      "assetId": "webp-cover-dream-garden-3864fe3da7",
+      "status": 200
+    },
+    {
+      "assetId": "webp-banner-dream-garden-26d9fe28ff",
+      "status": 200
+    },
+    {
+      "assetId": "webp-cover-fortune-gate-8ff9d3632f",
+      "status": 200
+    },
+    {
+      "assetId": "webp-banner-fortune-gate-f1d0f749a0",
+      "status": 200
+    }
+  ],
+  "layouts": [
+    {
+      "viewport": 1440,
+      "path": "/",
+      "width": 1440,
+      "documentWidth": 1440
+    },
+    {
+      "viewport": 1440,
+      "path": "/games",
+      "width": 1440,
+      "documentWidth": 1440
+    },
+    {
+      "viewport": 1440,
+      "path": "/login",
+      "width": 1440,
+      "documentWidth": 1440
+    },
+    {
+      "viewport": 1440,
+      "path": "/register",
+      "width": 1440,
+      "documentWidth": 1440
+    },
+    {
+      "viewport": 1440,
+      "path": "/profile",
+      "width": 1440,
+      "documentWidth": 1440
+    },
+    {
+      "viewport": 1440,
+      "path": "/admin",
+      "width": 1440,
+      "documentWidth": 1440
+    },
+    {
+      "viewport": 1440,
+      "path": "/play/golden-god",
+      "width": 1440,
+      "documentWidth": 1440
+    },
+    {
+      "viewport": 375,
+      "path": "/",
+      "width": 375,
+      "documentWidth": 375
+    },
+    {
+      "viewport": 375,
+      "path": "/games",
+      "width": 375,
+      "documentWidth": 375
+    },
+    {
+      "viewport": 375,
+      "path": "/login",
+      "width": 375,
+      "documentWidth": 375
+    },
+    {
+      "viewport": 375,
+      "path": "/register",
+      "width": 375,
+      "documentWidth": 375
+    },
+    {
+      "viewport": 375,
+      "path": "/profile",
+      "width": 375,
+      "documentWidth": 375
+    },
+    {
+      "viewport": 375,
+      "path": "/admin",
+      "width": 375,
+      "documentWidth": 375
+    },
+    {
+      "viewport": 375,
+      "path": "/play/golden-god",
+      "width": 375,
+      "documentWidth": 375
+    },
+    {
+      "viewport": 820,
+      "path": "/",
+      "width": 820,
+      "documentWidth": 820
+    },
+    {
+      "viewport": 820,
+      "path": "/games",
+      "width": 820,
+      "documentWidth": 820
+    },
+    {
+      "viewport": 820,
+      "path": "/login",
+      "width": 820,
+      "documentWidth": 820
+    },
+    {
+      "viewport": 820,
+      "path": "/register",
+      "width": 820,
+      "documentWidth": 820
+    },
+    {
+      "viewport": 820,
+      "path": "/profile",
+      "width": 820,
+      "documentWidth": 820
+    },
+    {
+      "viewport": 820,
+      "path": "/admin",
+      "width": 820,
+      "documentWidth": 820
+    },
+    {
+      "viewport": 820,
+      "path": "/play/golden-god",
+      "width": 820,
+      "documentWidth": 820
+    }
+  ],
+  "browserErrors": [],
+  "blockedWrites": [],
+  "limitations": [
+    "No production registration, login, point mutation or admin operation",
+    "Chromium viewports are not physical device or Safari validation"
+  ],
+  "result": "passed"
+}
