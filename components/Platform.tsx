@@ -289,13 +289,13 @@ export default function Platform() {
               />
             ) : (
               <>
-                A<span>✦</span>
+                海<span>✦</span>
               </>
             )}
           </div>
           <div>
-            {siteSettings.site_name ?? "AURUM"}
-            <small>星 曜 游 戏</small>
+            {siteSettings.site_name ?? "海盈国际"}
+            <small>精彩游戏 · 随心畅玩</small>
           </div>
         </Link>
         <button
@@ -345,7 +345,7 @@ export default function Platform() {
           </div>
           <div className="side-footer">
             <span className="status-dot" />
-            仅虚拟积分体验<small>© 2026 AURUM</small>
+            仅虚拟积分体验<small>© 2026 海盈国际</small>
           </div>
         </div>
       </aside>
@@ -378,7 +378,7 @@ export default function Platform() {
               <Menu />
             </button>
             <span className="breadcrumb">
-              星曜游戏 <ChevronRight size={13} />
+              海盈国际 <ChevronRight size={13} />
               <b>
                 {isHome
                   ? "发现你的下一个精彩"
@@ -507,11 +507,10 @@ export default function Platform() {
                       <strong>龙腾四海</strong>
                       <small>原创东方奇幻 · 243 路玩法</small>
                     </div>
-                    <span className="art-note">AI 原创临时美术</span>
                   </section>
                   <div className="announcement-strip">
                     <Bell size={16} />
-                    <b>星曜公告</b>
+                    <b>海盈国际公告</b>
                     <span>{announcement}</span>
                     <Link href="/announcements">
                       查看公告
@@ -679,7 +678,7 @@ export default function Platform() {
                     </span>
                   </div>
                   <div className="detail-copy">
-                    <div className="eyebrow">AURUM ORIGINALS</div>
+                    <div className="eyebrow">海盈国际 · 游戏精选</div>
                     <h1>{selected.name}</h1>
                     <p>{selected.description}</p>
                     <div className="detail-badges">
@@ -822,13 +821,13 @@ export default function Platform() {
         </main>
         <footer className="footer">
           <div>
-            <span className="footer-brand">AURUM</span>
+            <span className="footer-brand">海盈国际</span>
             <span>原创世界，非凡体验。</span>
           </div>
           <p>
             仅提供虚拟积分体验 · 无充值、提现或现金兑换 · 原创演示非授权原版复刻
           </p>
-          <small>© 2026 AURUM 星曜游戏 · 所有素材状态以资源清单为准</small>
+          <small>© 2026 海盈国际</small>
         </footer>
       </div>
       <nav className="mobile-bottom">
@@ -1018,11 +1017,11 @@ function Auth({
             <br />
             都值得期待。
           </h1>
-          <p>加入星曜，开启你的原创游戏旅程。</p>
+          <p>加入海盈国际，开启你的精彩游戏旅程。</p>
         </div>
       </div>
       <div className="auth-form">
-        <span className="eyebrow">WELCOME TO AURUM</span>
+        <span className="eyebrow">欢迎来到海盈国际</span>
         <h1>{register ? "创建你的账号" : "欢迎回来"}</h1>
         <p>
           {register ? "注册即获 10,000 虚拟体验积分" : "登录，继续你的精彩故事"}
@@ -1165,7 +1164,7 @@ function Profile({
           )}
         </div>
         <div>
-          <span className="eyebrow">MY AURUM</span>
+          <span className="eyebrow">我的海盈</span>
           <h1>{user.username}</h1>
           <p>ID · {user.id}</p>
         </div>
@@ -1432,7 +1431,7 @@ function ContentPage({
   };
   return (
     <>
-      <div className="eyebrow">EXPLORE AURUM</div>
+      <div className="eyebrow">探索海盈国际</div>
       <h1>{titles[path]}</h1>
       {error ? (
         <p className="form-error">{error}</p>

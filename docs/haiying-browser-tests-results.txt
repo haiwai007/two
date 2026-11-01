@@ -1,0 +1,64 @@
+
+> aurum-original-games@0.2.0 test:browser
+> playwright test --grep lobby search|mobile routes|tablet lobby|admin saves --max-failures=1
+
+[WebServer] (node:37069) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] ▲ [WARNING] Proxy environment variables detected. We'll use your proxy for fetch requests.
+[WebServer]
+[WebServer]
+[WebServer] ▲ [WARNING] Duplicate key "compareMinX" in object literal [duplicate-object-key]
+[WebServer]
+[WebServer]     .open-next/server-functions/default/handler.mjs:948:54646:
+[WebServer]       948 │ ...):f2(a3[c3],this.toBBox)},compareMinX:function(a3,b3){return a...
+[WebServer]           ╵                              ~~~~~~~~~~~
+[WebServer]
+[WebServer]   The original key "compareMinX" is here:
+[WebServer]
+[WebServer]     .open-next/server-functions/default/handler.mjs:948:51545:
+[WebServer]       948 │ ...x:function(a3){return a3},compareMinX:i2,compareMinY:j2,toJSON...
+[WebServer]           ╵                              ~~~~~~~~~~~
+[WebServer]
+[WebServer]
+[WebServer] ▲ [WARNING] Duplicate key "compareMinY" in object literal [duplicate-object-key]
+[WebServer]
+[WebServer]     .open-next/server-functions/default/handler.mjs:948:54698:
+[WebServer]       948 │ ...){return a3.left-b3.left},compareMinY:function(a3,b3){return a...
+[WebServer]           ╵                              ~~~~~~~~~~~
+[WebServer]
+[WebServer]   The original key "compareMinY" is here:
+[WebServer]
+[WebServer]     .open-next/server-functions/default/handler.mjs:948:51560:
+[WebServer]       948 │ ...return a3},compareMinX:i2,compareMinY:j2,toJSON:function(){ret...
+[WebServer]           ╵                              ~~~~~~~~~~~
+[WebServer]
+[WebServer]
+[WebServer] ▲ [WARNING] Duplicate key "toBBox" in object literal [duplicate-object-key]
+[WebServer]
+[WebServer]     .open-next/server-functions/default/handler.mjs:948:54748:
+[WebServer]       948 │ ...3,b3){return a3.top-b3.top},toBBox:function(a3){return{minX:a3...
+[WebServer]           ╵                                ~~~~~~
+[WebServer]
+[WebServer]   The original key "toBBox" is here:
+[WebServer]
+[WebServer]     .open-next/server-functions/default/handler.mjs:948:51514:
+[WebServer]       948 │ ...f3=!1):g3=null}return this},toBBox:function(a3){return a3},com...
+[WebServer]           ╵                                ~~~~~~
+[WebServer]
+[WebServer]
+
+Running 4 tests using 1 worker
+
+(node:37121) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  1 tests/browser/platform.spec.ts:61:1 › lobby search, favorites and pagination use real data (5.1s)
+  ✓  2 tests/browser/platform.spec.ts:110:1 › mobile routes and game controls stay within the viewport (7.2s)
+  ✓  3 tests/browser/platform.spec.ts:137:1 › admin saves an announcement and the public page displays it (3.2s)
+  ✓  4 tests/browser/platform.spec.ts:329:1 › tablet lobby uses four columns and generated delivery pictures (3.1s)
+
+  4 passed (30.6s)
+npm notice
+npm notice New major version of npm available! 11.9.0 -> 12.2.1
+npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.2.1
+npm notice To update run: npm install -g npm@12.2.1
+npm notice

@@ -230,12 +230,12 @@ INSERT INTO game_integrations(id,game_id,version,status,program_path,rules,pendi
 INSERT INTO games(id,slug,name,status,description,rules,version,config,cover_asset_id,banner_asset_id,category_id,sort,featured,hot,program_path) VALUES('fortune-gate','fortune-gate','财富之门','published','财富之门 · 独立原创转轴玩法，仅虚拟积分体验。','原创演示规则：6×3外向内三组镜像双轴；每组对应的三行全部相同或有钥匙Wild7才开门；第1/2/3门奖励4/8/12倍积分；三门全开总基础奖励三倍；至少两门再加随机1–9倍积分。','0.2.0','{"id": "fortune-gate", "name": "财富之门", "columns": 6, "rows": 3, "symbols": ["金", "银", "铜", "玉", "红", "蓝", "紫", "钥"], "color": "#b48e52", "rules": "原创演示规则：6×3外向内三组镜像双轴；每组对应的三行全部相同或有钥匙Wild7才开门；第1/2/3门奖励4/8/12倍积分；三门全开总基础奖励三倍；至少两门再加随机1–9倍积分。", "motif": "runes", "speed": 113, "audio": {"melody": [195.99, 246.94, 293.66, 391.99, 293.66, 233.08], "wave": "sine", "interval": 1330}, "version": "0.2.0", "original": true, "pendingOriginalRules": true}','webp-cover-fortune-gate-8ff9d3632f','webp-banner-fortune-gate-f1d0f749a0','slots','29','0','0','/games/fortune-gate');
 INSERT INTO game_integrations(id,game_id,version,status,program_path,rules,pending_rules) VALUES('fortune-gate-v02','fortune-gate','0.2.0','published','/games/fortune-gate','原创演示规则：6×3外向内三组镜像双轴；每组对应的三行全部相同或有钥匙Wild7才开门；第1/2/3门奖励4/8/12倍积分；三门全开总基础奖励三倍；至少两门再加随机1–9倍积分。','授权原版参数仍待确认；本版本为原创规则');
 INSERT INTO system_settings(key,value) VALUES('registration_enabled','true');
-INSERT INTO system_settings(key,value) VALUES('site_name','AURUM');
+INSERT INTO system_settings(key,value) VALUES('site_name','海盈国际');
 INSERT INTO system_settings(key,value) VALUES('banner_asset_id','webp-home-banner-a5f076347b');
 INSERT INTO system_settings(key,value) VALUES('background_asset_id','webp-page-background-e139e19062');
-INSERT INTO announcements(id,title,content,status) VALUES('welcome','欢迎来到星曜原创游戏','30款独立原创游戏已开放；积分仅用于体验，无现金价值。','published');
+INSERT INTO announcements(id,title,content,status) VALUES('welcome','欢迎来到海盈国际','30款独立原创游戏已开放；积分仅用于体验，无现金价值。','published');
 INSERT INTO events(id,title,content,asset_id,status) VALUES('event-origins','原创世界开放日','探索30款独立原创演示，所有奖励均为不可兑换的虚拟积分。','webp-event-origins-dec87ba5d4','published');
 INSERT INTO events(id,title,content,asset_id,status) VALUES('event-dragon','龙珠探索之旅','体验243路、龙印扩展与1024路龙焰传承。','webp-event-dragon-7e4124fed2','published');
 INSERT INTO events(id,title,content,asset_id,status) VALUES('event-phoenix','见证凤凰涅槃','体验集群、横向融化和中央旋环等不同玩法。','webp-event-phoenix-2c1e7abe87','published');
-INSERT INTO events(id,title,content,asset_id,status) VALUES('event-gems','独立美术图鉴','85项AI原创临时素材可在后台逐张替换并保留版本。','webp-event-gems-1c79c31321','published');
-INSERT INTO events(id,title,content,asset_id,status) VALUES('event-stars','星曜开发日志','所有玩法均为原创，不代表授权原版规则或认证RTP。','webp-event-stars-39a6f8bd71','published');
+INSERT INTO events(id,title,content,asset_id,status) VALUES('event-gems','独立美术图鉴','85项游戏素材可在后台逐张替换并保留版本。','webp-event-gems-1c79c31321','published');
+INSERT INTO events(id,title,content,asset_id,status) VALUES('event-stars','海盈国际动态','所有玩法均为原创，不代表授权原版规则或认证RTP。','webp-event-stars-39a6f8bd71','published');

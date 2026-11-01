@@ -38,6 +38,19 @@ class DatabaseTests(unittest.TestCase):
   with self.assertRaises(sqlite3.IntegrityError):self.db.execute("INSERT INTO point_records(id,user_id,type,delta,before_balance,after_balance) VALUES('bad','u','admin',1,100,999)")
  def test_foreign_key(self):
   with self.assertRaises(sqlite3.IntegrityError):self.db.execute("INSERT INTO favorites(user_id,game_id) VALUES('missing','golden-god')")
+ def test_brand_upgrade_preserves_members_roles_and_ledger(self):
+  self.db.execute("UPDATE system_settings SET value='AURUM' WHERE key='site_name'")
+  self.db.execute("UPDATE events SET content='85项AI原创临时素材可在后台逐张替换并保留版本。' WHERE id='event-gems'")
+  self.db.execute("INSERT INTO admin_users(user_id,role) VALUES('u','owner')")
+  self.round(key='brand-round')
+  before=self.db.execute('SELECT id,user_id,delta,before_balance,after_balance FROM point_records').fetchall()
+  self.db.executescript((ROOT/'migrations/0003_haiying_brand.sql').read_text())
+  self.assertEqual(self.db.execute("SELECT value FROM system_settings WHERE key='site_name'").fetchone()[0],'海盈国际')
+  self.assertNotIn('AI',self.db.execute("SELECT content FROM events WHERE id='event-gems'").fetchone()[0])
+  self.assertEqual(self.db.execute("SELECT role FROM admin_users WHERE user_id='u'").fetchone()[0],'owner')
+  self.assertEqual(self.db.execute("SELECT balance FROM virtual_points WHERE user_id='u'").fetchone()[0],110)
+  self.assertEqual(self.db.execute('SELECT id,user_id,delta,before_balance,after_balance FROM point_records').fetchall(),before)
+  self.assertEqual(self.db.execute('SELECT COUNT(*) FROM game_records').fetchone()[0],1)
  def test_concurrent_balance(self):
   def play(i):
    conn=sqlite3.connect(self.path,timeout=10)
