@@ -21,6 +21,7 @@ jobs:
       - run: npm ci
       - run: npm run typecheck
       - run: npm test
+      - run: node --test tests/provision.test.mjs
       - run: python3 tests/database_test.py
       - run: npm run cf:build
       - uses: actions/upload-artifact@v4
@@ -36,6 +37,7 @@ jobs:
     env:
       CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
       CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+      CLOUDFLARE_SECRETS_FILE: .test-state/deploy-secrets.json
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -43,13 +45,28 @@ jobs:
           node-version: 24
           cache: npm
       - run: npm ci
+      - name: Create or reuse production resources
+        run: node scripts/provision-cloudflare.mjs --remote
       - run: node scripts/preflight.mjs wrangler.jsonc
       - run: npm run db:remote
       - run: node scripts/seed-if-empty.mjs --remote wrangler.jsonc
       - run: node scripts/import-assets.mjs --remote
       - run: npx wrangler d1 execute aurum-db --remote --file scripts/optimized-assets.sql
       - run: node scripts/import-assets.mjs --remote --optimized
-      - run: npm run deploy
+      - run: npm run cf:build
+      - run: npx wrangler deploy --secrets-file .test-state/deploy-secrets.json
+      - run: npx wrangler deploy --config wrangler.maintenance.jsonc
+      - run: node scripts/smoke-production.mjs
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: production-resource-config
+          path: |
+            wrangler.jsonc
+            wrangler.maintenance.jsonc
+      - name: Remove temporary deployment secrets
+        if: always()
+        run: node -e "require('fs').rmSync('.test-state/deploy-secrets.json',{force:true})"
   preview:
     if: github.event_name != 'pull_request' && github.ref == 'refs/heads/preview'
     needs: [validate, browser]

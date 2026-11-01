@@ -55,3 +55,5 @@ WebP交付版本由构建期脚本生成，保留全部母图；不会在Workers
 每个游戏可在配置JSON的symbolAssets中绑定已上传图标ID，进入游戏时读取最新数据库素材，未绑定时使用程序字形。
 
 当前完成范围、真实测试结果和生产阻塞项分别见`docs/06-original-programs.md`、`docs/05-test-report.md`和`docs/07-maintenance.md`。生产DNS/HTTPS、Turnstile/WAF与真实设备验收未完成前，不应标记正式上线。
+
+首次Cloudflare自动初始化和当前GitHub Actions账户禁用阻塞，见docs/10-first-cloudflare-deployment.md。初始化逻辑可通过`node --test tests/provision.test.mjs`验证（stub API，不代表远程部署）。
