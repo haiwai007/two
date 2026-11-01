@@ -1,0 +1,13 @@
+✔ temporary DNS failure retries and then checks actual service responses (60.348403ms)
+✔ persistent DNS failure never becomes a successful acceptance (2.336819ms)
+✔ Cloudflare 1010 is reported as a security rejection without blind retries (1.146876ms)
+✔ a reachable site with Turnstile disabled fails acceptance (5.224591ms)
+✔ www must redirect to the exact primary domain and preserve the query (2.472012ms)
+ℹ tests 5
+ℹ suites 0
+ℹ pass 5
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 83.873308

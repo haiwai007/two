@@ -6,6 +6,7 @@ import { pathToFileURL } from "node:url";
 const wrangler = (...args) => [process.execPath, ["node_modules/wrangler/bin/wrangler.js", ...args]];
 export const deploymentSteps = [
   ["Provisioning logic checks", process.execPath, ["tests/provision.test.mjs"]],
+  ["Production smoke logic checks", process.execPath, ["tests/production-smoke.test.mjs"]],
   ["Game rule checks", "npm", ["test"]],
   ["Database integrity checks", "python3", ["tests/database_test.py"]],
   ["Create or reuse production resources", process.execPath, ["scripts/provision-cloudflare.mjs", "--remote"]],
@@ -33,11 +34,16 @@ export function deploymentEnvironment(source) {
 }
 
 export async function executeDeployment({ run, cleanup, report = () => {} }) {
+  let websiteUploaded = false;
   try {
     for (const [label, command, args] of deploymentSteps) {
       report(label);
       const result = await run(command, args);
-      if (result.status !== 0) throw Error(`Deployment stopped: ${label}`);
+      if (result.status !== 0) throw Error(websiteUploaded ? `Worker upload completed, but production acceptance failed at: ${label}. The deployed version has not been rolled back; inspect the error above.` : `Deployment stopped: ${label}`);
+      if (label === "Deploy website with Turnstile secret") {
+        websiteUploaded = true;
+        report("Worker upload completed; custom-domain HTTPS acceptance is still pending");
+      }
     }
   } finally {
     await cleanup();

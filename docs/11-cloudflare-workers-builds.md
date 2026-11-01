@@ -34,7 +34,7 @@ Node24由.node-version和控制台NODE_VERSION指定；镜像需要python3。依
 
 ## 当前状态
 
-GitHub Actions API反复返回HTTP422账户禁用；本地Cloudflare环境无凭据。已准备替代命令并通过5项初始化测试和4项部署编排测试（stub），尚未连接用户的Cloudflare Workers Builds，也没有生产成功结果。需要用户在控制台完成GitHub授权和安全密钥填写；项目不会把GitHub保存的密钥读取回来。
+GitHub Actions API曾返回HTTP422账户禁用；本地Cloudflare环境仍无凭据。用户已连接Cloudflare Workers Builds并执行发布，主站只读验收通过；详见12-production-deployment-status.md。项目没有把GitHub保存的密钥读取回来。
 
 官方说明：
 - https://developers.cloudflare.com/workers/ci-cd/builds/

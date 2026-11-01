@@ -1,0 +1,1 @@
+{"productionSmoke":"passed","origin":"https://h6688.win","catalogGames":30,"database":true,"storage":true,"https":true,"turnstileConfigured":true,"wwwRedirect":true,"limitation":"Read-only smoke checks; real challenge completion, member/admin workflows and physical devices require production acceptance"}

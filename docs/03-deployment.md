@@ -1,6 +1,6 @@
 # Cloudflare 部署与运维
 
-本次环境 `wrangler whoami` 结果为未认证。因此以下是可执行部署流程，不是已部署证明。域名h6688.win与www.h6688.win已配置，但尚未实际绑定，没有验证过的生产URL。
+本地环境 `wrangler whoami` 仍未认证；用户已通过Cloudflare Workers Builds实际发布主站https://h6688.win。线上只读验收与剩余检查见12-production-deployment-status.md。以下保留部署与运维流程。
 
 ## 本地
 

@@ -2,7 +2,7 @@
 
 Next.js / React / TypeScript / Phaser 3 Canvas / OpenNext Cloudflare / D1 / R2。
 
-30个条目现已分别实现原创规则、独立程序目录、独立场景装饰、布局、合成音频及规则帮助。它们不是授权原版规则复刻，参考站仍返回403。正式域名为h6688.win，生产Cloudflare账户尚未连接，不能声称正式部署成功。
+30个条目现已分别实现原创规则、独立程序目录、独立场景装饰、布局、合成音频及规则帮助。它们不是授权原版规则复刻，参考站仍返回403。主站https://h6688.win已由Cloudflare Workers Builds发布，并通过线上只读检查；会员、真实Turnstile和后台生产验收仍待完成，见docs/12-production-deployment-status.md。
 
 ## 本地启动
 
