@@ -1,8 +1,8 @@
-✔ build credentials stay in child environment and worker identity guards are preserved (1.879696ms)
-✔ missing credentials and non-production branches cannot run resource mutations (0.739177ms)
-✔ failed checks stop before provisioning and always remove temporary secrets (2.037321ms)
-✔ successful workflow applies migrations before seed, deploys with secrets file and cleans up (0.672357ms)
-✔ post-upload acceptance failure is distinguished from a failed Worker upload (0.41215ms)
+✔ build credentials stay in child environment and worker identity guards are preserved (3.419202ms)
+✔ missing credentials and non-production branches cannot run resource mutations (1.754354ms)
+✔ failed checks stop before provisioning and always remove temporary secrets (5.215344ms)
+✔ successful workflow applies migrations before seed, deploys with secrets file and cleans up (0.907471ms)
+✔ post-upload acceptance failure is distinguished from a failed Worker upload (1.059585ms)
 ℹ tests 5
 ℹ suites 0
 ℹ pass 5
@@ -10,4 +10,4 @@
 ℹ cancelled 0
 ℹ skipped 0
 ℹ todo 0
-ℹ duration_ms 14.025196
+ℹ duration_ms 32.435216

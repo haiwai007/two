@@ -479,3 +479,49 @@ test("failed login resets the single-use challenge before retry (client stub)", 
   await expect.poll(() => tokens.length).toBe(2);
   expect(tokens).toEqual(["test-token-1", "test-token-2"]);
 });
+
+test("cold auth page loads the real SDK script instead of mistaking a DOM id for it (client stub)", async ({ page }) => {
+  let scriptLoads = 0;
+  await page.route("**/api/config", route => route.fulfill({ json: { requireTurnstile: true, turnstileSiteKey: "client-test-only" } }));
+  await page.route("**/turnstile/v0/api.js?*", route => {
+    scriptLoads++;
+    return route.fulfill({ contentType: "application/javascript", body: `window.turnstile={render:function(el,options){window.__challengeOptions=options;el.textContent='测试验证组件已加载';return 'cold-widget'},remove:function(){},reset:function(){}};` });
+  });
+  await page.goto("/register");
+  await expect(page.getByText("测试验证组件已加载", { exact: true })).toBeVisible();
+  expect(scriptLoads).toBe(1);
+  const submit = page.getByRole("button", { name: "创建账号", exact: true });
+  await expect(submit).toBeDisabled();
+  await page.evaluate(() => (window as any).__challengeOptions.callback("cold-stub-token"));
+  await expect(submit).toBeEnabled();
+  await page.evaluate(() => (window as any).__challengeOptions["expired-callback"]());
+  await expect(submit).toBeDisabled();
+  await expect(page.locator(".form-error")).toContainText("已过期");
+});
+
+test("a form cannot submit before verification and widget errors can be retried (client stub)", async ({ page }) => {
+  await page.addInitScript(() => {
+    let renderCount = 0;
+    (window as any).turnstile = {
+      render: (_el: unknown, options: any) => { (window as any).__challengeOptions = options; renderCount++; if (renderCount > 1) options.callback("retried-stub-token"); return "guard-widget"; },
+      remove: () => {}, reset: () => {},
+    };
+  });
+  let submissions = 0;
+  await page.route("**/api/config", route => route.fulfill({ json: { requireTurnstile: true, turnstileSiteKey: "client-test-only" } }));
+  await page.route("**/api/auth/login", route => { submissions++; return route.fulfill({ status: 401, json: { error: "测试登录拒绝" } }); });
+  await page.goto("/login");
+  await page.locator('input[name="identity"]').fill("guard-test");
+  await page.locator('input[name="password"]').fill("WrongPassword123!");
+  const submit = page.getByRole("button", { name: "登录账号", exact: true });
+  await expect(submit).toBeDisabled();
+  await page.locator("form").evaluate((form: HTMLFormElement) => form.requestSubmit());
+  await expect(page.locator(".form-error")).toContainText("请先完成人机验证");
+  expect(submissions).toBe(0);
+  await page.evaluate(() => (window as any).__challengeOptions["error-callback"]("110200"));
+  await expect(page.locator(".form-error")).toContainText("当前域名");
+  await page.getByRole("button", { name: "重试人机验证", exact: true }).click();
+  await expect(submit).toBeEnabled();
+  await submit.click();
+  await expect.poll(() => submissions).toBe(1);
+});

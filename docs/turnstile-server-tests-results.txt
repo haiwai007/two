@@ -1,0 +1,15 @@
+✔ empty, whitespace and oversized tokens never call the provider (4.752934ms)
+✔ missing and rejected secrets are configuration errors, never accepted (78.754458ms)
+✔ expired or reused tokens receive a useful failure and are never retried automatically (2.681761ms)
+✔ a valid result must belong to the current hostname (2.447013ms)
+✔ local sentinel IP is omitted rather than sent as a malformed remoteip (1.623ms)
+✔ network failures and malformed provider responses fail closed (2.032108ms)
+✔ diagnostics never contain secrets, tokens or arbitrary provider strings (10.012293ms)
+ℹ tests 7
+ℹ suites 0
+ℹ pass 7
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 126.650618

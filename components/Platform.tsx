@@ -894,17 +894,25 @@ function Auth({
   notify: (s: string) => void;
 }) {
   const widgetRef = useRef<string | undefined>(undefined);
+  const [challenge, setChallenge] = useState<"loading" | "disabled" | "pending" | "ready" | "error">("loading");
+  const [challengeRetry, setChallengeRetry] = useState(0);
   const [busy, setBusy] = useState(false),
     [token, setToken] = useState(""),
     [error, setError] = useState("");
   useEffect(() => {
     let widget: string | undefined;
     let cancelled = false;
-    const el = document.getElementById("turnstile");
+    const el = document.getElementById("auth-turnstile-widget");
+    setToken("");
+    setChallenge("loading");
+    setError("");
     api("config")
       .then((config) => {
-        if (!config.requireTurnstile) return;
+        if (cancelled) return;
+        if (!config.requireTurnstile) { setChallenge("disabled"); return; }
+        setChallenge("pending");
         if (!config.turnstileSiteKey) {
+          setChallenge("error");
           setError("尚未配置人机验证，注册和登录暂不可用。");
           return;
         }
@@ -919,24 +927,39 @@ function Auth({
           widget = w.turnstile.render(el, {
             sitekey: config.turnstileSiteKey,
             theme: "dark",
-            callback: (value: string) => setToken(value),
-            "expired-callback": () => setToken(""),
-            "error-callback": () => setToken(""),
+            callback: (value: string) => {
+              if (cancelled) return;
+              setToken(value); setChallenge(value ? "ready" : "pending");
+              setError(current => ["请先完成人机验证", "人机验证已过期，请", "人机验证加载", "人机验证超时", "当前域名未获"].some(prefix => current.startsWith(prefix)) ? "" : current);
+            },
+            "expired-callback": () => {
+              if (cancelled) return;
+              setToken(""); setChallenge("pending"); setError("人机验证已过期，请重新完成验证");
+            },
+            "error-callback": (code: string) => {
+              if (cancelled) return;
+              setToken(""); setChallenge("error");
+              setError(code === "110200" ? "当前域名未获人机验证授权，请联系管理员（110200）" : "人机验证加载或执行失败，请点击重试" + (/^[0-9]{3,6}$/.test(String(code)) ? `（${code}）` : ""));
+            },
+            "timeout-callback": () => {
+              if (cancelled) return;
+              setToken(""); setChallenge("error"); setError("人机验证超时，请点击重试");
+            },
           });
           widgetRef.current = widget;
         };
-        if ((window as unknown as { turnstile?: unknown }).turnstile) render();
+        if (typeof (window as unknown as { turnstile?: { render?: unknown } }).turnstile?.render === "function") render();
         else {
           const script = document.createElement("script");
           script.src =
             "https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit";
           script.async = true;
           script.onload = render;
-          script.onerror = () => setError("人机验证加载失败");
+          script.onerror = () => { if (!cancelled) { setChallenge("error"); setError("人机验证加载失败，请点击重试"); } };
           document.head.appendChild(script);
         }
       })
-      .catch(() => setError("业务服务暂不可用，请连接数据库后重试"));
+      .catch(() => { if (!cancelled) { setChallenge("error"); setError("业务服务暂不可用，请稍后重试"); } });
     return () => {
       cancelled = true;
       widgetRef.current = undefined;
@@ -945,13 +968,17 @@ function Auth({
           window as unknown as { turnstile?: { remove: (id: string) => void } }
         ).turnstile?.remove(widget);
     };
-  }, [register]);
+  }, [register, challengeRetry]);
   async function submit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     setError("");
     const form = new FormData(e.currentTarget);
     if (register && form.get("password") !== form.get("confirm")) {
       setError("两次密码不一致");
+      return;
+    }
+    if (challenge !== "disabled" && (challenge !== "ready" || !token)) {
+      setError("请先完成人机验证，再提交表单");
       return;
     }
     setBusy(true);
@@ -966,8 +993,9 @@ function Auth({
     } catch (e) {
       setError((e as Error).message);
       setToken("");
-      const challenge = (window as unknown as { turnstile?: { reset: (id: string) => void } }).turnstile;
-      if (widgetRef.current !== undefined) challenge?.reset(widgetRef.current);
+      if (challenge !== "disabled") setChallenge("pending");
+      const challengeApi = (window as unknown as { turnstile?: { reset: (id: string) => void } }).turnstile;
+      if (widgetRef.current !== undefined) challengeApi?.reset(widgetRef.current);
     } finally {
       setBusy(false);
     }
@@ -1067,13 +1095,17 @@ function Auth({
               </label>
             </>
           )}
-          <div id="turnstile" />
+          <div id="auth-turnstile-widget" />
+          <p className="muted" role="status" aria-live="polite">
+            {challenge === "loading" ? "正在加载人机验证…" : challenge === "pending" ? "请完成人机验证后提交" : challenge === "ready" ? "人机验证已完成" : ""}
+          </p>
+          {challenge === "error" && <button type="button" className="secondary full" onClick={() => setChallengeRetry(n => n + 1)}>重试人机验证</button>}
           {error && (
             <p className="form-error" role="alert">
               {error}
             </p>
           )}
-          <button className="gold full" disabled={busy}>
+          <button className="gold full" disabled={busy || !["disabled", "ready"].includes(challenge)}>
             {busy ? "正在处理…" : register ? "创建账号" : "登录账号"}
             <ArrowRight size={17} />
           </button>

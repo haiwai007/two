@@ -19,7 +19,7 @@ test("failed checks stop before provisioning and always remove temporary secrets
     run: async (command, args) => { commands.push(args); return { status: command === "npm" && args[0] === "test" ? 1 : 0 }; },
     cleanup: () => { cleaned = true; },
   }), /Game rule checks/);
-  assert.equal(commands.length, 3);
+  assert.ok(!commands.some(args => args.includes("scripts/provision-cloudflare.mjs")));
   assert.equal(cleaned, true);
 });
 test("successful workflow applies migrations before seed, deploys with secrets file and cleans up", async () => {

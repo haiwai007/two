@@ -1,0 +1,118 @@
+
+> aurum-original-games@0.2.0 cf:build
+> opennextjs-cloudflare build
+
+▲ [WARNING] Proxy environment variables detected. We'll use your proxy for fetch requests.
+
+
+
+┌─────────────────────────────┐
+│ OpenNext — Cloudflare build │
+└─────────────────────────────┘
+
+App directory: /workspace/work/aurum
+Next.js version : 15.5.28
+@opennextjs/cloudflare version: 1.20.15
+@opennextjs/aws version: 4.1.14
+workerd compatibility_date: 2026-10-30
+
+┌─────────────────────────────────┐
+│ OpenNext — Building Next.js app │
+└─────────────────────────────────┘
+
+
+> aurum-original-games@0.2.0 build
+> next build
+
+   ▲ Next.js 15.5.28
+
+   Creating an optimized production build ...
+ ✓ Compiled successfully in 6.8s
+   Linting and checking validity of types ...
+   Collecting page data ...
+   Generating static pages (0/4) ...
+   Generating static pages (1/4)
+   Generating static pages (2/4)
+   Generating static pages (3/4)
+ ✓ Generating static pages (4/4)
+   Finalizing page optimization ...
+   Collecting build traces ...
+
+Route (app)                                 Size  First Load JS
+┌ ○ /_not-found                            126 B         103 kB
+├ ƒ /[[...slug]]                         74.2 kB         180 kB
+├ ƒ /api/[...path]                         126 B         103 kB
+└ ○ /icon.svg                                0 B            0 B
++ First Load JS shared by all             103 kB
+  ├ chunks/255-b1e2483a7e02feee.js       46.6 kB
+  ├ chunks/4bd1b696-c023c6e3521b1417.js  54.2 kB
+  └ other shared chunks (total)          2.01 kB
+
+
+ƒ Middleware                             34.1 kB
+
+○  (Static)   prerendered as static content
+ƒ  (Dynamic)  server-rendered on demand
+
+npm notice
+npm notice New major version of npm available! 11.9.0 -> 12.2.1
+npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.2.1
+npm notice To update run: npm install -g npm@12.2.1
+npm notice
+
+┌──────────────────────────────┐
+│ OpenNext — Generating bundle │
+└──────────────────────────────┘
+
+Bundling middleware function...
+Bundling static assets...
+Bundling cache assets...
+Building server function: default...
+Applying code patches: 7.086s
+# copyPackageTemplateFiles
+⚙️ Bundling the OpenNext server...
+
+▲ [WARNING] Duplicate key "compareMinX" in object literal [duplicate-object-key]
+
+    .open-next/server-functions/default/.next/server/chunks/211.js:1:1018174:
+      1 │ ...ear():f(a[c],this.toBBox)},compareMinX:function(a,b){return a.le...
+        ╵                               ~~~~~~~~~~~
+
+  The original key "compareMinX" is here:
+
+    .open-next/server-functions/default/.next/server/chunks/211.js:1:1015473:
+      1 │ ...BBox:function(a){return a},compareMinX:i,compareMinY:j,toJSON:fu...
+        ╵                               ~~~~~~~~~~~
+
+▲ [WARNING] Duplicate key "compareMinY" in object literal [duplicate-object-key]
+
+    .open-next/server-functions/default/.next/server/chunks/211.js:1:1018222:
+      1 │ ...a,b){return a.left-b.left},compareMinY:function(a,b){return a.to...
+        ╵                               ~~~~~~~~~~~
+
+  The original key "compareMinY" is here:
+
+    .open-next/server-functions/default/.next/server/chunks/211.js:1:1015487:
+      1 │ ...a){return a},compareMinX:i,compareMinY:j,toJSON:function(){retur...
+        ╵                               ~~~~~~~~~~~
+
+▲ [WARNING] Duplicate key "toBBox" in object literal [duplicate-object-key]
+
+    .open-next/server-functions/default/.next/server/chunks/211.js:1:1018268:
+      1 │ ...ion(a,b){return a.top-b.top},toBBox:function(a){return{minX:a.le...
+        ╵                                 ~~~~~~
+
+  The original key "toBBox" is here:
+
+    .open-next/server-functions/default/.next/server/chunks/211.js:1:1015444:
+      1 │ ...c],f=!1):g=null}return this},toBBox:function(a){return a},compar...
+        ╵                                 ~~~~~~
+
+Worker saved in `.open-next/worker.js` 🚀
+
+OpenNext build complete.
+npm notice
+npm notice New major version of npm available! 11.9.0 -> 12.2.1
+npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.2.1
+npm notice To update run: npm install -g npm@12.2.1
+npm notice

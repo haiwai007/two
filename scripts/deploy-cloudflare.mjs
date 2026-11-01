@@ -6,6 +6,7 @@ import { pathToFileURL } from "node:url";
 const wrangler = (...args) => [process.execPath, ["node_modules/wrangler/bin/wrangler.js", ...args]];
 export const deploymentSteps = [
   ["Provisioning logic checks", process.execPath, ["tests/provision.test.mjs"]],
+  ["Turnstile server checks", process.execPath, ["--experimental-strip-types", "tests/turnstile.test.ts"]],
   ["Production smoke logic checks", process.execPath, ["tests/production-smoke.test.mjs"]],
   ["Game rule checks", "npm", ["test"]],
   ["Database integrity checks", "python3", ["tests/database_test.py"]],

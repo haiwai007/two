@@ -1,5 +1,6 @@
 import { Repository } from "./db";
 import type { Env } from "../types/env";
+export { verifyTurnstile as turnstile } from "./turnstile";
 const enc = new TextEncoder();
 const hex = (b: ArrayBuffer) =>
   Array.from(new Uint8Array(b), (x) => x.toString(16).padStart(2, "0")).join(
@@ -71,24 +72,6 @@ export async function rate(
     now + seconds,
   );
   if ((row?.count ?? max + 1) > max) fail("请求过于频繁，请稍后重试", 429);
-}
-export async function turnstile(env: Env, token: unknown, ip: string) {
-  if (env.REQUIRE_TURNSTILE === "false") return;
-  if (!env.TURNSTILE_SECRET_KEY || typeof token !== "string")
-    fail("请完成人机验证；管理员需配置 Turnstile", 503);
-  const response = await fetch(
-    "https://challenges.cloudflare.com/turnstile/v0/siteverify",
-    {
-      method: "POST",
-      body: new URLSearchParams({
-        secret: env.TURNSTILE_SECRET_KEY,
-        response: token as string,
-        remoteip: ip,
-      }),
-    },
-  );
-  const result = (await response.json()) as { success: boolean };
-  if (!result.success) fail("人机验证失败", 403);
 }
 export type User = {
   id: string;

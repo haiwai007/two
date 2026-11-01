@@ -167,7 +167,7 @@ export async function handle(req: Request) {
       if ((id === "login" || id === "register") && method === "POST") {
         await rate(repo, `${id}:${ip}`, id === "login" ? 10 : 4, 600);
         const data = await body(req);
-        await turnstile(env, data.turnstile, ip);
+        await turnstile(env, data.turnstile, ip, { hostname: new URL(req.headers.get("origin") ?? req.url).hostname });
         const password = textField(data.password, "密码", 128);
         if (password.length < 10) fail("密码至少10位");
         if (id === "register") {
