@@ -50,7 +50,7 @@ WebP交付版本由构建期脚本生成，保留全部母图；不会在Workers
 
 先注册自己的账号，再使用`node scripts/bootstrap-admin.mjs --local USER_UUID`提升本地owner。没有默认生产管理员密码。所有后台模块连接D1，支持owner/editor/support角色；游戏、分类、素材、用户、积分、活动、公告、消息、程序版本和系统设置均有业务API。
 
-发布前执行`node scripts/preflight.mjs`，检查D1 ID、Turnstile、账户ID和Wrangler认证。GitHub workflow已提供；尚未创建远程仓库或配置GitHub secrets。维护Worker可按上海03:00定期清理过期会话/限流，不删除账本。
+发布前执行`node scripts/preflight.mjs`，检查D1 ID、Turnstile、账户ID和Wrangler认证。GitHub仓库为 https://github.com/haiwai007/two ，workflow已提供；Cloudflare GitHub secrets仍待配置。维护Worker可按上海03:00定期清理过期会话/限流，不删除账本。
 
 每个游戏可在配置JSON的symbolAssets中绑定已上传图标ID，进入游戏时读取最新数据库素材，未绑定时使用程序字形。
 

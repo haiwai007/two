@@ -39,7 +39,7 @@ WAF在控制台启用托管规则；对auth路径设置速率限制，保留应�
 
 ## GitHub
 
-本地已包含workflow，但未创建远程仓库（尚无指定GitHub仓库或创建工具）。创建私有仓库，推送代码，main生产、preview预览。配置production/preview两个GitHub Environment及各自Cloudflare secrets；preview必须使用独立D1/R2，替换preview配置占位ID。workflow验证通过后才部署；预览分支不访问生产库。首次seed与素材导入由运维执行，避免每次CI重复插入。
+仓库为https://github.com/haiwai007/two（用户指定的公开仓库），保留原MIT许可证与提交历史；main生产、preview预览。配置production/preview两个GitHub Environment及各自Cloudflare secrets；preview必须使用独立D1/R2，替换preview配置占位ID。workflow验证通过后才部署；预览分支不访问生产库。首次seed与素材导入由运维执行，避免每次CI重复插入。
 
 ## 备份及回滚
 

@@ -8,6 +8,6 @@
 
 管理员owner也可POST本项目的/api/admin/maintenance调用同一清理逻辑；其他角色被拒绝。所有余额变动必须通过积分服务与流水，不能关闭触发器直接改旧记录。
 
-现阶段未连接任何生产Cloudflare账户。h6688.win与www跳转已配置，但没有真实绑定或HTTPS验证。也未创建GitHub远程仓库；仓库和GitHub Environment secrets连接后，现有workflow才会实际部署。
+现阶段未连接任何生产Cloudflare账户。h6688.win与www跳转已配置，但没有真实绑定或HTTPS验证。GitHub仓库为haiwai007/two；GitHub Environment secrets及Cloudflare资源配置完成后，现有workflow才会实际部署。
 
 正式npm run deploy现在会先执行preflight，不通过不会继续构建/发布。预览与生产均要求验证和浏览器任务通过。首次owner提升脚本也写入审计日志。

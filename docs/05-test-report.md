@@ -32,7 +32,7 @@
 
 ## 未完成的外部验收
 
-参考站403，无法确认视觉1:1或授权原版规则。全部30款是独立原创演示，非商业RTP认证。Cloudflare账户未认证、真实D1 ID/账户ID及Turnstile site key未配置，生产部署预检明确阻塞。没有创建GitHub远程仓库或真实运行远程workflow，h6688.win及www没有完成DNS/HTTPS/WAF/Turnstile生产验收。
+参考站403，无法确认视觉1:1或授权原版规则。全部30款是独立原创演示，非商业RTP认证。Cloudflare账户未认证、真实D1 ID/账户ID及Turnstile site key未配置，生产部署预检明确阻塞。GitHub同步目标为haiwai007/two，远程workflow结果需单独核查，h6688.win及www没有完成DNS/HTTPS/WAF/Turnstile生产验收。
 
 后续补充：游戏运行前重新读取当前数据库素材，支持symbolAssets按图标编号绑定PNG/JPEG/WebP；已实测上传图片、修改图标与横幅、启动游戏、成功加载纹理并完成结算，且仍被引用的素材删除被拒绝。客户端卸载后忽略迟到局回调，积分展示更新核对会员ID。
 
