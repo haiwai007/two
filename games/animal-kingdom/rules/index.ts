@@ -21,8 +21,8 @@ export function play(stake: number, rng: RandomInt = secureInt): Round {
   for (let species = 0; species < 6; species++) {
     let streak: number[][] = [];
     const flush = () => {
-      if (streak.length >= 3) {
-        reward += stake * (species + 1) * (streak.length - 2) * 2;
+      if (streak.length >= 2) {
+        reward += stake * (species + 1) * (streak.length - 1) * 2;
         wins.push(streak.flat());
       }
       streak = [];
@@ -36,5 +36,5 @@ export function play(stake: number, rng: RandomInt = secureInt): Round {
     }
     flush();
   }
-  return round(grid, reward, wins, "族群迁徙 · 三个连续栖地的纵向同类对");
+  return round(grid, reward, wins, "族群迁徙 · 两个以上连续栖地的纵向同类对");
 }

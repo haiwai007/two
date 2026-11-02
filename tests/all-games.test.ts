@@ -1,7 +1,9 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
 import fs from "node:fs";
+import { FREE_SPINS, tuning } from "../game-engine/features.ts";
 import {
+  baseRound,
   calculate,
   implementedGameIds,
   isImplementedGame,
@@ -28,14 +30,16 @@ for (const [index, def] of definitions.entries())
         assert.equal(result.grid.length, def.columns);
         assert.equal(result.gameVersion, "0.2.0");
         assert.ok(Number.isSafeInteger(result.reward) && result.reward >= 0);
-        assert.ok((result.steps?.length ?? 0) <= 5);
+        assert.ok((result.steps?.length ?? 0) <= 12);
+        for (const n of result.scatters ?? [])
+          assert.equal(result.grid[Math.floor(n / def.rows)][n % def.rows], def.symbols.length);
         for (const frame of [result, ...(result.steps ?? [])]) {
           assert.equal(frame.grid.length, def.columns);
           for (const col of frame.grid) {
             assert.equal(col.length, def.rows);
             col.forEach((s) =>
               assert.ok(
-                Number.isInteger(s) && s >= 0 && s < def.symbols.length,
+                Number.isInteger(s) && s >= 0 && s <= def.symbols.length,
               ),
             );
           }
@@ -74,15 +78,30 @@ test("all 30 programs are unique source modules and prototype keys are rejected"
   assert.equal(new Set(hashes).size, 30);
 });
 test("enclosed free reveals are bounded and do not retrigger", () => {
-  const egypt = calculate("egypt-pharaoh", 10, (max) => max - 1);
+  const egypt = baseRound("egypt-pharaoh", 10, (max) => max - 1);
   assert.equal(egypt.steps?.length, 3);
-  const miner = calculate("gold-miner", 10, () => 0);
+  const miner = baseRound("gold-miner", 10, () => 0);
   assert.equal(miner.steps?.length, 2);
   assert.equal(miner.reward, 450);
 });
 test("special mechanic fixtures have independent payout behavior", () => {
-  assert.equal(calculate("gem-kingdom", 10, () => 0).reward, 520);
-  assert.equal(calculate("eastern-myth", 10, () => 0).reward, 320);
-  assert.equal(calculate("star-journey", 10, (max) => max - 1).reward, 950);
-  assert.equal(calculate("mysterious-vault", 10, () => 0).reward, 60);
+  assert.equal(baseRound("gem-kingdom", 10, () => 0).reward, 520);
+  assert.equal(baseRound("eastern-myth", 10, () => 0).reward, 320);
+  assert.equal(baseRound("star-journey", 10, (max) => max - 1).reward, 950);
+  assert.equal(baseRound("mysterious-vault", 10, () => 0).reward, 60);
+});
+test("scatter free spins are bounded, escalate and never retrigger", () => {
+  for (const def of definitions) {
+    assert.equal(tuning[def.id][1], def.symbols.length);
+    // rng(10000) => 0 places a scatter on every non-winning cell.
+    const result = calculate(def.id, 10, (max) => (max === 10000 ? 0 : max - 1));
+    const spins = result.freeSpins?.spins ?? 0;
+    if ((result.scatters?.length ?? 0) >= 3) {
+      assert.equal(spins, FREE_SPINS[Math.min(result.scatters!.length, 5)]);
+      const free = result.steps!.slice(-spins);
+      free.forEach((step, i) => assert.match(step.label, new RegExp(`×${i + 1}$`)));
+      assert.equal(result.freeSpins!.reward, free.reduce((a, s) => a + s.reward, 0));
+    }
+    assert.ok((result.steps?.length ?? 0) <= 12);
+  }
 });

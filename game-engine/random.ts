@@ -13,6 +13,9 @@ export type Round = {
     reward: number;
     label: string;
   }[];
+  stake?: number;
+  scatters?: number[];
+  freeSpins?: { spins: number; reward: number };
 };
 export function secureInt(max: number): number {
   if (!Number.isInteger(max) || max < 1 || max > 0xffffffff)

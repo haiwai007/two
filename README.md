@@ -36,7 +36,7 @@ npm run cf:build
 
 每款程序位于`games/<slug>/rules/index.ts`，场景在`scenes/Main.ts`，音频在`audio/config.ts`。公共引擎只共享绘制、动画和基础网格运算，不用一个赔率配置代替30款规则。
 
-免费揭示、锁定重转等阶段在同一付费局内由服务器一次计算，最多有限次数，不额外扣分、不无限触发。D1触发器把余额、记录、排行和积分流水放在同一事务中；幂等键防重复扣分，旧记录不可修改/删除，每局保存gameVersion。
+所有游戏共用夺宝层（game-engine/features.ts）：未中奖格可能出现夺宝图标，3/4/5个触发3/5/7次免费旋转，第N次奖励×N，不再触发。各游戏赔付按pay scale校准至约96%长期回报，可用`node --experimental-strip-types scripts/simulate-rtp.ts 200000`复核。免费揭示、锁定重转等阶段在同一付费局内由服务器一次计算，最多有限次数，不额外扣分、不无限触发。D1触发器把余额、记录、排行和积分流水放在同一事务中；幂等键防重复扣分，旧记录不可修改/删除，每局保存gameVersion。
 
 客户端支持自动10局、快速动画、跳过动画、音效、全屏、帮助及记录；网络不明时停止自动运行并保留按用户隔离的请求ID。
 
@@ -52,7 +52,7 @@ WebP交付版本由构建期脚本生成，保留全部母图；不会在Workers
 
 发布前执行`node scripts/preflight.mjs`，检查D1 ID、Turnstile、账户ID和Wrangler认证。GitHub仓库为 https://github.com/haiwai007/two ，workflow已提供；Cloudflare GitHub secrets仍待配置。维护Worker可按上海03:00定期清理过期会话/限流，不删除账本。
 
-每个游戏可在配置JSON的symbolAssets中绑定已上传图标ID，进入游戏时读取最新数据库素材，未绑定时使用程序字形。
+每个游戏可在配置JSON的symbolAssets中绑定已上传图标ID，进入游戏时读取最新数据库素材，未绑定时使用随程序打包的默认图标（public/symbols/<游戏ID>/<序号>.webp，夺宝图标public/symbols/scatter.webp），图片加载失败时回退为程序字形。
 
 当前完成范围、真实测试结果和生产阻塞项分别见`docs/06-original-programs.md`、`docs/05-test-report.md`和`docs/07-maintenance.md`。生产DNS/HTTPS、Turnstile/WAF与真实设备验收未完成前，不应标记正式上线。
 
