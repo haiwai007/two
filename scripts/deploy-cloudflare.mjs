@@ -5,6 +5,7 @@ import { pathToFileURL } from "node:url";
 
 const wrangler = (...args) => [process.execPath, ["node_modules/wrangler/bin/wrangler.js", ...args]];
 export const deploymentSteps = [
+  ["Waija callback onboarding checks", process.execPath, ["--experimental-strip-types", "tests/waija-callback.test.ts"]],
   ["Provisioning logic checks", process.execPath, ["tests/provision.test.mjs"]],
   ["First-owner safety checks", process.execPath, ["tests/first-owner.test.mjs"]],
   ["Turnstile server checks", process.execPath, ["--experimental-strip-types", "tests/turnstile.test.ts"]],
@@ -25,6 +26,7 @@ export const deploymentSteps = [
   ["Import delivery media", process.execPath, ["scripts/import-assets.mjs", "--remote", "--optimized"]],
   ["Deploy website with Turnstile secret", ...wrangler("deploy", "--secrets-file", ".test-state/deploy-secrets.json")],
   ["Read-only HTTPS smoke checks", process.execPath, ["scripts/smoke-production.mjs"]],
+  ["Waija unsigned callback safety checks", process.execPath, ["scripts/smoke-waija-callback.mjs"]],
 ];
 
 export function deploymentEnvironment(source) {
