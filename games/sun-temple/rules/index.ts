@@ -27,7 +27,7 @@ export function play(stake: number, rng: RandomInt = secureInt): Round {
         if (Math.max(Math.abs(c - 2), Math.abs(row - 2)) === radius)
           ring.push(c * 5 + row);
     const match = ring.filter((n) => grid[Math.floor(n / 5)][n % 5] === symbol),
-      threshold = radius === 1 ? 4 : 6;
+      threshold = radius === 1 ? 3 : 5;
     if (match.length >= threshold) {
       reward += stake * (symbol + 1) * (match.length - threshold + 1) * radius;
       wins.push([12, ...match]);

@@ -1,3 +1,4 @@
+import { enhance } from "./features.ts";
 import { golden as rule0 } from "../games/golden-god/rules/index.ts";
 import { dragon as rule1 } from "../games/dragon-world/rules/index.ts";
 import { phoenix as rule2 } from "../games/phoenix-legend/rules/index.ts";
@@ -71,6 +72,11 @@ export const implementedGameIds = Object.keys(rules);
 export function isImplementedGame(id: string) {
   return Object.hasOwn(rules, id);
 }
+// Unscaled rule output without the shared scatter/free-spin layer, for fixtures.
+export function baseRound(id: string, stake: number, rng: RandomInt): Round {
+  if (!isImplementedGame(id)) throw new Error("Game is not implemented");
+  return rules[id](stake, rng);
+}
 export function calculate(
   id: string,
   stake: number,
@@ -79,12 +85,12 @@ export function calculate(
   if (!Number.isSafeInteger(stake) || ![10, 20, 50, 100].includes(stake))
     throw new Error("Invalid stake");
   if (!isImplementedGame(id)) throw new Error("Game is not implemented");
-  const result = rules[id](stake, rng);
+  const result = enhance(id, stake, rng, rules[id]);
   if (
     !Number.isSafeInteger(result.reward) ||
     result.reward < 0 ||
     result.reward > 100000000
   )
     throw new Error("Invalid calculated reward");
-  return { ...result, gameVersion: "0.2.0" };
+  return { ...result, gameVersion: programVersion };
 }

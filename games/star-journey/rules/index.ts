@@ -17,7 +17,7 @@ import {
 export function play(stake: number, rng: RandomInt = secureInt): Round {
   const grid = draw(7, 3, 7, rng),
     path = [1, 0, 2, 1, 0, 2, 1],
-    values = path.map((r, c) => (grid[c][r] === 6 ? 1 : 0)),
+    values = path.map((r, c) => (grid[c][r] >= 5 ? 1 : 0)),
     wins: number[][] = [];
   let reward = 0;
   for (const run of runs(values))
@@ -30,5 +30,5 @@ export function play(stake: number, rng: RandomInt = secureInt): Round {
       reward += stake * (run.length - 2) ** 2 * 3;
     }
   if (values.every(Boolean)) reward += stake * 20;
-  return round(grid, reward, wins, "七点星图 · 曲线路径中连续三颗星起奖");
+  return round(grid, reward, wins, "七点星图 · 曲线路径中连续三颗星光起奖");
 }
